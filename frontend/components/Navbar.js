@@ -78,7 +78,7 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <img
+                <Image
                   src="/images/fgl-white.png"
                   alt="FGL Logo"
                   width={250}
