@@ -71,8 +71,8 @@ const Navbar = () => {
                 <Image
                   src="/images/fgl-color-short.png"
                   alt="FGL Logo"
-                  width={150}
-                  height={150}
+                  width={100}
+                  height={100}
                   className="block md:hidden"
                 />
               </>
@@ -88,8 +88,8 @@ const Navbar = () => {
                 <Image
                   src="/images/fgl-white-short.png"
                   alt="FGL Logo"
-                  width={150}
-                  height={150}
+                  width={100}
+                  height={100}
                   className="block md:hidden"
                 />
               </>
