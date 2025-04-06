@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FaBars, FaTimes } from "react-icons/fa";
+import Image from "next/image";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,7 +45,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <span
+            {/* <span
               className={`${
                 scrolled ? "text-slate-800" : "text-white"
               } font-heading text-primary text-2xl font-bold`}
@@ -57,7 +58,42 @@ const Navbar = () => {
               } hidden md:block ml-2 font-heading text-xl`}
             >
               Finest Gemological Laboratory
-            </span>
+            </span> */}
+            {scrolled ? (
+              <>
+                <Image
+                  src="/images/fgl-color.png"
+                  alt="FGL Logo"
+                  width={250}
+                  height={250}
+                  className="hidden md:block"
+                />
+                <Image
+                  src="/images/fgl-color.png"
+                  alt="FGL Logo"
+                  width={150}
+                  height={150}
+                  className="block md:hidden"
+                />
+              </>
+            ) : (
+              <>
+                <Image
+                  src="/images/fgl-white.png"
+                  alt="FGL Logo"
+                  width={250}
+                  height={250}
+                  className="hidden md:block"
+                />
+                <Image
+                  src="/images/fgl-white.png"
+                  alt="FGL Logo"
+                  width={150}
+                  height={150}
+                  className="block md:hidden"
+                />
+              </>
+            )}
           </Link>
 
           {/* Desktop Navigation */}
