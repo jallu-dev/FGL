@@ -106,8 +106,8 @@ export default function Home() {
                 Origin Determination
               </h3>
               <p className="text-accent/80">
-                Scientific assessment of a gemstone's geographical origin based
-                on inclusions and properties.
+                Scientific assessment of a gemstone&apos;s geographical origin
+                based on inclusions and properties.
               </p>
             </div>
           </div>
@@ -187,7 +187,7 @@ export default function Home() {
             {/* Testimonial 1 */}
             <div className="premium-card p-8 relative">
               <div className="text-secondary text-4xl absolute -top-4 left-6">
-                "
+                &quot;
               </div>
               <p className="text-accent/80 mb-6 pt-4">
                 The team at FGL provided exceptional service and detailed
@@ -206,12 +206,12 @@ export default function Home() {
             {/* Testimonial 2 */}
             <div className="premium-card p-8 relative">
               <div className="text-secondary text-4xl absolute -top-4 left-6">
-                "
+                &quot;
               </div>
               <p className="text-accent/80 mb-6 pt-4">
-                FGL's certification has significantly increased the value and
-                credibility of my gemstone inventory. Their attention to detail
-                is unmatched.
+                FGL&apos;s certification has significantly increased the value
+                and credibility of my gemstone inventory. Their attention to
+                detail is unmatched.
               </p>
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-gray-200 rounded-full mr-4"></div>
@@ -225,7 +225,7 @@ export default function Home() {
             {/* Testimonial 3 */}
             <div className="premium-card p-8 relative">
               <div className="text-secondary text-4xl absolute -top-4 left-6">
-                "
+                &quot;
               </div>
               <p className="text-accent/80 mb-6 pt-4">
                 As a collector, I rely on accurate certifications. FGL has
