@@ -79,7 +79,7 @@ const Navbar = () => {
             ) : (
               <>
                 <Image
-                  src="/images/fgl-color.png"
+                  src="/images/fgl-white.png"
                   alt="FGL Logo"
                   width={250}
                   height={250}
