@@ -69,7 +69,7 @@ const Navbar = () => {
                   className="hidden md:block"
                 />
                 <Image
-                  src="/images/fgl-color.png"
+                  src="/images/fgl-color-short.png"
                   alt="FGL Logo"
                   width={150}
                   height={150}
@@ -86,7 +86,7 @@ const Navbar = () => {
                   className="hidden md:block"
                 />
                 <Image
-                  src="/images/fgl-white.png"
+                  src="/images/fgl-white-short.png"
                   alt="FGL Logo"
                   width={150}
                   height={150}
