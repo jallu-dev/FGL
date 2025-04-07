@@ -107,18 +107,18 @@ const Footer = () => {
             </h3>
             <div className="space-y-4">
               <div className="flex items-center">
-                <FaMapMarkerAlt className="text-secondary mr-3" />
+                <FaMapMarkerAlt className="text-secondary mr-3 shrink-0" />
                 <p>
                   94/3, Sally Hajiar Mawatha, Chinafort, Beruwala.
                   12070 Sri Lanka
                 </p>
               </div>
               <div className="flex items-center">
-                <FaPhone className="text-secondary mr-3" />
+                <FaPhone className="text-secondary mr- shrink-0" />
                 <p>+94 (76) 3549226</p>
               </div>
               <div className="flex items-center">
-                <FaEnvelope className="text-secondary mr-3" />
+                <FaEnvelope className="text-secondary mr-3 shrink-0" />
                 <p>info@fgl.lk</p>
               </div>
             </div>

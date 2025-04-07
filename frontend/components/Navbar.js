@@ -106,7 +106,7 @@ const Navbar = () => {
                 className="relative font-medium group"
               >
                 {item.name}
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
               </Link>
             ))}
           </div>
