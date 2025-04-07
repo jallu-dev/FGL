@@ -13,7 +13,7 @@ export default function Home() {
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-6">
               Scientific Precision in{" "}
-              <span className="text-secondary">Gemstone Analysis</span>
+              <span className="text-primary">Gemstone Analysis</span>
             </h1>
             <p className="text-lg md:text-xl text-white/90 mb-8">
               Finest Gemological Laboratory provides expert gem certification
@@ -155,7 +155,7 @@ export default function Home() {
             Ensure the authenticity of your FGL certification with our secure
             online verification system.
           </p>
-          <Link href="/verify" className="btn-secondary">
+          <Link href="/verify" className="btn-secondary-fill">
             Verify Now
           </Link>
         </div>
