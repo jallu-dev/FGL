@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center pt-20 bg-[url('/images/hero-background-3.png')] bg-cover bg-center bg-fixed">
+      <section className="relative min-h-[90vh] flex items-center pt-20 bg-[url('/images/hero-background-3.jpg')] bg-cover bg-center bg-fixed">
         <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/60 to-transparent z-0" />
 
         <div className="container mx-auto px-6 z-10 relative">
