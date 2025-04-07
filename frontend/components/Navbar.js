@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { FaBars, FaTimes } from "react-icons/fa";
 import Image from "next/image";
+import fgl_white_Base64 from "@/public/images/fgl_white_Base64";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -79,7 +80,7 @@ const Navbar = () => {
             ) : (
               <>
                 <Image
-                  src="/images/fgl-white.png"
+                  src={fgl_white_Base64}
                   alt="FGL Logo"
                   width={250}
                   height={250}
