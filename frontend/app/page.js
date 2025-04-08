@@ -155,7 +155,10 @@ export default function Home() {
             Ensure the authenticity of your FGL certification with our secure
             online verification system.
           </p>
-          <Link href="/verify" className="btn-secondary-fill">
+          <Link
+            href="/verify"
+            className="btn-secondary-fill inline-block hover:scale-105"
+          >
             Verify Now
           </Link>
         </div>

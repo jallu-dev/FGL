@@ -63,11 +63,11 @@ h6 {
 }
 
 .btn-secondary {
-  @apply bg-transparent text-[var(--background)] px-6 py-3 rounded-md border-2 border-[var(--background)] transition-all duration-300;
+  @apply bg-transparent text-[var(--background)] px-6 py-3 rounded-md border border-[var(--background)] transition-all duration-300;
 }
 
 .btn-secondary-fill {
-  @apply bg-[var(--background)] text-[var(--primary)] px-6 py-3 rounded-md border-2 border-[var(--background)] transition-all duration-300;
+  @apply bg-[var(--background)] text-[var(--primary)] px-6 py-3 rounded-md border border-[var(--background)] transition-all duration-300;
 }
 
 .btn-secondary:hover {
