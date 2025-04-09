@@ -15,14 +15,12 @@ export const metadata = {
 
 export default function AdminLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} ${playfair.variable} bg-gray-50`}>
-        <AdminNavbar />
-        <div className="flex min-h-screen pt-16">
-          <AdminSidebar />
-          <main className="flex-1 p-6">{children}</main>
-        </div>
-      </body>
-    </html>
+    <div className={`${inter.variable} ${playfair.variable} bg-gray-50`}>
+      <AdminNavbar />
+      <div className="flex min-h-screen pt-16">
+        <AdminSidebar />
+        <main className="flex-1 p-6">{children}</main>
+      </div>
+    </div>
   );
 }
