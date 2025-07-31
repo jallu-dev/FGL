@@ -51,7 +51,7 @@ const Navbar = () => {
           <Link href="/" className="flex items-center">
             {isMounted && scrolled ? (
               <>
-                <div className="hidden md:block w-[250px] h-[250px] relative">
+                <div className="hidden md:block w-[250px] h-[60px] relative">
                   <Image
                     src="/images/fgl-color.png"
                     alt="FGL Logo"
@@ -60,7 +60,7 @@ const Navbar = () => {
                     priority
                   />
                 </div>
-                <div className="block md:hidden w-[100px] h-[100px] relative">
+                <div className="block md:hidden w-[100px] h-[30px] relative">
                   <Image
                     src="/images/fgl-color-short.png"
                     alt="FGL Logo"
@@ -72,7 +72,7 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <div className="hidden md:block w-[250px] h-auto relative overflow-hidden bg-blue-600">
+                <div className="hidden md:block w-[250px] h-[60px] relative overflow-hidden">
                   <Image
                     src="/images/fgl-white.png"
                     alt="FGL Logo"
@@ -81,7 +81,7 @@ const Navbar = () => {
                     priority
                   />
                 </div>
-                {/* <div className="block md:hidden w-[100px] h-[100px] relative overflow-hidden">
+                <div className="block md:hidden w-[100px] h-[30px] relative overflow-hidden">
                   <Image
                     src="/images/fgl-white-short.png"
                     alt="FGL Logo"
@@ -89,7 +89,7 @@ const Navbar = () => {
                     style={{ objectFit: "contain" }}
                     priority
                   />
-                </div> */}
+                </div>
               </>
             )}
           </Link>
@@ -103,7 +103,11 @@ const Navbar = () => {
                 className="relative font-medium group"
               >
                 {item.name}
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                <span
+                  className={`absolute left-0 bottom-0 w-0 h-0.5 ${
+                    scrolled ? "bg-primary" : "bg-white"
+                  } transition-all duration-300 group-hover:w-full`}
+                ></span>
               </Link>
             ))}
           </div>
