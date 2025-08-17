@@ -118,54 +118,67 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
         margin: "2mm",
         boxSizing: "border-box",
         color: colors.gray[800],
-        border: `2px solid ${colors.primary}`,
+        // border: `2px solid ${colors.primary}`,
         borderRadius: "3mm",
       }}
     >
-      {/* Header with FGL Logo */}
-      <div className="relative w-[88px] h-[25px] left-1/2 -translate-x-1/2">
-        <Image
-          src="/images/fgl-color.png"
-          alt="logo"
-          fill
-          className="object-contain"
-        />
-      </div>
-      <div className="flex items-center justify-center mb-1">
-        <svg
-          width="850"
-          height="20"
-          viewBox="0 0 650 20"
-          className="max-w-full"
-        >
-          <defs>
-            <linearGradient
-              id="accentToSecondary"
-              x1="0%"
-              y1="0%"
-              x2="0%"
-              y2="100%"
-            >
-              <stop offset="0%" stopColor="var(--primary-color, #9b111e)" />
-              <stop offset="50%" stopColor="var(--secondary-color, #d97706)" />
-              <stop offset="100%" stopColor="var(--accent-color, #e3c16f)" />
-            </linearGradient>
-          </defs>
-          <text
-            x="325"
-            y="10"
-            textAnchor="middle"
-            dominantBaseline="middle"
-            fill="url(#accentToSecondary)"
-            fontSize="25"
-            fontFamily="Old English Text MT"
-            letterSpacing="0.1em"
-            fontWeight="400"
+      <div className="flex justify-around items-center mb-2">
+        {/* Header with FGL Logo */}
+        <div className="relative w-[105px] h-[30px] shrink-0">
+          <Image
+            src="/images/fgl-color.png"
+            alt="logo"
+            fill
+            className="object-contain"
+          />
+        </div>
+        <div className="flex items-center justify-center">
+          <svg
+            width="850"
+            height="20"
+            viewBox="0 0 650 20"
+            className="max-w-full"
           >
-            Brief Gemmological Report
-          </text>
-        </svg>
+            <defs>
+              <linearGradient
+                id="accentToSecondary"
+                x1="0%"
+                y1="0%"
+                x2="0%"
+                y2="100%"
+              >
+                <stop offset="0%" stopColor="var(--primary-color, #9b111e)" />
+                <stop offset="100%" stopColor="var(--accent-color, #d97706)" />
+              </linearGradient>
+            </defs>
+            <text
+              x="325"
+              y="10"
+              textAnchor="middle"
+              dominantBaseline="middle"
+              fill="url(#accentToSecondary)"
+              fontSize="45"
+              fontFamily="Old English Text MT"
+              letterSpacing="0.1em"
+              fontWeight="400"
+            >
+              Brief Gemmological Report
+            </text>
+          </svg>
+        </div>
       </div>
+
+      {/* <div
+        className="text-base text-center mb-2.5 -mt-2"
+        style={{
+          fontFamily: "Old English Text MT",
+          color: "#bd3744",
+          letterSpacing: "0.1em",
+          fontWeight: "400",
+        }}
+      >
+        Brief Gemmological Report
+      </div> */}
 
       {/* Main Content */}
       <div
@@ -177,7 +190,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
             flex: "1",
             display: "flex",
             flexDirection: "column",
-            fontSize: "6px",
+            fontSize: "7px",
             lineHeight: "1.1",
           }}
         >
@@ -187,7 +200,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               className="shrink-0"
               style={{
                 color: colors.gray[900],
-                fontWeight: "600",
+                fontWeight: "700",
                 width: "60px",
               }}
             >
@@ -204,7 +217,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               className="shrink-0"
               style={{
                 color: colors.gray[900],
-                fontWeight: "600",
+                fontWeight: "700",
                 width: "60px",
               }}
             >
@@ -223,7 +236,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               className="shrink-0"
               style={{
                 color: colors.gray[900],
-                fontWeight: "600",
+                fontWeight: "700",
                 width: "60px",
               }}
             >
@@ -234,7 +247,6 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 color: colors.gray[900],
                 fontWeight: "700",
                 textTransform: "uppercase",
-                // fontSize: "7px",
               }}
             >
               {species}
@@ -247,7 +259,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               className="shrink-0"
               style={{
                 color: colors.gray[900],
-                fontWeight: "600",
+                fontWeight: "700",
                 width: "60px",
               }}
             >
@@ -258,7 +270,6 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 color: colors.gray[900],
                 fontWeight: "700",
                 textTransform: "uppercase",
-                // fontSize: "7px",
               }}
             >
               {variety}
@@ -270,7 +281,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               className="shrink-0"
               style={{
                 color: colors.gray[900],
-                fontWeight: "600",
+                fontWeight: "700",
                 width: "60px",
               }}
             >
@@ -287,7 +298,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               className="shrink-0"
               style={{
                 color: colors.gray[900],
-                fontWeight: "600",
+                fontWeight: "700",
                 width: "60px",
               }}
             >
@@ -304,7 +315,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               className="shrink-0"
               style={{
                 color: colors.gray[900],
-                fontWeight: "600",
+                fontWeight: "700",
                 width: "60px",
               }}
             >
@@ -321,7 +332,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               className="shrink-0"
               style={{
                 color: colors.gray[900],
-                fontWeight: "600",
+                fontWeight: "700",
                 width: "60px",
               }}
             >
@@ -338,7 +349,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               className="shrink-0"
               style={{
                 color: colors.gray[900],
-                fontWeight: "600",
+                fontWeight: "700",
                 width: "60px",
               }}
             >

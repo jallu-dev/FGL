@@ -136,7 +136,7 @@ export async function POST(req) {
           description,
           species,
           variety,
-          Number(weight),
+          weight,
           measurement,
           colour,
           shape,

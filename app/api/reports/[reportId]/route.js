@@ -213,7 +213,7 @@ export async function PUT(req, { params }) {
           description,
           species,
           variety,
-          Number(weight),
+          weight,
           measurement,
           colour,
           shape,

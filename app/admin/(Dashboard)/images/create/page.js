@@ -33,27 +33,12 @@ import {
   FileUploaderItem,
 } from "@/components/extension/file-upload";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import generateReportPDF from "../generateReportPDF";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
-  date: z.coerce.date(),
   description: z.string().min(1),
-  species: z.string().min(1),
-  variety: z.string().min(1),
-  weight: z.string().min(1),
-  measurement: z.string().min(1),
-  colour: z.string().min(1),
-  shape: z.string().min(1),
-  transparency: z.string().min(1),
-  origin: z.string(),
-  phenomenon: z.string(),
-  remarks: z.string(),
-  comments: z.string().min(1),
-  text_color: z.string().min(1),
-  track_no: z.string().min(1),
-  contact_no: z.string().min(1).max(10),
+  title: z.string().min(1),
 });
 
 export default function MyForm() {
@@ -70,21 +55,8 @@ export default function MyForm() {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      track_no: "",
       description: "",
-      species: "",
-      variety: "",
-      weight: "",
-      measurement: "",
-      colour: "",
-      shape: "",
-      transparency: "",
-      origin: "",
-      phenomenon: "",
-      remarks: "",
-      comments: "",
-      text_color: "#000000",
-      contact_no: "",
+      title: "",
     },
   });
 
@@ -93,8 +65,8 @@ export default function MyForm() {
     try {
       await handleGenerateReport(form.getValues());
 
-      toast.success("Report Created Succefully");
-      router.replace("/admin/reports");
+      toast.success("Image Post Created Succefully");
+      router.replace("/admin/images");
     } catch (error) {
       console.error("Form submission error", error);
       toast.error("Failed to submit the form. Please try again.");
@@ -134,7 +106,7 @@ export default function MyForm() {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 60000); // 60 second timeout
 
-      const res = await fetch("/api/reports", {
+      const res = await fetch("/api/images", {
         method: "POST",
         body: formData,
         signal: controller.signal,
