@@ -124,7 +124,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
     >
       <div className="flex justify-around items-center mb-2">
         {/* Header with FGL Logo */}
-        <div className="relative w-[105px] h-[30px] shrink-0">
+        <div className="relative w-[140px] h-[41px] shrink-0">
           <Image
             src="/images/fgl-color.png"
             alt="logo"

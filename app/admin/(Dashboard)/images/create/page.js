@@ -63,7 +63,7 @@ export default function MyForm() {
   const onSubmit = async () => {
     setGenerating(true);
     try {
-      await handleGenerateReport(form.getValues());
+      await handleGeneratePost(form.getValues());
 
       toast.success("Image Post Created Succefully");
       router.replace("/admin/images");
@@ -75,7 +75,7 @@ export default function MyForm() {
     }
   };
 
-  const handleGenerateReport = async (data) => {
+  const handleGeneratePost = async (data) => {
     try {
       // Validate file size on frontend first
       if (file.length > 0 && file[0].size > 10 * 1024 * 1024) {
@@ -117,9 +117,7 @@ export default function MyForm() {
       const result = await res.json();
 
       if (res.ok) {
-        await generateReportPDF(data, result.reportId, setGenerating);
-        toast.success("Report submitted successfully!");
-        console.log("Report saved with ID:", result.reportId);
+        toast.success("Post Created Successfully!");
 
         // Reset form after successful submission
         // form.reset();
@@ -136,7 +134,7 @@ export default function MyForm() {
         throw new Error(result.error || "Something went wrong");
       }
     } catch (error) {
-      console.error("Failed to generate report:", error);
+      console.error("Failed to generate post:", error);
 
       if (error.name === "AbortError") {
         toast.error("Upload timeout. Please try with a smaller file.");
@@ -184,17 +182,8 @@ export default function MyForm() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Remaining fields */}
           {[
+            { name: "title", label: "Title", required: true },
             { name: "description", label: "Description", required: true },
-            { name: "species", label: "Species", required: true },
-            { name: "variety", label: "Variety", required: true },
-            { name: "weight", label: "Weight", required: true },
-            { name: "measurement", label: "Measurement", required: true },
-            { name: "colour", label: "Colour", required: true },
-            { name: "shape", label: "Shape & Cut", required: true },
-            { name: "transparency", label: "Transparency", required: true },
-            { name: "origin", label: "Origin", required: false },
-            { name: "phenomenon", label: "Phenomenon", required: false },
-            { name: "remarks", label: "Remarks", required: false },
           ].map((item) => (
             <FormField
               key={item.name}
@@ -223,29 +212,6 @@ export default function MyForm() {
               )}
             />
           ))}
-
-          {/* Comments (full width) */}
-          <div className="md:col-span-2">
-            <FormField
-              control={form.control}
-              name="comments"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>
-                    Comments<span className="text-red-500">*</span>
-                  </FormLabel>
-                  <FormControl>
-                    <Textarea
-                      placeholder="Enter comments"
-                      className="resize-none bg-white"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
 
           {/* File Upload (full width) */}
           <div className="md:col-span-2">
@@ -318,73 +284,6 @@ export default function MyForm() {
               )}
             />
           </div>
-          <FormField
-            control={form.control}
-            name="text_color"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>
-                  Color Picker
-                  <span className="text-red-500">*</span>
-                </FormLabel>
-
-                <FormControl>
-                  <Input
-                    placeholder={`Pick color`}
-                    className="bg-white"
-                    type="color"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <div></div>
-          <FormField
-            control={form.control}
-            name="track_no"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>
-                  Track No
-                  <span className="text-red-500">*</span>
-                </FormLabel>
-
-                <FormControl>
-                  <Input
-                    placeholder={`Enter track no`}
-                    className="bg-white"
-                    type="number"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="contact_no"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>
-                  Contact No
-                  <span className="text-red-500">*</span>
-                </FormLabel>
-
-                <FormControl>
-                  <Input
-                    placeholder={`Enter contact no`}
-                    className="bg-white"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
         </div>
 
         <div className="pt-6">

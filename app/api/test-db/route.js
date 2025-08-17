@@ -4,6 +4,7 @@ export async function GET() {
   try {
     const client = await pool.connect();
     const res = await client.query("SELECT NOW()");
+    console.log(res);
     client.release();
     return new Response(`Postgres connected at: ${res.rows[0].now}`, {
       status: 200,

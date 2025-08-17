@@ -145,9 +145,7 @@ export default function MyForm() {
       const result = await res.json();
 
       if (res.ok) {
-        await generateReportPDF(data, result.reportId, setGenerating);
         toast.success("Report submitted successfully!");
-        console.log("Report saved with ID:", result.reportId);
 
         // Reset form after successful submission
         // form.reset();
