@@ -4,21 +4,31 @@ import { NextResponse } from "next/server";
 export async function middleware(req) {
   const { pathname } = req.nextUrl;
 
-  // Allow static files, _next, etc.
-  if (pathname.startsWith("/_next") || pathname.startsWith("/favicon.ico")) {
+  // Allow static files, Next internals, etc.
+  if (
+    pathname.startsWith("/_next") ||
+    pathname.startsWith("/favicon.ico") ||
+    pathname.startsWith("/public")
+  ) {
     return NextResponse.next();
   }
 
-  // Allow /admin (login page)
+  // Allow /admin login page
   if (pathname === "/admin") {
     return NextResponse.next();
   }
 
-  // Restrict everything under /admin/*
-  if (pathname.startsWith("/admin/")) {
+  // Protect /admin/* pages and /api/* routes
+  if (pathname.startsWith("/admin/") || pathname.startsWith("/api/")) {
     const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
 
     if (!token) {
+      // If it's an API request, return 401 JSON instead of redirect
+      if (pathname.startsWith("/api/")) {
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      }
+
+      // Otherwise redirect to login page
       const loginUrl = new URL("/admin", req.url);
       return NextResponse.redirect(loginUrl);
     }
@@ -27,7 +37,7 @@ export async function middleware(req) {
   return NextResponse.next();
 }
 
-// Enable middleware for /admin and its children
+// Enable middleware for both admin pages and API routes
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: ["/admin/:path*", "/api/:path*"],
 };

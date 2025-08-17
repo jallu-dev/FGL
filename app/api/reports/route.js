@@ -46,6 +46,9 @@ export async function POST(req) {
     const phenomenon = formData.get("phenomenon") || "";
     const remarks = formData.get("remarks") || "";
     const comments = formData.get("comments");
+    const text_color = formData.get("text_color");
+    const track_no = formData.get("track_no");
+    const contact_no = formData.get("contact_no");
 
     // Extract and validate file
     const imageFile = formData.get("image");
@@ -82,6 +85,9 @@ export async function POST(req) {
       shape,
       transparency,
       comments,
+      text_color,
+      track_no,
+      contact_no,
     };
     const missingFields = Object.entries(requiredFields)
       .filter(([_, value]) => !value || value.toString().trim() === "")
@@ -115,18 +121,18 @@ export async function POST(req) {
     );
 
     // Generate report ID
-    const reportId = `FGL${Date.now()}`;
+    const reportId = `FGL${Date.now().toString().slice(4)}`;
 
     // Save to database
     const client = await pool.connect();
     try {
       await client.query(
         `INSERT INTO reports (
-          report_id, description, species, variety, weight, measurement, colour,
-          shape, transparency, origin, phenomenon, remarks, comments, image_file_path
-        ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)`,
+          report_id, track_no, description, species, variety, weight, measurement, colour,
+          shape, transparency, origin, phenomenon, remarks, comments, image_file_path, text_color, contact_no) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17)`,
         [
           reportId,
+          track_no,
           description,
           species,
           variety,
@@ -140,6 +146,8 @@ export async function POST(req) {
           remarks,
           comments,
           key,
+          text_color,
+          contact_no,
         ]
       );
     } finally {
@@ -160,6 +168,81 @@ export async function POST(req) {
 
     return Response.json(
       { error: "Upload failed. Please try again." },
+      { status: 500 }
+    );
+  }
+}
+
+export async function GET(req) {
+  try {
+    const client = await pool.connect();
+
+    try {
+      const { searchParams } = new URL(req.url);
+
+      const page = parseInt(searchParams.get("page") || "1");
+      const limit = parseInt(searchParams.get("limit") || "10");
+      const search = searchParams.get("search")?.trim() || "";
+      const offset = (page - 1) * limit;
+
+      // --- Main Query ---
+      let whereClause = "";
+      let values = [limit, offset];
+
+      if (search) {
+        whereClause = `WHERE report_id ILIKE $3 OR CAST(track_no AS TEXT) ILIKE $3 OR contact_no ILIKE $3`;
+        values = [limit, offset, `%${search}%`];
+      }
+
+      const { rows } = await client.query(
+        `
+        SELECT id, track_no, report_id, species, variety, contact_no, created_at
+        FROM reports
+        ${whereClause}
+        ORDER BY created_at DESC
+        LIMIT $1 OFFSET $2
+        `,
+        values
+      );
+
+      // --- Count Query ---
+      let countQuery;
+      if (search) {
+        countQuery = await client.query(
+          `
+          SELECT COUNT(*) AS total
+          FROM reports
+          WHERE report_id ILIKE $1 OR CAST(track_no AS TEXT) ILIKE $1 OR contact_no ILIKE $1
+          `,
+          [`%${search}%`]
+        );
+      } else {
+        countQuery = await client.query(
+          `
+          SELECT COUNT(*) AS total
+          FROM reports
+          `
+        );
+      }
+
+      return Response.json(
+        {
+          success: true,
+          rows,
+          total: parseInt(countQuery.rows[0].total),
+          page,
+          limit,
+        },
+        { status: 200 }
+      );
+    } finally {
+      client.release();
+    }
+  } catch (error) {
+    console.error("Fetch error:", error);
+
+    return Response.json(
+      { error: "Error while retrieving reports data." },
       { status: 500 }
     );
   }

@@ -8,6 +8,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Old English Text MT";
+  src: url("/fonts/OLDENGL.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-oldenglish {
+  font-family: "Old English Text MT", cursive;
+}
+
 /* Theme Variables - Using RGB/HEX instead of oklch() */
 :root {
   --primary: #9b111e;

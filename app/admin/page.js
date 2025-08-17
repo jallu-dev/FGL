@@ -82,7 +82,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center mb-4">
       <div className="w-full">
         {/* Header */}
         <div className="bg-primary py-10 pt-24 mb-10 text-white text-center self-stretch">
