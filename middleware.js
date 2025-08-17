@@ -19,7 +19,10 @@ export async function middleware(req) {
   }
 
   // Protect /admin/* pages and /api/* routes
-  if (pathname.startsWith("/admin/") || pathname.startsWith("/api/")) {
+  if (
+    pathname.startsWith("/admin/") ||
+    (pathname.startsWith("/api/") && !pathname.startsWith("/api/auth/"))
+  ) {
     const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
 
     if (!token) {
@@ -39,5 +42,5 @@ export async function middleware(req) {
 
 // Enable middleware for both admin pages and API routes
 export const config = {
-  matcher: ["/admin/:path*", "/api/:path*"],
+  matcher: ["/admin/:path*", "/api/reports/:path*"],
 };
