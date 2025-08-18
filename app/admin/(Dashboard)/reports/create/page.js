@@ -203,10 +203,7 @@ export default function MyForm() {
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="max-w-4xl mx-auto py-10 space-y-8"
-      >
+      <form onSubmit={onSubmit} className="max-w-4xl mx-auto py-10 space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Remaining fields */}
           {[
