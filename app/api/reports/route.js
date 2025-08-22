@@ -178,12 +178,14 @@ export async function GET(req) {
     const client = await pool.connect();
 
     try {
-      const { searchParams } = new URL(req.url);
+      console.log(111);
 
+      const { searchParams } = new URL(req.url);
       const page = parseInt(searchParams.get("page") || "1");
       const limit = parseInt(searchParams.get("limit") || "10");
       const search = searchParams.get("search")?.trim() || "";
       const offset = (page - 1) * limit;
+      console.log(222);
 
       // --- Main Query ---
       let whereClause = "";
@@ -193,6 +195,7 @@ export async function GET(req) {
         whereClause = `WHERE report_id ILIKE $3 OR CAST(track_no AS TEXT) ILIKE $3 OR contact_no ILIKE $3`;
         values = [limit, offset, `%${search}%`];
       }
+      console.log(333);
 
       const { rows } = await client.query(
         `
@@ -204,6 +207,7 @@ export async function GET(req) {
         `,
         values
       );
+      console.log(444);
 
       // --- Count Query ---
       let countQuery;
@@ -224,6 +228,7 @@ export async function GET(req) {
           `
         );
       }
+      console.log(555);
 
       return Response.json(
         {
