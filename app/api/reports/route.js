@@ -235,15 +235,19 @@ export async function GET(req) {
         },
         { status: 200 }
       );
+    } catch (error) {
+      console.error("Fetch error:", error);
+
+      return Response.json(
+        { error: "Error while retrieving reports data." },
+        { status: 500 }
+      );
     } finally {
       client.release();
     }
   } catch (error) {
-    console.error("Fetch error:", error);
+    console.error("Connection error:", error);
 
-    return Response.json(
-      { error: "Error while retrieving reports data." },
-      { status: 500 }
-    );
+    return Response.json({ error: "Error while connection." }, { status: 500 });
   }
 }
