@@ -178,57 +178,135 @@ export async function GET(req) {
     const client = await pool.connect();
 
     try {
-      console.log(111);
-
       const { searchParams } = new URL(req.url);
       const page = parseInt(searchParams.get("page") || "1");
       const limit = parseInt(searchParams.get("limit") || "10");
       const search = searchParams.get("search")?.trim() || "";
       const offset = (page - 1) * limit;
-      console.log(222);
 
-      // --- Main Query ---
-      let whereClause = "";
-      let values = [limit, offset];
+      console.log("Search params:", { page, limit, search, offset });
 
-      if (search) {
-        whereClause = `WHERE report_id ILIKE $3 OR CAST(track_no AS TEXT) ILIKE $3 OR contact_no ILIKE $3`;
-        values = [limit, offset, `%${search}%`];
+      // If no search, use simple query
+      if (!search) {
+        console.log("No search term - using simple query");
+
+        const { rows } = await client.query(
+          `SELECT id, track_no, report_id, species, variety, contact_no, created_at
+           FROM reports
+           ORDER BY created_at DESC
+           LIMIT $1 OFFSET $2`,
+          [limit, offset]
+        );
+
+        const countQuery = await client.query(
+          "SELECT COUNT(*) AS total FROM reports"
+        );
+
+        return Response.json(
+          {
+            success: true,
+            rows,
+            total: parseInt(countQuery.rows[0].total),
+            page,
+            limit,
+          },
+          { status: 200 }
+        );
       }
-      console.log(333);
 
-      const { rows } = await client.query(
-        `
-        SELECT id, track_no, report_id, species, variety, contact_no, created_at
-        FROM reports
-        ${whereClause}
-        ORDER BY created_at DESC
-        LIMIT $1 OFFSET $2
-        `,
-        values
-      );
-      console.log(444);
+      // If search term exists, try different approaches
+      console.log("Search term provided:", search);
 
-      // --- Count Query ---
-      let countQuery;
-      if (search) {
-        countQuery = await client.query(
-          `
-          SELECT COUNT(*) AS total
-          FROM reports
-          WHERE report_id ILIKE $1 OR CAST(track_no AS TEXT) ILIKE $1 OR contact_no ILIKE $1
-          `,
+      // Approach 1: Test each search condition separately
+      try {
+        console.log("Testing report_id search...");
+        const reportIdTest = await client.query(
+          "SELECT COUNT(*) FROM reports WHERE report_id ILIKE $1",
           [`%${search}%`]
         );
-      } else {
-        countQuery = await client.query(
-          `
-          SELECT COUNT(*) AS total
-          FROM reports
-          `
+        console.log("Report ID search works");
+      } catch (error) {
+        console.error("Report ID search failed:", error);
+        return Response.json(
+          { error: "Report ID search failed", details: error.message },
+          { status: 500 }
         );
       }
-      console.log(555);
+
+      try {
+        console.log("Testing track_no search with CAST...");
+        const trackNoTest = await client.query(
+          "SELECT COUNT(*) FROM reports WHERE CAST(track_no AS TEXT) ILIKE $1",
+          [`%${search}%`]
+        );
+        console.log("Track no search with CAST works");
+      } catch (error) {
+        console.error(
+          "Track no search with CAST failed, trying without CAST:",
+          error
+        );
+        try {
+          const trackNoTest2 = await client.query(
+            "SELECT COUNT(*) FROM reports WHERE track_no::TEXT ILIKE $1",
+            [`%${search}%`]
+          );
+          console.log("Track no search with :: works");
+        } catch (error2) {
+          console.error("Track no search without CAST also failed:", error2);
+          // Try treating track_no as string directly
+          try {
+            const trackNoTest3 = await client.query(
+              "SELECT COUNT(*) FROM reports WHERE track_no ILIKE $1",
+              [`%${search}%`]
+            );
+            console.log("Track no search as string works");
+          } catch (error3) {
+            return Response.json(
+              {
+                error: "All track_no search methods failed",
+                details: {
+                  cast: error.message,
+                  doubleColon: error2.message,
+                  direct: error3.message,
+                },
+              },
+              { status: 500 }
+            );
+          }
+        }
+      }
+
+      try {
+        console.log("Testing contact_no search...");
+        const contactTest = await client.query(
+          "SELECT COUNT(*) FROM reports WHERE contact_no ILIKE $1",
+          [`%${search}%`]
+        );
+        console.log("Contact no search works");
+      } catch (error) {
+        console.error("Contact no search failed:", error);
+        return Response.json(
+          { error: "Contact no search failed", details: error.message },
+          { status: 500 }
+        );
+      }
+
+      // If all individual tests pass, try the combined query
+      const { rows } = await client.query(
+        `SELECT id, track_no, report_id, species, variety, contact_no, created_at
+         FROM reports
+         WHERE report_id ILIKE $3 OR track_no::TEXT ILIKE $3 OR contact_no ILIKE $3
+         ORDER BY created_at DESC
+         LIMIT $1 OFFSET $2`,
+        [limit, offset, `%${search}%`]
+      );
+
+      const countQuery = await client.query(
+        `SELECT COUNT(*) AS total
+         FROM reports
+         WHERE report_id ILIKE $1 OR track_no::TEXT ILIKE $1 OR contact_no ILIKE $1`,
+        [`%${search}%`]
+      );
 
       return Response.json(
         {
@@ -237,14 +315,18 @@ export async function GET(req) {
           total: parseInt(countQuery.rows[0].total),
           page,
           limit,
+          debug: "Search query successful",
         },
         { status: 200 }
       );
     } catch (error) {
       console.error("Fetch error:", error);
-
       return Response.json(
-        { error: "Error while retrieving reports data." },
+        {
+          error: "Error while retrieving reports data.",
+          details: error.message,
+          code: error.code,
+        },
         { status: 500 }
       );
     } finally {
@@ -252,7 +334,12 @@ export async function GET(req) {
     }
   } catch (error) {
     console.error("Connection error:", error);
-
-    return Response.json({ error: "Error while connection." }, { status: 500 });
+    return Response.json(
+      {
+        error: "Error while connection.",
+        details: error.message,
+      },
+      { status: 500 }
+    );
   }
 }
