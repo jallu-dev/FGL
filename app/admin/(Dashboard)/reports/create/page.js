@@ -38,7 +38,6 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
-  date: z.coerce.date(),
   description: z.string().min(1),
   species: z.string().min(1),
   variety: z.string().min(1),
@@ -88,13 +87,10 @@ export default function MyForm() {
     },
   });
 
-  const onSubmit = async () => {
+  const onSubmit = async (values) => {
     setGenerating(true);
     try {
-      await handleGenerateReport(form.getValues());
-
-      toast.success("Report Created Succefully");
-      router.replace("/admin/reports");
+      await handleGenerateReport(values);
     } catch (error) {
       console.error("Form submission error", error);
       toast.error("Failed to submit the form. Please try again.");
@@ -150,6 +146,7 @@ export default function MyForm() {
         // Reset form after successful submission
         // form.reset();
         setFile([]);
+        router.replace("/admin/reports");
       } else {
         // Handle specific error cases
         if (res.status === 413) {
@@ -203,7 +200,10 @@ export default function MyForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={onSubmit} className="max-w-4xl mx-auto py-10 space-y-8">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="max-w-4xl mx-auto py-10 space-y-8"
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Remaining fields */}
           {[
