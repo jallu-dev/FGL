@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import QRCode from "qrcode";
 import Image from "next/image";
-import { GemA } from "@/public/images/GemA";
+import GemA_Base64 from "@/public/images/GemA_Base64";
 
 let months = {
   0: "January",
@@ -412,7 +412,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               </div>
             )}
             <div className="self-start shrink-0">
-              <Image src={GemA} alt="logo" height={38} width={38} />
+              <Image src={GemA_Base64} alt="logo" height={38} width={38} />
             </div>
           </div>
         </div>
