@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import QRCode from "qrcode";
-import JsBarcode from "jsbarcode";
 import Image from "next/image";
+import { GemA } from "@/public/images/GemA";
 
 let months = {
   0: "January",
@@ -20,7 +20,6 @@ let months = {
 
 const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
   const [qrCodeUrl, setQrCodeUrl] = useState("");
-  const [barcodeUrl, setBarcodeUrl] = useState("");
   const server = process.env.SERVER || "www.fgl.lk";
 
   // Define colors as constants
@@ -63,7 +62,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
 
         // Generate QR code (smaller for ID card)
         const qrUrl = await QRCode.toDataURL(verifyUrl, {
-          width: 40,
+          width: 80,
           margin: 1,
           color: {
             dark: colors.black,
@@ -71,21 +70,6 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
           },
         });
         setQrCodeUrl(qrUrl);
-
-        // Generate Barcode using canvas (smaller for ID card)
-        const canvas = document.createElement("canvas");
-        JsBarcode(canvas, track_no, {
-          format: "CODE128",
-          width: 1,
-          height: 20,
-          displayValue: false,
-          background: colors.white,
-          lineColor: colors.black,
-          margin: 0,
-        });
-
-        const barcodeUrl = canvas.toDataURL("image/png");
-        setBarcodeUrl(barcodeUrl);
       } catch (error) {
         console.error("Error generating codes:", error);
       }
@@ -97,12 +81,12 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
   }, [reportId]);
 
   useEffect(() => {
-    if (qrCodeUrl && barcodeUrl && onRenderComplete) {
+    if (qrCodeUrl && onRenderComplete) {
       setTimeout(() => {
         onRenderComplete();
       }, 100);
     }
-  }, [qrCodeUrl, barcodeUrl, onRenderComplete]);
+  }, [qrCodeUrl, onRenderComplete]);
 
   return (
     <div
@@ -158,9 +142,8 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               dominantBaseline="middle"
               fill="url(#accentToSecondary)"
               fontSize="45"
-              fontFamily="Old English Text MT"
-              letterSpacing="0.1em"
-              fontWeight="400"
+              fontWeight="600"
+              style={{ textTransform: "uppercase" }}
             >
               Brief Gemmological Report
             </text>
@@ -190,7 +173,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
             flex: "1",
             display: "flex",
             flexDirection: "column",
-            fontSize: "7px",
+            fontSize: "8px",
             lineHeight: "1.1",
           }}
         >
@@ -201,7 +184,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               style={{
                 color: colors.gray[900],
                 fontWeight: "700",
-                width: "60px",
+                width: "65px",
               }}
             >
               REPORT ID
@@ -218,7 +201,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               style={{
                 color: colors.gray[900],
                 fontWeight: "700",
-                width: "60px",
+                width: "65px",
               }}
             >
               DATE
@@ -237,7 +220,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               style={{
                 color: colors.gray[900],
                 fontWeight: "700",
-                width: "60px",
+                width: "65px",
               }}
             >
               SPECIES
@@ -260,7 +243,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               style={{
                 color: colors.gray[900],
                 fontWeight: "700",
-                width: "60px",
+                width: "65px",
               }}
             >
               VARIETY
@@ -282,7 +265,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               style={{
                 color: colors.gray[900],
                 fontWeight: "700",
-                width: "60px",
+                width: "65px",
               }}
             >
               WEIGHT
@@ -299,7 +282,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               style={{
                 color: colors.gray[900],
                 fontWeight: "700",
-                width: "60px",
+                width: "65px",
               }}
             >
               MEASUREMENT
@@ -316,7 +299,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               style={{
                 color: colors.gray[900],
                 fontWeight: "700",
-                width: "60px",
+                width: "65px",
               }}
             >
               COLOR
@@ -333,7 +316,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               style={{
                 color: colors.gray[900],
                 fontWeight: "700",
-                width: "60px",
+                width: "65px",
               }}
             >
               SHAPE & CUT
@@ -350,7 +333,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               style={{
                 color: colors.gray[900],
                 fontWeight: "700",
-                width: "60px",
+                width: "65px",
               }}
             >
               COMMENTS
@@ -418,28 +401,19 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
           <div className="flex gap-x-1 items-end mt-3">
             {/* QR Code */}
             {qrCodeUrl && (
-              <div>
+              <div className="shrink-0">
                 <Image
                   src={qrCodeUrl}
                   alt="QR Code"
-                  width={28}
-                  height={28}
+                  width={38}
+                  height={38}
                   style={{ display: "block" }}
                 />
               </div>
             )}
-            {/* Barcode */}
-            {barcodeUrl && (
-              <div>
-                <Image
-                  src={barcodeUrl}
-                  alt="Barcode"
-                  width={30}
-                  height={10}
-                  style={{ display: "block" }}
-                />
-              </div>
-            )}
+            <div className="self-start shrink-0">
+              <Image src={GemA} alt="logo" height={38} width={38} />
+            </div>
           </div>
         </div>
       </div>

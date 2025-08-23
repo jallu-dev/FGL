@@ -531,7 +531,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
           >
             {/* Logo */}
             <div className="self-start">
-              <Image src={GemA_Base64} alt="logo" height={120} width={92} />
+              <Image src={GemA_Base64} alt="logo" height={120} width={120} />
             </div>
             {/* Gemologist Info */}
             <div style={{ textAlign: "center" }}>
