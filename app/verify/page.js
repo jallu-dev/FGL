@@ -19,43 +19,56 @@ export default function VerifyPage() {
     handleSubmit,
     formState: { errors },
     reset,
+    setValue,
   } = useForm();
 
   const onSubmit = async (data) => {
     setIsLoading(true);
 
-    setTimeout(() => {
-      if ((data && data.id === "FGL123456") || paramId == "FGL123456") {
+    try {
+      const reportId = data?.id || paramId;
+
+      const response = await fetch("/api/verify", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ reportId }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
         setVerificationResult({
           status: "valid",
-          report: {
-            number: "FGL123456",
-            date: "2023-10-15",
-            gemstone: "Ruby",
-            weight: "3.25 carats",
-            color: "Pigeon Blood Red",
-            clarity: "Eye Clean",
-            treatment: "No Treatment",
-            origin: "Burma (Myanmar)",
-            issueDate: "2023-10-18",
-          },
+          report: result.report,
         });
       } else {
         setVerificationResult({
           status: "invalid",
           message:
-            "No report found with this number. Please check and try again.",
+            result.message ||
+            "No report found with this report id. Please check and try again.",
         });
       }
+    } catch (error) {
+      console.error("Verification error:", error);
+      setVerificationResult({
+        status: "invalid",
+        message:
+          "An error occurred while verifying the report. Please try again.",
+      });
+    } finally {
       setIsLoading(false);
-    }, 1500);
+    }
   };
 
   useEffect(() => {
     if (paramId) {
-      onSubmit();
+      setValue("id", paramId);
+      onSubmit({ id: paramId });
     }
-  }, [paramId]);
+  }, [paramId, setValue]);
 
   return (
     <div>
@@ -95,16 +108,16 @@ export default function VerifyPage() {
                   <input
                     type="text"
                     id="id"
-                    value={paramId || ""}
                     placeholder="Enter REPORT ID (e.g., FGL123456)"
                     className={`w-full p-4 border ${
                       errors.id ? "border-red-500" : "border-gray-300"
                     } rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50`}
                     {...register("id", {
-                      required: "Id is required",
+                      required: "Report ID is required",
                       pattern: {
-                        value: /^FGL\d{6}$/,
-                        message: "Invalid REPORT ID format. Example: FGL123456",
+                        value: /^FGL\d{9}$/,
+                        message:
+                          "Invalid REPORT ID format. Example: FGL123456789",
                       },
                     })}
                   />
@@ -176,64 +189,147 @@ export default function VerifyPage() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <p className="text-sm text-accent/60 mb-1">id</p>
-                        <p className="text-lg font-medium text-accent">
-                          {verificationResult.report.number}
-                        </p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-accent/60 mb-1">
-                          Issue Date
-                        </p>
-                        <p className="text-lg font-medium text-accent">
-                          {verificationResult.report.issueDate}
-                        </p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-accent/60 mb-1">Gemstone</p>
-                        <p className="text-lg font-medium text-accent">
-                          {verificationResult.report.gemstone}
-                        </p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-accent/60 mb-1">Weight</p>
-                        <p className="text-lg font-medium text-accent">
-                          {verificationResult.report.weight}
-                        </p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-accent/60 mb-1">Color</p>
-                        <p className="text-lg font-medium text-accent">
-                          {verificationResult.report.color}
-                        </p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-accent/60 mb-1">Clarity</p>
-                        <p className="text-lg font-medium text-accent">
-                          {verificationResult.report.clarity}
-                        </p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-accent/60 mb-1">Treatment</p>
-                        <p className="text-lg font-medium text-accent">
-                          {verificationResult.report.treatment}
-                        </p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-accent/60 mb-1">Origin</p>
-                        <p className="text-lg font-medium text-accent">
-                          {verificationResult.report.origin}
-                        </p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-accent/60 mb-1">
-                          Certified On
-                        </p>
-                        <p className="text-lg font-medium text-accent">
-                          {verificationResult.report.date}
-                        </p>
-                      </div>
+                      {/* Report ID */}
+                      {verificationResult.report.report_id && (
+                        <div>
+                          <p className="text-sm text-accent/60 mb-1">
+                            Report ID
+                          </p>
+                          <p className="text-lg font-medium text-accent">
+                            {verificationResult.report.report_id}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* Description */}
+                      {verificationResult.report.description && (
+                        <div>
+                          <p className="text-sm text-accent/60 mb-1">
+                            Description
+                          </p>
+                          <p className="text-lg font-medium text-accent">
+                            {verificationResult.report.description}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* Species */}
+                      {verificationResult.report.species && (
+                        <div>
+                          <p className="text-sm text-accent/60 mb-1">Species</p>
+                          <p className="text-lg font-medium text-accent">
+                            {verificationResult.report.species}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* Variety */}
+                      {verificationResult.report.variety && (
+                        <div>
+                          <p className="text-sm text-accent/60 mb-1">Variety</p>
+                          <p className="text-lg font-medium text-accent">
+                            {verificationResult.report.variety}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* Weight */}
+                      {verificationResult.report.weight && (
+                        <div>
+                          <p className="text-sm text-accent/60 mb-1">Weight</p>
+                          <p className="text-lg font-medium text-accent">
+                            {verificationResult.report.weight}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* Measurement */}
+                      {verificationResult.report.measurement && (
+                        <div>
+                          <p className="text-sm text-accent/60 mb-1">
+                            Measurement
+                          </p>
+                          <p className="text-lg font-medium text-accent">
+                            {verificationResult.report.measurement}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* Colour */}
+                      {verificationResult.report.colour && (
+                        <div>
+                          <p className="text-sm text-accent/60 mb-1">Colour</p>
+                          <p className="text-lg font-medium text-accent">
+                            {verificationResult.report.colour}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* Shape */}
+                      {verificationResult.report.shape && (
+                        <div>
+                          <p className="text-sm text-accent/60 mb-1">Shape</p>
+                          <p className="text-lg font-medium text-accent">
+                            {verificationResult.report.shape}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* Transparency */}
+                      {verificationResult.report.transparency && (
+                        <div>
+                          <p className="text-sm text-accent/60 mb-1">
+                            Transparency
+                          </p>
+                          <p className="text-lg font-medium text-accent">
+                            {verificationResult.report.transparency}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* Origin */}
+                      {verificationResult.report.origin && (
+                        <div>
+                          <p className="text-sm text-accent/60 mb-1">Origin</p>
+                          <p className="text-lg font-medium text-accent">
+                            {verificationResult.report.origin}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* Phenomenon */}
+                      {verificationResult.report.phenomenon && (
+                        <div>
+                          <p className="text-sm text-accent/60 mb-1">
+                            Phenomenon
+                          </p>
+                          <p className="text-lg font-medium text-accent">
+                            {verificationResult.report.phenomenon}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* Remarks */}
+                      {verificationResult.report.remarks && (
+                        <div>
+                          <p className="text-sm text-accent/60 mb-1">Remarks</p>
+                          <p className="text-lg font-medium text-accent">
+                            {verificationResult.report.remarks}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* Comments */}
+                      {verificationResult.report.comments && (
+                        <div className="md:col-span-2">
+                          <p className="text-sm text-accent/60 mb-1">
+                            Comments
+                          </p>
+                          <p className="text-lg font-medium text-accent">
+                            {verificationResult.report.comments}
+                          </p>
+                        </div>
+                      )}
                     </div>
                   </>
                 ) : (
