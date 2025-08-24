@@ -384,6 +384,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                   height: "100%",
                   objectFit: "cover",
                   borderRadius: "2mm",
+                  overflow: "hidden",
                 }}
               />
             ) : (
@@ -411,7 +412,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 />
               </div>
             )}
-            <div className="self-start shrink-0">
+            <div className="shrink-0 w-[38px] h-[38px]">
               <Image src={GemA_Base64} alt="logo" height={38} width={38} />
             </div>
           </div>

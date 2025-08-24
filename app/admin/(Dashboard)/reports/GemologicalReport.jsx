@@ -342,7 +342,13 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 </div>
               )}
               {origin && (
-                <div style={{ color: colors.gray[800], fontWeight: "500" }}>
+                <div
+                  style={{
+                    color: colors.gray[800],
+                    fontWeight: "500",
+                    textTransform: "uppercase",
+                  }}
+                >
                   {origin}
                 </div>
               )}
