@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import QRCode from "qrcode";
 import Image from "next/image";
-import GemA_Base64 from "@/public/images/GemA_Base64";
 
 let months = {
   0: "January",
@@ -108,12 +107,14 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
     >
       <div className="flex justify-around items-center mb-2">
         {/* Header with FGL Logo */}
-        <div className="relative w-[140px] h-[41px] shrink-0">
+        <div className="relative shrink-0">
           <Image
-            src="/images/fgl-color.png"
+            src="/images/fgl-color.svg"
             alt="logo"
-            fill
-            className="object-contain"
+            width={1563} // double your display size
+            height={400}
+            className="h-[41px] w-auto" // scale down with CSS
+            priority // optional: loads immediately
           />
         </div>
         <div className="flex items-center justify-center">
@@ -131,8 +132,8 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 x2="0%"
                 y2="100%"
               >
-                <stop offset="0%" stopColor="var(--primary-color, #9b111e)" />
-                <stop offset="100%" stopColor="var(--accent-color, #d97706)" />
+                <stop offset="0%" stopColor="var(--primary-color, #000)" />
+                <stop offset="100%" stopColor="var(--accent-color, #000)" />
               </linearGradient>
             </defs>
             <text
@@ -144,8 +145,10 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               fontSize="45"
               fontWeight="600"
               style={{ textTransform: "uppercase" }}
+              letterSpacing="1px"
+              fontFamily="serif"
             >
-              Brief Gemmological Report
+              Brief Gemstone Report
             </text>
           </svg>
         </div>
@@ -371,6 +374,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               alignItems: "center",
               justifyContent: "center",
               overflow: "hidden",
+              border: "1px solid #000",
             }}
           >
             {image_file_path ? (
@@ -399,7 +403,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
             )}
           </div>
 
-          <div className="flex gap-x-1 items-end mt-3">
+          <div className="flex gap-x-0.5 items-end mt-3">
             {/* QR Code */}
             {qrCodeUrl && (
               <div className="shrink-0">
@@ -412,8 +416,13 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 />
               </div>
             )}
-            <div className="shrink-0 w-[38px] h-[38px]">
-              <Image src={GemA_Base64} alt="logo" height={38} width={38} />
+            <div className="shrink-0">
+              <Image
+                src="/images/GemACropped.svg"
+                alt="logo"
+                height={38}
+                width={38}
+              />
             </div>
           </div>
         </div>

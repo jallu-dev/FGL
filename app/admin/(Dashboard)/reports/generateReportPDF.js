@@ -65,7 +65,7 @@ const generateReportPDF = async (reportData, reportId, setGenerating) => {
 
     // Generate canvas from the rendered component
     const canvas = await html2canvas(container, {
-      scale: 2,
+      scale: 5,
       useCORS: true,
       logging: false,
       allowTaint: false,
@@ -134,7 +134,7 @@ const generateReportPDF = async (reportData, reportId, setGenerating) => {
     pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight, undefined, "FAST");
 
     // Save the PDF
-    const filename = `${reportId}_gemological_report.pdf`;
+    const filename = `${reportId}_gemstone_report.pdf`;
     pdf.save(filename);
 
     console.log(`Report PDF generated successfully: ${filename}`);

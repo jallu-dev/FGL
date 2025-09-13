@@ -1,5 +1,8 @@
 // app/api/verify/route.js
 import { pool } from "@/lib/db";
+import { s3 } from "@/lib/s3";
+import { GetObjectCommand } from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
 export async function POST(req) {
   try {
@@ -25,7 +28,7 @@ export async function POST(req) {
           origin,
           phenomenon,
           remarks,
-          comments
+          comments,image_file_path
          FROM reports 
          WHERE report_id = $1`,
         [reportId]
@@ -42,6 +45,13 @@ export async function POST(req) {
 
       const report = rows[0];
 
+      const command = new GetObjectCommand({
+        Bucket: process.env.AWS_BUCKET_NAME,
+        Key: report.image_file_path,
+      });
+
+      const url = await getSignedUrl(s3, command, { expiresIn: 3600 }); // 1h
+
       // Return the report data with proper field names
       const formattedReport = {
         report_id: report.report_id,
@@ -57,6 +67,7 @@ export async function POST(req) {
         phenomenon: report.phenomenon,
         remarks: report.remarks,
         comments: report.comments,
+        image_file_path: url,
       };
 
       return Response.json({

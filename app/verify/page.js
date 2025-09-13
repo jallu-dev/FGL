@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { FaCheckCircle, FaTimesCircle, FaSearch } from "react-icons/fa";
 import { useSearchParams } from "next/navigation";
+import Image from "next/image";
 
 export default function VerifyPage() {
   const [verificationResult, setVerificationResult] = useState(null);
@@ -13,6 +14,25 @@ export default function VerifyPage() {
   const searchParams = useSearchParams();
 
   const paramId = searchParams.get("id");
+
+  const colors = {
+    primary: "#9b111e",
+    secondary: "#fba518",
+    accent: "#1b2a41",
+    gray: {
+      50: "#f9fafb",
+      100: "#f3f4f6",
+      200: "#e5e7eb",
+      400: "#9ca3af",
+      500: "#6b7280",
+      600: "#4b5563",
+      700: "#374151",
+      800: "#1f2937",
+      900: "#111827",
+    },
+    white: "#ffffff",
+    black: "#000000",
+  };
 
   const {
     register,
@@ -188,13 +208,47 @@ export default function VerifyPage() {
                       </h3>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <div
+                        style={{
+                          backgroundColor: colors.gray[100],
+                          width: "150px",
+                          height: "150px",
+                          position: "relative",
+                          borderRadius: "8px",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          marginBottom: "5px",
+                          border: `2px solid ${colors.gray[200]}`,
+                          alignSelf: "center",
+                        }}
+                      >
+                        {verificationResult.report.image_file_path ? (
+                          <Image
+                            src={verificationResult.report.image_file_path}
+                            alt="Gem"
+                            width="150"
+                            height="150"
+                            style={{
+                              borderRadius: "8px",
+                            }}
+                          />
+                        ) : (
+                          <div
+                            style={{
+                              width: "80px",
+                              height: "80px",
+                              backgroundColor: colors.primary,
+                              borderRadius: "50%",
+                            }}
+                          ></div>
+                        )}
+                      </div>
                       {/* Report ID */}
                       {verificationResult.report.report_id && (
-                        <div>
-                          <p className="text-sm text-accent/60 mb-1">
-                            Report ID
-                          </p>
+                        <div className="mb-1">
+                          <p className="text-sm text-accent/60">Report ID</p>
                           <p className="text-lg font-medium text-accent">
                             {verificationResult.report.report_id}
                           </p>
@@ -203,10 +257,8 @@ export default function VerifyPage() {
 
                       {/* Description */}
                       {verificationResult.report.description && (
-                        <div>
-                          <p className="text-sm text-accent/60 mb-1">
-                            Description
-                          </p>
+                        <div className="mb-1.5">
+                          <p className="text-sm text-accent/60">Description</p>
                           <p className="text-lg font-medium text-accent">
                             {verificationResult.report.description}
                           </p>
@@ -215,8 +267,8 @@ export default function VerifyPage() {
 
                       {/* Species */}
                       {verificationResult.report.species && (
-                        <div>
-                          <p className="text-sm text-accent/60 mb-1">Species</p>
+                        <div className="mb-1.5">
+                          <p className="text-sm text-accent/60">Species</p>
                           <p className="text-lg font-medium text-accent">
                             {verificationResult.report.species}
                           </p>
@@ -225,8 +277,8 @@ export default function VerifyPage() {
 
                       {/* Variety */}
                       {verificationResult.report.variety && (
-                        <div>
-                          <p className="text-sm text-accent/60 mb-1">Variety</p>
+                        <div className="mb-1.5">
+                          <p className="text-sm text-accent/60">Variety</p>
                           <p className="text-lg font-medium text-accent">
                             {verificationResult.report.variety}
                           </p>
@@ -235,8 +287,8 @@ export default function VerifyPage() {
 
                       {/* Weight */}
                       {verificationResult.report.weight && (
-                        <div>
-                          <p className="text-sm text-accent/60 mb-1">Weight</p>
+                        <div className="mb-1.5">
+                          <p className="text-sm text-accent/60">Weight</p>
                           <p className="text-lg font-medium text-accent">
                             {verificationResult.report.weight}
                           </p>
@@ -245,10 +297,8 @@ export default function VerifyPage() {
 
                       {/* Measurement */}
                       {verificationResult.report.measurement && (
-                        <div>
-                          <p className="text-sm text-accent/60 mb-1">
-                            Measurement
-                          </p>
+                        <div className="mb-1.5">
+                          <p className="text-sm text-accent/60">Measurement</p>
                           <p className="text-lg font-medium text-accent">
                             {verificationResult.report.measurement}
                           </p>
@@ -257,8 +307,8 @@ export default function VerifyPage() {
 
                       {/* Colour */}
                       {verificationResult.report.colour && (
-                        <div>
-                          <p className="text-sm text-accent/60 mb-1">Colour</p>
+                        <div className="mb-1.5">
+                          <p className="text-sm text-accent/60">Colour</p>
                           <p className="text-lg font-medium text-accent">
                             {verificationResult.report.colour}
                           </p>
@@ -267,8 +317,8 @@ export default function VerifyPage() {
 
                       {/* Shape */}
                       {verificationResult.report.shape && (
-                        <div>
-                          <p className="text-sm text-accent/60 mb-1">Shape</p>
+                        <div className="mb-1.5">
+                          <p className="text-sm text-accent/60">Shape</p>
                           <p className="text-lg font-medium text-accent">
                             {verificationResult.report.shape}
                           </p>
@@ -277,10 +327,8 @@ export default function VerifyPage() {
 
                       {/* Transparency */}
                       {verificationResult.report.transparency && (
-                        <div>
-                          <p className="text-sm text-accent/60 mb-1">
-                            Transparency
-                          </p>
+                        <div className="mb-1.5">
+                          <p className="text-sm text-accent/60">Transparency</p>
                           <p className="text-lg font-medium text-accent">
                             {verificationResult.report.transparency}
                           </p>
@@ -289,8 +337,8 @@ export default function VerifyPage() {
 
                       {/* Origin */}
                       {verificationResult.report.origin && (
-                        <div>
-                          <p className="text-sm text-accent/60 mb-1">Origin</p>
+                        <div className="mb-1.5">
+                          <p className="text-sm text-accent/60">Origin</p>
                           <p className="text-lg font-medium text-accent">
                             {verificationResult.report.origin}
                           </p>
@@ -299,10 +347,8 @@ export default function VerifyPage() {
 
                       {/* Phenomenon */}
                       {verificationResult.report.phenomenon && (
-                        <div>
-                          <p className="text-sm text-accent/60 mb-1">
-                            Phenomenon
-                          </p>
+                        <div className="mb-1.5">
+                          <p className="text-sm text-accent/60">Phenomenon</p>
                           <p className="text-lg font-medium text-accent">
                             {verificationResult.report.phenomenon}
                           </p>
@@ -311,8 +357,8 @@ export default function VerifyPage() {
 
                       {/* Remarks */}
                       {verificationResult.report.remarks && (
-                        <div>
-                          <p className="text-sm text-accent/60 mb-1">Remarks</p>
+                        <div className="mb-1.5">
+                          <p className="text-sm text-accent/60">Remarks</p>
                           <p className="text-lg font-medium text-accent">
                             {verificationResult.report.remarks}
                           </p>
@@ -321,10 +367,8 @@ export default function VerifyPage() {
 
                       {/* Comments */}
                       {verificationResult.report.comments && (
-                        <div className="md:col-span-2">
-                          <p className="text-sm text-accent/60 mb-1">
-                            Comments
-                          </p>
+                        <div className="md:col-span-2" className="mb-1.5">
+                          <p className="text-sm text-accent/60">Comments</p>
                           <p className="text-lg font-medium text-accent">
                             {verificationResult.report.comments}
                           </p>

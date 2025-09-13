@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import QRCode from "qrcode";
 import JsBarcode from "jsbarcode";
 import Image from "next/image";
-import GemA_Base64 from "@/public/images/GemA_Base64";
 
 let months = {
   0: "January",
@@ -128,7 +127,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
       }}
     >
       {/* Header */}
-      <div className="flex items-center justify-center mb-6">
+      <div className="flex items-center mb-6">
         <svg
           width="850"
           height="80"
@@ -149,17 +148,17 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
             </linearGradient>
           </defs>
           <text
-            x="325"
+            x="175"
             y="45"
             textAnchor="middle"
             dominantBaseline="middle"
             fill="url(#accentToSecondary)"
-            fontSize="60"
+            fontSize="45"
             fontFamily="Old English Text MT"
             letterSpacing="0.1em"
             fontWeight="400"
           >
-            Gemmological Report
+            Gemstone Report
           </text>
         </svg>
       </div>
@@ -205,7 +204,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               <div style={{ color: colors.gray[900], fontWeight: "600" }}>
                 DATE
               </div>
-              <div style={{ color: colors.gray[900], fontWeight: "300" }}>
+              <div style={{ color: colors.gray[800], fontWeight: "400" }}>
                 {`${new Date(created_at).getDate()} ${
                   months[new Date(created_at).getMonth()]
                 } ${new Date(created_at).getFullYear()}`}
@@ -214,8 +213,14 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               <div style={{ color: colors.gray[900], fontWeight: "600" }}>
                 OBJECT DESCRIPTION
               </div>
-              <div style={{ color: colors.gray[900], fontWeight: "300" }}>
+              <div style={{ color: colors.gray[800], fontWeight: "400" }}>
                 {description}
+              </div>
+              <div style={{ color: colors.gray[900], fontWeight: "600" }}>
+                TRANSPARENCY
+              </div>
+              <div style={{ color: colors.gray[800], fontWeight: "400" }}>
+                {transparency}
               </div>
             </div>
             <div
@@ -267,14 +272,14 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               <div style={{ color: colors.gray[900], fontWeight: "600" }}>
                 WEIGHT
               </div>
-              <div style={{ color: colors.gray[900], fontWeight: "300" }}>
+              <div style={{ color: colors.gray[800], fontWeight: "400" }}>
                 {weight}
               </div>
 
               <div style={{ color: colors.gray[900], fontWeight: "600" }}>
                 MEASUREMENT
               </div>
-              <div style={{ color: colors.gray[900], fontWeight: "300" }}>
+              <div style={{ color: colors.gray[800], fontWeight: "400" }}>
                 {measurement}
               </div>
             </div>
@@ -291,23 +296,26 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               <div style={{ color: colors.gray[900], fontWeight: "600" }}>
                 COLOUR
               </div>
-              <div style={{ color: colors.gray[900], fontWeight: "300" }}>
+              <div style={{ color: colors.gray[800], fontWeight: "400" }}>
                 {colour}
               </div>
 
               <div style={{ color: colors.gray[900], fontWeight: "600" }}>
                 SHAPE & CUT
               </div>
-              <div style={{ color: colors.gray[900], fontWeight: "300" }}>
+              <div style={{ color: colors.gray[800], fontWeight: "400" }}>
                 {shape}
               </div>
-
-              <div style={{ color: colors.gray[900], fontWeight: "600" }}>
-                TRANSPARENCY
-              </div>
-              <div style={{ color: colors.gray[900], fontWeight: "300" }}>
-                {transparency}
-              </div>
+              {phenomenon && (
+                <div style={{ color: colors.gray[900], fontWeight: "600" }}>
+                  PHENOMENON
+                </div>
+              )}
+              {phenomenon && (
+                <div style={{ color: colors.gray[800], fontWeight: "400" }}>
+                  {phenomenon}
+                </div>
+              )}
             </div>
             <div
               style={{
@@ -336,8 +344,31 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 fontSize: "14px",
               }}
             >
-              {origin && (
+              {remarks && (
                 <div style={{ color: colors.gray[900], fontWeight: "600" }}>
+                  REMARKS
+                </div>
+              )}
+              {remarks && (
+                <div style={{ color: colors.gray[800], fontWeight: "400" }}>
+                  {remarks}
+                </div>
+              )}
+            </div>
+            <div
+              style={{
+                marginLeft: "50px",
+              }}
+              className="flex flex-col gap-y-1 items-start"
+            >
+              {origin && (
+                <div
+                  style={{
+                    color: colors.gray[900],
+                    fontWeight: "600",
+                    fontSize: "16px",
+                  }}
+                >
                   ORIGIN
                 </div>
               )}
@@ -345,81 +376,27 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 <div
                   style={{
                     color: colors.gray[800],
-                    fontWeight: "500",
-                    textTransform: "uppercase",
+                    fontWeight: "400",
+                    fontSize: 14,
+                  }}
+                >
+                  Gemmological testing revealed characteristics corresponding to
+                  those of a&nbsp;{variety} from :
+                </div>
+              )}
+              {origin && (
+                <div
+                  style={{
+                    color: colors.gray[900],
+                    fontWeight: "600",
+                    fontSize: "16px",
+                    alignSelf: "center",
+                    fontFamily: "serif",
                   }}
                 >
                   {origin}
                 </div>
               )}
-              {phenomenon && (
-                <div style={{ color: colors.gray[900], fontWeight: "600" }}>
-                  PHENOMENON
-                </div>
-              )}
-              {phenomenon && (
-                <div style={{ color: colors.gray[900], fontWeight: "300" }}>
-                  {phenomenon}
-                </div>
-              )}
-              {remarks && (
-                <div style={{ color: colors.gray[900], fontWeight: "600" }}>
-                  REMARKS
-                </div>
-              )}
-              {remarks && (
-                <div style={{ color: colors.gray[900], fontWeight: "300" }}>
-                  {remarks}
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Left Column - QR and Bar codes and more info*/}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <div className="flex gap-10 items-end">
-              {qrCodeUrl && (
-                <div style={{ marginBottom: "5px" }}>
-                  <Image
-                    src={qrCodeUrl}
-                    alt="Verification QR Code"
-                    width="60"
-                    height="60"
-                  />
-                </div>
-              )}
-
-              {barcodeUrl && (
-                <div style={{ marginBottom: "8px" }}>
-                  <Image
-                    src={barcodeUrl}
-                    alt="Verification QR Code"
-                    width="60"
-                    height="60"
-                  />
-                </div>
-              )}
-            </div>
-
-            <div style={{ textAlign: "center" }}>
-              <div
-                style={{
-                  fontSize: "12px",
-                  color: colors.gray[600],
-                  marginTop: "4px",
-                }}
-              >
-                For More Information
-              </div>
-              <div style={{ fontSize: "12px", color: colors.gray[600] }}>
-                {server}
-              </div>
             </div>
           </div>
         </div>
@@ -436,8 +413,8 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
           <div
             style={{
               backgroundColor: colors.gray[100],
-              width: "150px",
-              height: "150px",
+              width: "132px",
+              height: "132px",
               position: "relative",
               borderRadius: "8px",
               display: "flex",
@@ -452,8 +429,8 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               <Image
                 src={image_file_path}
                 alt="Gem"
-                width="150"
-                height="150"
+                width="132"
+                height="132"
                 style={{
                   borderRadius: "8px",
                 }}
@@ -478,6 +455,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               lineHeight: "1.3",
               margin: 0,
             }}
+            className="font-serif"
           >
             This image is only for representation purposes.
             <br />
@@ -524,7 +502,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
             </h3>
           </div>
 
-          {/* Right Column - Logo and Gemologist,  */}
+          {/* Right Column - Logo and Gemologist, QR */}
           <div
             style={{
               display: "flex",
@@ -532,12 +510,17 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               alignItems: "end",
               marginBottom: "50px",
               marginTop: "40px",
-              padding: "0 60px",
+              padding: "0 30px",
             }}
           >
-            {/* Logo */}
-            <div className="self-start">
-              <Image src={GemA_Base64} alt="logo" height={120} width={120} />
+            {/*GEMA Logo */}
+            <div>
+              <Image
+                src="/images/GemACropped.svg"
+                alt="logo"
+                height={100}
+                width={100}
+              />
             </div>
             {/* Gemologist Info */}
             <div style={{ textAlign: "center" }}>
@@ -549,14 +532,70 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 }}
               ></div>
               <div style={{ fontSize: "14px" }}>
-                <div style={{ fontWeight: "300", color: colors.gray[800] }}>
+                <div style={{ fontWeight: "400", color: colors.gray[800] }}>
                   Gemmologist
                 </div>
-                <div style={{ fontWeight: "bold", color: colors.gray[900] }}>
-                  M. SHAHMI RINSAN
+                <div style={{ fontWeight: "600", color: colors.gray[900] }}>
+                  M. Shahmi Rinsan
                 </div>
                 <div style={{ fontSize: "12px", color: colors.gray[600] }}>
                   FGA (GEM-A), Dip.PGSL
+                </div>
+              </div>
+            </div>
+            {/* Left Column - QR and Bar codes and more info*/}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <div className="flex gap-10 items-end">
+                {qrCodeUrl && (
+                  <div>
+                    <Image
+                      src={qrCodeUrl}
+                      alt="Verification QR Code"
+                      width="60"
+                      height="60"
+                    />
+                  </div>
+                )}
+
+                {barcodeUrl && (
+                  <div
+                    style={{ position: "absolute", right: "40px", top: "25px" }}
+                  >
+                    <Image
+                      src={barcodeUrl}
+                      alt="Verification QR Code"
+                      width="60"
+                      height="60"
+                    />
+                  </div>
+                )}
+              </div>
+
+              <div style={{ textAlign: "center" }} className="font-serif">
+                <div
+                  style={{
+                    fontSize: "12px",
+                    color: colors.gray[600],
+                  }}
+                >
+                  Verify this report at
+                </div>
+                <div
+                  style={{
+                    fontSize: "12px",
+                    color: colors.gray[600],
+                  }}
+                >
+                  {server}
+                </div>
+                <div style={{ fontSize: "12px", color: colors.gray[600] }}>
+                  or Scan QR code
                 </div>
               </div>
             </div>
@@ -568,7 +607,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               textAlign: "center",
               fontSize: "12px",
               color: colors.gray[600],
-              marginTop: "10px",
+              marginTop: "35px",
             }}
           >
             <div
@@ -580,17 +619,19 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
             >
               <div className="flex justify-center items-center">
                 <Image
-                  src="/images/fgl-color.png"
+                  src="/images/fgl-color.svg"
                   alt="logo"
-                  height={60}
-                  width={210}
+                  width={1563} // double your display size
+                  height={400}
+                  className="h-[60px] w-auto" // scale down with CSS
+                  priority // optional: loads immediately
                 />
               </div>
             </div>
-            <div>
+            <div className="font-serif" style={{ color: colors.gray[600] }}>
               94/3, Sally Hajiar Mawatha, Chinafort, Beruwala, 12070, Sri Lanka
             </div>
-            <div style={{ marginTop: "4px" }}>
+            <div className="font-serif" style={{ color: colors.gray[600] }}>
               +94 76 354 9226 &nbsp;&nbsp; {email}
             </div>
             <div></div>
@@ -611,6 +652,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
             color: colors.gray[500],
             margin: 0,
           }}
+          className="font-serif"
         >
           The conclusion of this report represents our findings through
           gemmological testing at the time of examination. Terms & conditions on
@@ -624,6 +666,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
         style={{
           backgroundImage: "linear-gradient(to right, #9b111e, #e3c16f, #fff)",
           width: "297mm",
+          backgroundRepeat: "no-repeat",
         }}
       ></div>
       <div
@@ -631,6 +674,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
         style={{
           backgroundImage: "linear-gradient(to bottom, #9b111e, #e3c16f, #fff)",
           height: "210mm",
+          backgroundRepeat: "no-repeat",
         }}
       ></div>
 
@@ -639,6 +683,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
         style={{
           backgroundImage: "linear-gradient(to left, #9b111e, #e3c16f, #fff)",
           width: "297mm",
+          backgroundRepeat: "no-repeat",
         }}
       ></div>
       <div
@@ -646,6 +691,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
         style={{
           backgroundImage: "linear-gradient(to top, #9b111e, #e3c16f, #fff)",
           height: "210mm",
+          backgroundRepeat: "no-repeat",
         }}
       ></div>
     </div>
