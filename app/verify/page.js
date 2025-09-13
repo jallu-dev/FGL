@@ -367,7 +367,7 @@ export default function VerifyPage() {
 
                       {/* Comments */}
                       {verificationResult.report.comments && (
-                        <div className="md:col-span-2" className="mb-1.5">
+                        <div className="md:col-span-2 mb-1.5">
                           <p className="text-sm text-accent/60">Comments</p>
                           <p className="text-lg font-medium text-accent">
                             {verificationResult.report.comments}
