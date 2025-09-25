@@ -247,7 +247,7 @@ export default function VerifyPage() {
                       </div>
                       {/* Report ID */}
                       {verificationResult.report.report_id && (
-                        <div className="mb-1">
+                        <div className="mb-2">
                           <p className="text-sm text-accent/60">Report ID</p>
                           <p className="text-lg font-medium text-accent">
                             {verificationResult.report.report_id}
@@ -257,7 +257,7 @@ export default function VerifyPage() {
 
                       {/* Description */}
                       {verificationResult.report.description && (
-                        <div className="mb-1.5">
+                        <div className="mb-2">
                           <p className="text-sm text-accent/60">Description</p>
                           <p className="text-lg font-medium text-accent">
                             {verificationResult.report.description}
@@ -267,7 +267,7 @@ export default function VerifyPage() {
 
                       {/* Species */}
                       {verificationResult.report.species && (
-                        <div className="mb-1.5">
+                        <div className="mb-2">
                           <p className="text-sm text-accent/60">Species</p>
                           <p className="text-lg font-medium text-accent">
                             {verificationResult.report.species}
@@ -277,7 +277,7 @@ export default function VerifyPage() {
 
                       {/* Variety */}
                       {verificationResult.report.variety && (
-                        <div className="mb-1.5">
+                        <div className="mb-2">
                           <p className="text-sm text-accent/60">Variety</p>
                           <p className="text-lg font-medium text-accent">
                             {verificationResult.report.variety}
@@ -287,7 +287,7 @@ export default function VerifyPage() {
 
                       {/* Weight */}
                       {verificationResult.report.weight && (
-                        <div className="mb-1.5">
+                        <div className="mb-2">
                           <p className="text-sm text-accent/60">Weight</p>
                           <p className="text-lg font-medium text-accent">
                             {verificationResult.report.weight}
@@ -297,7 +297,7 @@ export default function VerifyPage() {
 
                       {/* Measurement */}
                       {verificationResult.report.measurement && (
-                        <div className="mb-1.5">
+                        <div className="mb-2">
                           <p className="text-sm text-accent/60">Measurement</p>
                           <p className="text-lg font-medium text-accent">
                             {verificationResult.report.measurement}
@@ -307,7 +307,7 @@ export default function VerifyPage() {
 
                       {/* Colour */}
                       {verificationResult.report.colour && (
-                        <div className="mb-1.5">
+                        <div className="mb-2">
                           <p className="text-sm text-accent/60">Colour</p>
                           <p className="text-lg font-medium text-accent">
                             {verificationResult.report.colour}
@@ -317,7 +317,7 @@ export default function VerifyPage() {
 
                       {/* Shape */}
                       {verificationResult.report.shape && (
-                        <div className="mb-1.5">
+                        <div className="mb-2">
                           <p className="text-sm text-accent/60">Shape</p>
                           <p className="text-lg font-medium text-accent">
                             {verificationResult.report.shape}
@@ -327,7 +327,7 @@ export default function VerifyPage() {
 
                       {/* Transparency */}
                       {verificationResult.report.transparency && (
-                        <div className="mb-1.5">
+                        <div className="mb-2">
                           <p className="text-sm text-accent/60">Transparency</p>
                           <p className="text-lg font-medium text-accent">
                             {verificationResult.report.transparency}
@@ -337,7 +337,7 @@ export default function VerifyPage() {
 
                       {/* Origin */}
                       {verificationResult.report.origin && (
-                        <div className="mb-1.5">
+                        <div className="mb-2">
                           <p className="text-sm text-accent/60">Origin</p>
                           <p className="text-lg font-medium text-accent">
                             {verificationResult.report.origin}
@@ -347,7 +347,7 @@ export default function VerifyPage() {
 
                       {/* Phenomenon */}
                       {verificationResult.report.phenomenon && (
-                        <div className="mb-1.5">
+                        <div className="mb-2">
                           <p className="text-sm text-accent/60">Phenomenon</p>
                           <p className="text-lg font-medium text-accent">
                             {verificationResult.report.phenomenon}
@@ -357,7 +357,7 @@ export default function VerifyPage() {
 
                       {/* Remarks */}
                       {verificationResult.report.remarks && (
-                        <div className="mb-1.5">
+                        <div className="mb-2">
                           <p className="text-sm text-accent/60">Remarks</p>
                           <p className="text-lg font-medium text-accent">
                             {verificationResult.report.remarks}
@@ -367,11 +367,15 @@ export default function VerifyPage() {
 
                       {/* Comments */}
                       {verificationResult.report.comments && (
-                        <div className="md:col-span-2 mb-1.5">
+                        <div className="md:col-span-2 mb-2">
                           <p className="text-sm text-accent/60">Comments</p>
-                          <p className="text-lg font-medium text-accent">
-                            {verificationResult.report.comments}
-                          </p>
+                          <ul className="text-lg font-medium text-accent">
+                            {verificationResult.report.comments
+                              ?.split("*")
+                              .map((item, i) => (
+                                <li key={i}>{item}</li>
+                              ))}
+                          </ul>
                         </div>
                       )}
                     </div>

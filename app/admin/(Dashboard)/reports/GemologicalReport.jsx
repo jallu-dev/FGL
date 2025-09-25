@@ -330,9 +330,11 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               <div style={{ color: colors.gray[900], fontWeight: "600" }}>
                 COMMENTS
               </div>
-              <div style={{ color: colors.gray[800], fontWeight: "500" }}>
-                {comments}
-              </div>
+              <ul style={{ color: colors.gray[800], fontWeight: "500" }}>
+                {comments?.split("*").map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
             </div>
             <div
               style={{
