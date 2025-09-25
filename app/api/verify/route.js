@@ -15,7 +15,8 @@ export async function POST(req) {
     const client = await pool.connect();
     try {
       const { rows } = await client.query(
-        `SELECT 
+        `SELECT
+          created_at, 
           report_id,
           description,
           species,
@@ -55,6 +56,7 @@ export async function POST(req) {
       // Return the report data with proper field names
       const formattedReport = {
         report_id: report.report_id,
+        created_at: report.created_at,
         description: report.description,
         species: report.species,
         variety: report.variety,

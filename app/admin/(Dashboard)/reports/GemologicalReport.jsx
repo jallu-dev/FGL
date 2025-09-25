@@ -253,7 +253,6 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 style={{
                   color: colors.gray[800],
                   fontWeight: "500",
-                  textTransform: "uppercase",
                 }}
               >
                 {variety}

@@ -8,6 +8,21 @@ import { FaCheckCircle, FaTimesCircle, FaSearch } from "react-icons/fa";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 
+let months = {
+  0: "January",
+  1: "February",
+  2: "March",
+  3: "April",
+  4: "May",
+  5: "June",
+  6: "July",
+  7: "August",
+  8: "September",
+  9: "October",
+  10: "November",
+  11: "December",
+};
+
 export default function VerifyPage() {
   const [verificationResult, setVerificationResult] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -255,12 +270,42 @@ export default function VerifyPage() {
                         </div>
                       )}
 
+                      {/* Date */}
+                      {verificationResult.report.created_at && (
+                        <div className="mb-2">
+                          <p className="text-sm text-accent/60">Date</p>
+                          <p className="text-lg font-medium text-accent">
+                            {`${new Date(
+                              verificationResult.report.created_at
+                            ).getDate()} ${
+                              months[
+                                new Date(
+                                  verificationResult.report.created_at
+                                ).getMonth()
+                              ]
+                            } ${new Date(
+                              verificationResult.report.created_at
+                            ).getFullYear()}`}
+                          </p>
+                        </div>
+                      )}
+
                       {/* Description */}
                       {verificationResult.report.description && (
                         <div className="mb-2">
                           <p className="text-sm text-accent/60">Description</p>
                           <p className="text-lg font-medium text-accent">
                             {verificationResult.report.description}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* Transparency */}
+                      {verificationResult.report.transparency && (
+                        <div className="mb-2">
+                          <p className="text-sm text-accent/60">Transparency</p>
+                          <p className="text-lg font-medium text-accent">
+                            {verificationResult.report.transparency}
                           </p>
                         </div>
                       )}
@@ -321,16 +366,6 @@ export default function VerifyPage() {
                           <p className="text-sm text-accent/60">Shape</p>
                           <p className="text-lg font-medium text-accent">
                             {verificationResult.report.shape}
-                          </p>
-                        </div>
-                      )}
-
-                      {/* Transparency */}
-                      {verificationResult.report.transparency && (
-                        <div className="mb-2">
-                          <p className="text-sm text-accent/60">Transparency</p>
-                          <p className="text-lg font-medium text-accent">
-                            {verificationResult.report.transparency}
                           </p>
                         </div>
                       )}
