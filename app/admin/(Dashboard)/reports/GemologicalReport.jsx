@@ -201,7 +201,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                   textTransform: "capitalize",
                 }}
               >
-                REPORT ID
+                report id
               </div>
               <div style={{ color: colors.gray[800], fontWeight: "500" }}>
                 {reportId}
@@ -214,7 +214,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                   textTransform: "capitalize",
                 }}
               >
-                DATE
+                date
               </div>
               <div style={{ color: colors.gray[800], fontWeight: "400" }}>
                 {`${new Date(created_at).getDate()} ${
@@ -229,7 +229,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                   textTransform: "capitalize",
                 }}
               >
-                OBJECT DESCRIPTION
+                object description
               </div>
               <div style={{ color: colors.gray[800], fontWeight: "400" }}>
                 {description}
@@ -241,7 +241,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                   textTransform: "capitalize",
                 }}
               >
-                TRANSPARENCY
+                transparency
               </div>
               <div style={{ color: colors.gray[800], fontWeight: "400" }}>
                 {transparency}
@@ -264,7 +264,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                   textTransform: "capitalize",
                 }}
               >
-                SPECIES
+                species
               </div>
               <div
                 style={{
@@ -282,7 +282,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                   textTransform: "capitalize",
                 }}
               >
-                VARIETY
+                variety
               </div>
               <div
                 style={{
@@ -310,7 +310,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                   textTransform: "capitalize",
                 }}
               >
-                WEIGHT
+                weight
               </div>
               <div style={{ color: colors.gray[800], fontWeight: "400" }}>
                 {weight}
@@ -323,7 +323,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                   textTransform: "capitalize",
                 }}
               >
-                MEASUREMENT
+                measurement
               </div>
               <div style={{ color: colors.gray[800], fontWeight: "400" }}>
                 {measurement}
@@ -346,7 +346,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                   textTransform: "capitalize",
                 }}
               >
-                COLOUR
+                color
               </div>
               <div style={{ color: colors.gray[800], fontWeight: "400" }}>
                 {colour}
@@ -359,7 +359,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                   textTransform: "capitalize",
                 }}
               >
-                SHAPE & CUT
+                shape & cut
               </div>
               <div style={{ color: colors.gray[800], fontWeight: "400" }}>
                 {shape}
@@ -372,7 +372,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                     textTransform: "capitalize",
                   }}
                 >
-                  PHENOMENON
+                  phenomenon
                 </div>
               )}
               {phenomenon && (
@@ -398,7 +398,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                   textTransform: "capitalize",
                 }}
               >
-                COMMENTS
+                comments
               </div>
               <ul style={{ color: colors.gray[800], fontWeight: "500" }}>
                 {comments?.split("*").map((item, i) => (
@@ -424,7 +424,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                     textTransform: "capitalize",
                   }}
                 >
-                  REMARKS
+                  remarks
                 </div>
               )}
               {remarks && (
@@ -448,7 +448,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                     textTransform: "capitalize",
                   }}
                 >
-                  ORIGIN
+                  origin
                 </div>
               )}
               {origin && (
