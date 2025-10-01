@@ -15,12 +15,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { format } from "date-fns";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+
 import { Calendar } from "@/components/ui/calendar";
 import { Calendar as CalendarIcon } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
@@ -39,8 +34,8 @@ import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   description: z.string().min(1),
-  species: z.string().min(1),
-  variety: z.string().min(1),
+  species: z.string(),
+  variety: z.string(),
   weight: z.string().min(1),
   measurement: z.string().min(1),
   colour: z.string().min(1),
@@ -208,8 +203,8 @@ export default function MyForm() {
           {/* Remaining fields */}
           {[
             { name: "description", label: "Description", required: true },
-            { name: "species", label: "Species", required: true },
-            { name: "variety", label: "Variety", required: true },
+            { name: "species", label: "Species", required: false },
+            { name: "variety", label: "Variety", required: false },
             { name: "weight", label: "Weight", required: true },
             { name: "measurement", label: "Measurement", required: true },
             { name: "colour", label: "Colour", required: true },

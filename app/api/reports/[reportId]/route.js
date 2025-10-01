@@ -90,8 +90,8 @@ export async function PUT(req, { params }) {
 
     // Extract form fields
     const description = formData.get("description");
-    const species = formData.get("species");
-    const variety = formData.get("variety");
+    const species = formData.get("species") || "";
+    const variety = formData.get("variety") || "";
     const weight = formData.get("weight");
     const measurement = formData.get("measurement");
     const colour = formData.get("colour");
@@ -108,8 +108,6 @@ export async function PUT(req, { params }) {
     // Validate required fields
     const requiredFields = {
       description,
-      species,
-      variety,
       weight,
       measurement,
       colour,

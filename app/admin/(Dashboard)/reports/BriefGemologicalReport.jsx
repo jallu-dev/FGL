@@ -232,7 +232,6 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               style={{
                 color: colors.gray[900],
                 fontWeight: "700",
-                textTransform: "uppercase",
               }}
             >
               {species}
@@ -255,7 +254,6 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               style={{
                 color: colors.gray[900],
                 fontWeight: "700",
-                textTransform: "uppercase",
               }}
             >
               {variety}
