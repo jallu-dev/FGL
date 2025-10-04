@@ -24,7 +24,6 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
   const server = process.env.SERVER || "www.fgl.lk";
   const email = process.env.EMAIL || "info@fgl.lk";
 
-  // Define colors as constants to ensure they're applied
   const colors = {
     primary: "#9b111e",
     secondary: "#fba518",
