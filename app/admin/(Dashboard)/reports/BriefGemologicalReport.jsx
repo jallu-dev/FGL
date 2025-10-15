@@ -190,7 +190,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 width: "65px",
               }}
             >
-              REPORT ID
+              Report Id
             </div>
             <div style={{ color: colors.gray[900], fontWeight: "600" }}>
               {reportId}
@@ -207,7 +207,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 width: "65px",
               }}
             >
-              DATE
+              Date
             </div>
             <div style={{ color: colors.gray[800], fontWeight: "400" }}>
               {`${new Date(created_at).getDate()} ${
@@ -226,7 +226,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 width: "65px",
               }}
             >
-              SPECIES
+              Species
             </div>
             <div
               style={{
@@ -248,7 +248,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 width: "65px",
               }}
             >
-              VARIETY
+              Variety
             </div>
             <div
               style={{
@@ -269,7 +269,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 width: "65px",
               }}
             >
-              WEIGHT
+              Weight
             </div>
             <div style={{ color: colors.gray[800], fontWeight: "400" }}>
               {weight}
@@ -286,7 +286,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 width: "65px",
               }}
             >
-              MEASUREMENT
+              Measurement
             </div>
             <div style={{ color: colors.gray[800], fontWeight: "400" }}>
               {measurement}
@@ -303,7 +303,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 width: "65px",
               }}
             >
-              COLOR
+              Colour
             </div>
             <div style={{ color: colors.gray[800], fontWeight: "400" }}>
               {colour}
@@ -320,7 +320,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 width: "65px",
               }}
             >
-              SHAPE & CUT
+              Shape & Cut
             </div>
             <div style={{ color: colors.gray[800], fontWeight: "400" }}>
               {shape}
@@ -337,7 +337,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 width: "65px",
               }}
             >
-              COMMENTS
+              Comments
             </div>
             <div
               style={{
