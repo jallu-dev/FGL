@@ -23,6 +23,41 @@ let months = {
   11: "December",
 };
 
+const fieldLabels = {
+  en: {
+    reportId: "Report ID",
+    date: "Date",
+    description: "Description",
+    transparency: "Transparency",
+    species: "Species",
+    variety: "Variety",
+    weight: "Weight",
+    measurement: "Measurement",
+    colour: "Colour",
+    shape: "Shape",
+    origin: "Origin",
+    phenomenon: "Phenomenon",
+    remarks: "Remarks",
+    comments: "Comments",
+  },
+  zh: {
+    reportId: "报告编号",
+    date: "日期",
+    description: "描述",
+    transparency: "透明度",
+    species: "物种",
+    variety: "品种",
+    weight: "重量",
+    measurement: "尺寸",
+    colour: "颜色",
+    shape: "形状",
+    origin: "产地",
+    phenomenon: "现象",
+    remarks: "备注",
+    comments: "评论",
+  },
+};
+
 export default function VerifyPage() {
   const [verificationResult, setVerificationResult] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -352,7 +387,7 @@ export default function VerifyPage() {
                             Translating...
                           </span>
                         )}
-                        <div className="relative flex items-center gap-1 rounded-lg border border-gray-300 bg-white p-1">
+                        <div className="relative flex items-center gap-1 rounded-lg border border-gray-300 bg-white p-1 cursor-pointer">
                           <span
                             className="absolute top-1 -z-10 h-8 rounded-md bg-accent duration-200 transition-all"
                             style={{
@@ -434,7 +469,9 @@ export default function VerifyPage() {
                       {/* Report ID - Not translated */}
                       {verificationResult.report.report_id && (
                         <div className="mb-2">
-                          <p className="text-sm text-accent/60">Report ID</p>
+                          <p className="text-sm text-accent/60">
+                            {fieldLabels[language].reportId}
+                          </p>
                           <p className="text-lg font-medium text-accent">
                             {verificationResult.report.report_id}
                           </p>
@@ -444,7 +481,9 @@ export default function VerifyPage() {
                       {/* Date - Not translated */}
                       {verificationResult.report.created_at && (
                         <div className="mb-2">
-                          <p className="text-sm text-accent/60">Date</p>
+                          <p className="text-sm text-accent/60">
+                            {fieldLabels[language].date}
+                          </p>
                           <p className="text-lg font-medium text-accent">
                             {`${new Date(
                               verificationResult.report.created_at
@@ -464,7 +503,9 @@ export default function VerifyPage() {
                       {/* Description */}
                       {verificationResult.report.description && (
                         <div className="mb-2">
-                          <p className="text-sm text-accent/60">Description</p>
+                          <p className="text-sm text-accent/60">
+                            {fieldLabels[language].description}
+                          </p>
                           <p className="text-lg font-medium text-accent">
                             {getDisplayData("description")}
                           </p>
@@ -474,7 +515,9 @@ export default function VerifyPage() {
                       {/* Transparency */}
                       {verificationResult.report.transparency && (
                         <div className="mb-2">
-                          <p className="text-sm text-accent/60">Transparency</p>
+                          <p className="text-sm text-accent/60">
+                            {fieldLabels[language].transparency}
+                          </p>
                           <p className="text-lg font-medium text-accent">
                             {getDisplayData("transparency")}
                           </p>
@@ -484,7 +527,9 @@ export default function VerifyPage() {
                       {/* Species */}
                       {verificationResult.report.species && (
                         <div className="mb-2">
-                          <p className="text-sm text-accent/60">Species</p>
+                          <p className="text-sm text-accent/60">
+                            {fieldLabels[language].species}
+                          </p>
                           <p className="text-lg font-medium text-accent">
                             {getDisplayData("species")}
                           </p>
@@ -494,7 +539,9 @@ export default function VerifyPage() {
                       {/* Variety */}
                       {verificationResult.report.variety && (
                         <div className="mb-2">
-                          <p className="text-sm text-accent/60">Variety</p>
+                          <p className="text-sm text-accent/60">
+                            {fieldLabels[language].variety}
+                          </p>
                           <p className="text-lg font-medium text-accent">
                             {getDisplayData("variety")}
                           </p>
@@ -504,7 +551,9 @@ export default function VerifyPage() {
                       {/* Weight */}
                       {verificationResult.report.weight && (
                         <div className="mb-2">
-                          <p className="text-sm text-accent/60">Weight</p>
+                          <p className="text-sm text-accent/60">
+                            {fieldLabels[language].weight}
+                          </p>
                           <p className="text-lg font-medium text-accent">
                             {getDisplayData("weight")}
                           </p>
@@ -514,7 +563,9 @@ export default function VerifyPage() {
                       {/* Measurement */}
                       {verificationResult.report.measurement && (
                         <div className="mb-2">
-                          <p className="text-sm text-accent/60">Measurement</p>
+                          <p className="text-sm text-accent/60">
+                            {fieldLabels[language].measurement}
+                          </p>
                           <p className="text-lg font-medium text-accent">
                             {getDisplayData("measurement")}
                           </p>
@@ -524,7 +575,9 @@ export default function VerifyPage() {
                       {/* Colour */}
                       {verificationResult.report.colour && (
                         <div className="mb-2">
-                          <p className="text-sm text-accent/60">Colour</p>
+                          <p className="text-sm text-accent/60">
+                            {fieldLabels[language].colour}
+                          </p>
                           <p className="text-lg font-medium text-accent">
                             {getDisplayData("colour")}
                           </p>
@@ -534,7 +587,9 @@ export default function VerifyPage() {
                       {/* Shape */}
                       {verificationResult.report.shape && (
                         <div className="mb-2">
-                          <p className="text-sm text-accent/60">Shape</p>
+                          <p className="text-sm text-accent/60">
+                            {fieldLabels[language].shape}
+                          </p>
                           <p className="text-lg font-medium text-accent">
                             {getDisplayData("shape")}
                           </p>
@@ -544,7 +599,9 @@ export default function VerifyPage() {
                       {/* Origin */}
                       {verificationResult.report.origin && (
                         <div className="mb-2">
-                          <p className="text-sm text-accent/60">Origin</p>
+                          <p className="text-sm text-accent/60">
+                            {fieldLabels[language].origin}
+                          </p>
                           <p className="text-lg font-medium text-accent">
                             {getDisplayData("origin")}
                           </p>
@@ -554,7 +611,9 @@ export default function VerifyPage() {
                       {/* Phenomenon */}
                       {verificationResult.report.phenomenon && (
                         <div className="mb-2">
-                          <p className="text-sm text-accent/60">Phenomenon</p>
+                          <p className="text-sm text-accent/60">
+                            {fieldLabels[language].phenomenon}
+                          </p>
                           <p className="text-lg font-medium text-accent">
                             {getDisplayData("phenomenon")}
                           </p>
@@ -564,7 +623,9 @@ export default function VerifyPage() {
                       {/* Remarks */}
                       {verificationResult.report.remarks && (
                         <div className="mb-2">
-                          <p className="text-sm text-accent/60">Remarks</p>
+                          <p className="text-sm text-accent/60">
+                            {fieldLabels[language].remarks}
+                          </p>
                           <p className="text-lg font-medium text-accent">
                             {getDisplayData("remarks")}
                           </p>
@@ -574,7 +635,9 @@ export default function VerifyPage() {
                       {/* Comments */}
                       {verificationResult.report.comments && (
                         <div className="md:col-span-2 mb-2">
-                          <p className="text-sm text-accent/60">Comments</p>
+                          <p className="text-sm text-accent/60">
+                            {fieldLabels[language].comments}
+                          </p>
                           <ul className="text-lg font-medium text-accent">
                             {getDisplayData("comments")
                               ?.split("*")
