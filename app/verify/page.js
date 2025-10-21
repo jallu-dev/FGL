@@ -370,7 +370,7 @@ export default function VerifyPage() {
                             disabled={isTranslating}
                             className={`relative inline-flex h-8 items-center justify-center rounded-md px-3 text-sm font-medium duration-200 ${
                               language === "en"
-                                ? "text-white"
+                                ? "text-white bg-primary"
                                 : "text-gray-600 hover:bg-gray-100"
                             }`}
                             style={{ minWidth: "60px" }}
@@ -382,7 +382,7 @@ export default function VerifyPage() {
                             disabled={isTranslating}
                             className={`relative inline-flex h-8 items-center justify-center rounded-md px-3 text-sm font-medium duration-200 ${
                               language === "zh"
-                                ? "text-white"
+                                ? "text-white bg-primary"
                                 : "text-gray-600 hover:bg-gray-100"
                             }`}
                             style={{ minWidth: "60px" }}
