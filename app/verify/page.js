@@ -352,49 +352,44 @@ export default function VerifyPage() {
                             Translating...
                           </span>
                         )}
-                        <button
-                          onClick={toggleLanguage}
-                          disabled={isTranslating}
-                          className="relative inline-flex items-center h-8 rounded-full w-20 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                          style={{
-                            backgroundColor:
+                        <div className="relative flex items-center gap-1 rounded-lg border border-gray-300 bg-white p-1">
+                          <span
+                            className="absolute top-1 -z-10 h-8 rounded-md bg-accent duration-200 transition-all"
+                            style={{
+                              left:
+                                language === "en" ? "4px" : "calc(50% + 2px)",
+                              width: "calc(50% - 6px)",
+                            }}
+                          ></span>
+                          <button
+                            onClick={() => {
+                              if (language === "zh") {
+                                setLanguage("en");
+                              }
+                            }}
+                            disabled={isTranslating}
+                            className={`relative inline-flex h-8 items-center justify-center rounded-md px-3 text-sm font-medium duration-200 ${
                               language === "en"
-                                ? colors.gray[300]
-                                : colors.primary,
-                          }}
-                        >
-                          <span
-                            className="inline-block w-6 h-6 transform bg-white rounded-full transition-transform"
-                            style={{
-                              transform:
-                                language === "en"
-                                  ? "translateX(4px)"
-                                  : "translateX(52px)",
-                            }}
-                          />
-                          <span
-                            className="absolute left-2 text-xs font-medium"
-                            style={{
-                              color:
-                                language === "en"
-                                  ? colors.accent
-                                  : colors.white,
-                            }}
+                                ? "text-white"
+                                : "text-gray-600 hover:bg-gray-100"
+                            }`}
+                            style={{ minWidth: "60px" }}
                           >
                             EN
-                          </span>
-                          <span
-                            className="absolute right-2 text-xs font-medium"
-                            style={{
-                              color:
-                                language === "zh"
-                                  ? colors.white
-                                  : colors.accent,
-                            }}
+                          </button>
+                          <button
+                            onClick={toggleLanguage}
+                            disabled={isTranslating}
+                            className={`relative inline-flex h-8 items-center justify-center rounded-md px-3 text-sm font-medium duration-200 ${
+                              language === "zh"
+                                ? "text-white"
+                                : "text-gray-600 hover:bg-gray-100"
+                            }`}
+                            style={{ minWidth: "60px" }}
                           >
                             中文
-                          </span>
-                        </button>
+                          </button>
+                        </div>
                       </div>
                     </div>
 
