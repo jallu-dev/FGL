@@ -326,7 +326,7 @@ export default function VerifyPage() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="btn-primary w-full flex items-center justify-center"
+                className="btn-primary w-full flex items-center justify-center cursor-pointer"
               >
                 {isLoading ? (
                   <>
@@ -387,7 +387,7 @@ export default function VerifyPage() {
                             Translating...
                           </span>
                         )}
-                        <div className="relative flex items-center gap-1 rounded-lg border border-gray-300 bg-white p-1 cursor-pointer">
+                        <div className="relative flex items-center gap-1 rounded-lg border border-gray-300 bg-white p-1">
                           <span
                             className="absolute top-1 -z-10 h-8 rounded-md bg-accent duration-200 transition-all"
                             style={{
@@ -403,7 +403,7 @@ export default function VerifyPage() {
                               }
                             }}
                             disabled={isTranslating}
-                            className={`relative inline-flex h-8 items-center justify-center rounded-md px-3 text-sm font-medium duration-200 ${
+                            className={`relative inline-flex h-8 items-center justify-center rounded-md px-3 text-sm font-medium duration-200 cursor-pointer ${
                               language === "en"
                                 ? "text-white bg-primary"
                                 : "text-gray-600 hover:bg-gray-100"
@@ -415,7 +415,7 @@ export default function VerifyPage() {
                           <button
                             onClick={toggleLanguage}
                             disabled={isTranslating}
-                            className={`relative inline-flex h-8 items-center justify-center rounded-md px-3 text-sm font-medium duration-200 ${
+                            className={`relative inline-flex h-8 items-center justify-center rounded-md px-3 text-sm font-medium duration-200 cursor-pointer ${
                               language === "zh"
                                 ? "text-white bg-primary"
                                 : "text-gray-600 hover:bg-gray-100"
