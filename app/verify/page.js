@@ -26,6 +26,9 @@ let months = {
 export default function VerifyPage() {
   const [verificationResult, setVerificationResult] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [language, setLanguage] = useState("en"); // 'en' or 'zh'
+  const [translatedData, setTranslatedData] = useState(null);
+  const [isTranslating, setIsTranslating] = useState(false);
   const searchParams = useSearchParams();
 
   const paramId = searchParams.get("id");
@@ -59,6 +62,9 @@ export default function VerifyPage() {
 
   const onSubmit = async (data) => {
     setIsLoading(true);
+    // Reset translation when verifying new report
+    setLanguage("en");
+    setTranslatedData(null);
 
     try {
       const reportId = data?.id || paramId;
@@ -96,6 +102,121 @@ export default function VerifyPage() {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const translateToкитайский = async () => {
+    if (!verificationResult?.report) return;
+
+    // If already translated, just switch to Chinese
+    if (translatedData) {
+      setLanguage("zh");
+      return;
+    }
+
+    setIsTranslating(true);
+
+    try {
+      const report = verificationResult.report;
+
+      // Collect all available text fields to translate
+      const fieldsToTranslate = [];
+      const fieldKeys = [];
+
+      if (report.description) {
+        fieldsToTranslate.push(report.description);
+        fieldKeys.push("description");
+      }
+      if (report.transparency) {
+        fieldsToTranslate.push(report.transparency);
+        fieldKeys.push("transparency");
+      }
+      if (report.species) {
+        fieldsToTranslate.push(report.species);
+        fieldKeys.push("species");
+      }
+      if (report.variety) {
+        fieldsToTranslate.push(report.variety);
+        fieldKeys.push("variety");
+      }
+      if (report.weight) {
+        fieldsToTranslate.push(report.weight);
+        fieldKeys.push("weight");
+      }
+      if (report.measurement) {
+        fieldsToTranslate.push(report.measurement);
+        fieldKeys.push("measurement");
+      }
+      if (report.colour) {
+        fieldsToTranslate.push(report.colour);
+        fieldKeys.push("colour");
+      }
+      if (report.shape) {
+        fieldsToTranslate.push(report.shape);
+        fieldKeys.push("shape");
+      }
+      if (report.origin) {
+        fieldsToTranslate.push(report.origin);
+        fieldKeys.push("origin");
+      }
+      if (report.phenomenon) {
+        fieldsToTranslate.push(report.phenomenon);
+        fieldKeys.push("phenomenon");
+      }
+      if (report.remarks) {
+        fieldsToTranslate.push(report.remarks);
+        fieldKeys.push("remarks");
+      }
+      if (report.comments) {
+        fieldsToTranslate.push(report.comments);
+        fieldKeys.push("comments");
+      }
+
+      // Call translation API
+      const response = await fetch("/api/translate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          texts: fieldsToTranslate,
+          targetLang: "zh",
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.translations) {
+        // Map translations back to field keys
+        const translated = {};
+        fieldKeys.forEach((key, index) => {
+          translated[key] = result.translations[index];
+        });
+
+        setTranslatedData(translated);
+        setLanguage("zh");
+      }
+    } catch (error) {
+      console.error("Translation error:", error);
+      alert("Failed to translate. Please try again.");
+    } finally {
+      setIsTranslating(false);
+    }
+  };
+
+  const toggleLanguage = () => {
+    if (language === "en") {
+      translateToкитайский();
+    } else {
+      setLanguage("en");
+    }
+  };
+
+  // Get display data based on current language
+  const getDisplayData = (field) => {
+    if (language === "zh" && translatedData && translatedData[field]) {
+      return translatedData[field];
+    }
+    return verificationResult?.report?.[field] || "";
   };
 
   useEffect(() => {
@@ -216,11 +337,65 @@ export default function VerifyPage() {
               >
                 {verificationResult.status === "valid" ? (
                   <>
-                    <div className="flex items-center mb-6">
-                      <FaCheckCircle className="text-green-500 text-2xl mr-3" />
-                      <h3 className="text-2xl font-heading font-bold text-green-600">
-                        Valid Certificate
-                      </h3>
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="flex items-center">
+                        <FaCheckCircle className="text-green-500 text-2xl mr-3" />
+                        <h3 className="text-2xl font-heading font-bold text-green-600">
+                          Valid Certificate
+                        </h3>
+                      </div>
+
+                      {/* Language Toggle Switch */}
+                      <div className="flex items-center gap-2">
+                        {isTranslating && (
+                          <span className="text-sm text-gray-500">
+                            Translating...
+                          </span>
+                        )}
+                        <button
+                          onClick={toggleLanguage}
+                          disabled={isTranslating}
+                          className="relative inline-flex items-center h-8 rounded-full w-20 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                          style={{
+                            backgroundColor:
+                              language === "en"
+                                ? colors.gray[300]
+                                : colors.primary,
+                          }}
+                        >
+                          <span
+                            className="inline-block w-6 h-6 transform bg-white rounded-full transition-transform"
+                            style={{
+                              transform:
+                                language === "en"
+                                  ? "translateX(4px)"
+                                  : "translateX(52px)",
+                            }}
+                          />
+                          <span
+                            className="absolute left-2 text-xs font-medium"
+                            style={{
+                              color:
+                                language === "en"
+                                  ? colors.accent
+                                  : colors.white,
+                            }}
+                          >
+                            EN
+                          </span>
+                          <span
+                            className="absolute right-2 text-xs font-medium"
+                            style={{
+                              color:
+                                language === "zh"
+                                  ? colors.white
+                                  : colors.accent,
+                            }}
+                          >
+                            中文
+                          </span>
+                        </button>
+                      </div>
                     </div>
 
                     <div>
@@ -260,7 +435,8 @@ export default function VerifyPage() {
                           ></div>
                         )}
                       </div>
-                      {/* Report ID */}
+
+                      {/* Report ID - Not translated */}
                       {verificationResult.report.report_id && (
                         <div className="mb-2">
                           <p className="text-sm text-accent/60">Report ID</p>
@@ -270,7 +446,7 @@ export default function VerifyPage() {
                         </div>
                       )}
 
-                      {/* Date */}
+                      {/* Date - Not translated */}
                       {verificationResult.report.created_at && (
                         <div className="mb-2">
                           <p className="text-sm text-accent/60">Date</p>
@@ -295,7 +471,7 @@ export default function VerifyPage() {
                         <div className="mb-2">
                           <p className="text-sm text-accent/60">Description</p>
                           <p className="text-lg font-medium text-accent">
-                            {verificationResult.report.description}
+                            {getDisplayData("description")}
                           </p>
                         </div>
                       )}
@@ -305,7 +481,7 @@ export default function VerifyPage() {
                         <div className="mb-2">
                           <p className="text-sm text-accent/60">Transparency</p>
                           <p className="text-lg font-medium text-accent">
-                            {verificationResult.report.transparency}
+                            {getDisplayData("transparency")}
                           </p>
                         </div>
                       )}
@@ -315,7 +491,7 @@ export default function VerifyPage() {
                         <div className="mb-2">
                           <p className="text-sm text-accent/60">Species</p>
                           <p className="text-lg font-medium text-accent">
-                            {verificationResult.report.species}
+                            {getDisplayData("species")}
                           </p>
                         </div>
                       )}
@@ -325,7 +501,7 @@ export default function VerifyPage() {
                         <div className="mb-2">
                           <p className="text-sm text-accent/60">Variety</p>
                           <p className="text-lg font-medium text-accent">
-                            {verificationResult.report.variety}
+                            {getDisplayData("variety")}
                           </p>
                         </div>
                       )}
@@ -335,7 +511,7 @@ export default function VerifyPage() {
                         <div className="mb-2">
                           <p className="text-sm text-accent/60">Weight</p>
                           <p className="text-lg font-medium text-accent">
-                            {verificationResult.report.weight}
+                            {getDisplayData("weight")}
                           </p>
                         </div>
                       )}
@@ -345,7 +521,7 @@ export default function VerifyPage() {
                         <div className="mb-2">
                           <p className="text-sm text-accent/60">Measurement</p>
                           <p className="text-lg font-medium text-accent">
-                            {verificationResult.report.measurement}
+                            {getDisplayData("measurement")}
                           </p>
                         </div>
                       )}
@@ -355,7 +531,7 @@ export default function VerifyPage() {
                         <div className="mb-2">
                           <p className="text-sm text-accent/60">Colour</p>
                           <p className="text-lg font-medium text-accent">
-                            {verificationResult.report.colour}
+                            {getDisplayData("colour")}
                           </p>
                         </div>
                       )}
@@ -365,7 +541,7 @@ export default function VerifyPage() {
                         <div className="mb-2">
                           <p className="text-sm text-accent/60">Shape</p>
                           <p className="text-lg font-medium text-accent">
-                            {verificationResult.report.shape}
+                            {getDisplayData("shape")}
                           </p>
                         </div>
                       )}
@@ -375,7 +551,7 @@ export default function VerifyPage() {
                         <div className="mb-2">
                           <p className="text-sm text-accent/60">Origin</p>
                           <p className="text-lg font-medium text-accent">
-                            {verificationResult.report.origin}
+                            {getDisplayData("origin")}
                           </p>
                         </div>
                       )}
@@ -385,7 +561,7 @@ export default function VerifyPage() {
                         <div className="mb-2">
                           <p className="text-sm text-accent/60">Phenomenon</p>
                           <p className="text-lg font-medium text-accent">
-                            {verificationResult.report.phenomenon}
+                            {getDisplayData("phenomenon")}
                           </p>
                         </div>
                       )}
@@ -395,7 +571,7 @@ export default function VerifyPage() {
                         <div className="mb-2">
                           <p className="text-sm text-accent/60">Remarks</p>
                           <p className="text-lg font-medium text-accent">
-                            {verificationResult.report.remarks}
+                            {getDisplayData("remarks")}
                           </p>
                         </div>
                       )}
@@ -405,7 +581,7 @@ export default function VerifyPage() {
                         <div className="md:col-span-2 mb-2">
                           <p className="text-sm text-accent/60">Comments</p>
                           <ul className="text-lg font-medium text-accent">
-                            {verificationResult.report.comments
+                            {getDisplayData("comments")
                               ?.split("*")
                               .map((item, i) => (
                                 <li key={i}>{item}</li>
