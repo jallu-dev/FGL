@@ -190,8 +190,8 @@ export default function Home() {
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-gray-200 rounded-full mr-4"></div>
                 <div>
-                  <h4 className="font-bold text-primary">James Wilson</h4>
-                  <p className="text-sm text-accent/60">Diamond Merchant</p>
+                  <h4 className="font-bold text-primary">Isfahan Bakeer</h4>
+                  <p className="text-sm text-accent/60">Colourstone Dealer</p>
                 </div>
               </div>
             </div>
@@ -209,8 +209,8 @@ export default function Home() {
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-gray-200 rounded-full mr-4"></div>
                 <div>
-                  <h4 className="font-bold text-primary">Sarah Johnson</h4>
-                  <p className="text-sm text-accent/60">Jewelry Designer</p>
+                  <h4 className="font-bold text-primary">Minshath Risfan</h4>
+                  <p className="text-sm text-accent/60">Gem Merchant</p>
                 </div>
               </div>
             </div>
@@ -228,7 +228,7 @@ export default function Home() {
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-gray-200 rounded-full mr-4"></div>
                 <div>
-                  <h4 className="font-bold text-primary">Robert Chen</h4>
+                  <h4 className="font-bold text-primary">Anfas Ansar</h4>
                   <p className="text-sm text-accent/60">Gemstone Collector</p>
                 </div>
               </div>
@@ -256,6 +256,17 @@ export default function Home() {
           <Link href="/contact" className="btn-primary">
             Contact Us
           </Link>
+        </div>
+        <div className="flex justify-center mt-10 ">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1982.1774362698338!2d79.98937668636934!3d6.476657345913174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae231f320cbd301%3A0x5331b386260a3a1e!2sFINEST%20GEM%20LAB!5e0!3m2!1sen!2slk!4v1764760126185!5m2!1sen!2slk"
+            width="60%"
+            height="250"
+            style={{ border: 0, borderRadius: 20 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
         </div>
       </section>
     </>

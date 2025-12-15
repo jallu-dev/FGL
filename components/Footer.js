@@ -7,6 +7,7 @@ import {
   FaInstagram,
   FaTwitter,
   FaLinkedin,
+  FaWhatsapp,
 } from "react-icons/fa";
 
 const Footer = () => {
@@ -25,28 +26,32 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4 mt-6">
               <a
-                href="#"
+                target="_blank"
+                href="https://www.facebook.com/profile.php?id=61572485684286"
                 className="text-slate-300 hover:text-white transition-colors duration-300"
               >
                 <FaFacebook size={20} />
               </a>
               <a
-                href="#"
+                target="_blank"
+                href="https://www.instagram.com/finest_gem_lab"
                 className="text-slate-300 hover:text-white transition-colors duration-300"
               >
                 <FaInstagram size={20} />
               </a>
               <a
-                href="#"
-                className="text-slate-300 hover:text-white transition-colors duration-300"
-              >
-                <FaTwitter size={20} />
-              </a>
-              <a
-                href="#"
+                target="_blank"
+                href="https://www.linkedin.com/in/shahmi-rinsan-fga-b607a4249"
                 className="text-slate-300 hover:text-white transition-colors duration-300"
               >
                 <FaLinkedin size={20} />
+              </a>
+              <a
+                target="_blank"
+                href="https://wa.me/message/PDH7DQJLSC7XD1"
+                className="text-slate-300 hover:text-white transition-colors duration-300"
+              >
+                <FaWhatsapp size={20} />
               </a>
             </div>
           </div>

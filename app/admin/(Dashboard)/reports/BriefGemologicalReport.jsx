@@ -90,22 +90,19 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
   return (
     <div
       style={{
-        width: "81.6mm", // ID card width
-        height: "49.98mm", // ID card height
+        width: "85.6mm", // ID card width
+        height: "54mm", // ID card height
         overflow: "hidden",
         backgroundColor: colors.white,
         fontFamily:
           '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
         position: "relative",
-        padding: "1mm 4mm",
-        margin: "2mm",
+        padding: "2mm 4mm",
         boxSizing: "border-box",
         color: colors.gray[800],
-        // border: `2px solid ${colors.primary}`,
-        borderRadius: "3mm",
       }}
     >
-      <div className="flex justify-around items-center mb-2">
+      <div className="flex justify-around items-center mb-0.5">
         {/* Header with FGL Logo */}
         <div className="relative shrink-0">
           <Image
@@ -153,27 +150,12 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
           </svg>
         </div>
       </div>
-
-      {/* <div
-        className="text-base text-center mb-2.5 -mt-2"
-        style={{
-          fontFamily: "Old English Text MT",
-          color: "#bd3744",
-          letterSpacing: "0.1em",
-          fontWeight: "400",
-        }}
-      >
-        Brief Gemmological Report
-      </div> */}
-
       {/* Main Content */}
-      <div
-        style={{ display: "flex", gap: "2.5mm", height: "calc(100% - 7mm)" }}
-      >
+      <div style={{ display: "flex", gap: "0.5mm" }}>
         {/* Left Side - Report Details */}
         <div
           style={{
-            flex: "1",
+            flex: "2",
             display: "flex",
             flexDirection: "column",
             fontSize: "8px",
@@ -232,6 +214,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               style={{
                 color: colors.gray[900],
                 fontWeight: "700",
+                fontSize: "10px",
               }}
             >
               {species}
@@ -254,6 +237,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               style={{
                 color: colors.gray[900],
                 fontWeight: "700",
+                fontSize: "10px",
               }}
             >
               {variety}
@@ -328,7 +312,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
           </div>
 
           {/* Comments */}
-          <div style={{ marginBottom: "1.5mm", display: "flex" }}>
+          <div style={{ display: "flex" }}>
             <div
               className="shrink-0"
               style={{
@@ -339,22 +323,24 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
             >
               Comments
             </div>
-            <div
+            <ul
               style={{
                 color: colors.gray[900],
                 fontWeight: "600",
                 wordBreak: "break-word",
               }}
             >
-              {comments}
-            </div>
+              {comments?.split("*").map((item, i) => (
+                <li key={i}>{item || "\u200b"}</li>
+              ))}
+            </ul>
           </div>
         </div>
 
         {/* Right Side - Image, QR Code, Barcode */}
         <div
           style={{
-            flex: "0 0 18mm",
+            flex: "1",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -365,8 +351,8 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
           <div
             style={{
               backgroundColor: colors.gray[100],
-              width: "18mm",
-              height: "18mm",
+              width: "20mm",
+              height: "20mm",
               borderRadius: "2mm",
               display: "flex",
               alignItems: "center",
@@ -408,8 +394,8 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 <Image
                   src={qrCodeUrl}
                   alt="QR Code"
-                  width={38}
-                  height={38}
+                  width={42}
+                  height={42}
                   style={{ display: "block" }}
                 />
               </div>
@@ -418,13 +404,25 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               <Image
                 src="/images/GemACropped.svg"
                 alt="logo"
-                height={38}
-                width={38}
+                height={42}
+                width={42}
               />
             </div>
           </div>
         </div>
       </div>
+
+      {/* <div
+        className="text-base text-center mb-2.5 -mt-2"
+        style={{
+          fontFamily: "Old English Text MT",
+          color: "#bd3744",
+          letterSpacing: "0.1em",
+          fontWeight: "400",
+        }}
+      >
+        Brief Gemmological Report
+      </div> */}
 
       {/* Decorative border lines */}
       {/* <div

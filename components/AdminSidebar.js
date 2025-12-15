@@ -19,7 +19,7 @@ const AdminSidebar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const menuItems = [
-    { name: "Dashboard", icon: <FaHome size={18} />, path: "/admin" },
+    { name: "Dashboard", icon: <FaHome size={18} />, path: "/admin/home" },
     // {
     //   name: "Invoices",
     //   icon: <FaFileInvoiceDollar size={18} />,

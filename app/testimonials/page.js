@@ -1,17 +1,17 @@
 export default function TestimonialsPage() {
   const testimonials = [
     {
-      name: "Dr. Roshan Silva",
+      name: "Hasif Ali",
       feedback:
         "FGL's reports are the most accurate and professional. I trust them completely.",
     },
     {
-      name: "Anjali Perera",
+      name: "Fowser Hussain",
       feedback:
         "Great customer service and quick turnaround. Highly recommend FGL!",
     },
     {
-      name: "Gem Traders International",
+      name: "Ansareen Anver",
       feedback:
         "Their origin reports have helped us build credibility with clients worldwide.",
     },

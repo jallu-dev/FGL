@@ -15,7 +15,8 @@ export const authOptions = {
         const { username, password, rememberMe } = credentials;
 
         const isValid =
-          username === process.env.ADMIN_USER_NAME &&
+          username.toLocaleLowerCase() ===
+            process.env.ADMIN_USER_NAME.toLocaleLowerCase() &&
           password === process.env.ADMIN_PASSWORD;
 
         if (isValid) {
@@ -33,10 +34,10 @@ export const authOptions = {
   ],
   session: {
     strategy: "jwt",
-    maxAge: 2 * 60 * 60, // 2 hours default (will be overridden by JWT callback)
+    // maxAge: 2 * 60 * 60, // 2 hours default (will be overridden by JWT callback)
   },
   jwt: {
-    maxAge: 2 * 60 * 60, // 2 hours default (will be overridden by JWT callback)
+    // maxAge: 2 * 60 * 60, // 2 hours default (will be overridden by JWT callback)
   },
   callbacks: {
     async jwt({ token, user, account, trigger, session }) {
