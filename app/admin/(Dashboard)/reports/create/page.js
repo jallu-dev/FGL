@@ -279,9 +279,7 @@ export default function MyForm() {
               name="note"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>
-                    Note<span className="text-red-500">*</span>
-                  </FormLabel>
+                  <FormLabel>Note</FormLabel>
                   <FormControl>
                     <Textarea
                       placeholder="Enter note"
