@@ -297,6 +297,28 @@ export default function EditReportModal({
                   />
                 </div>
 
+                <div className="md:col-span-2">
+                  <FormField
+                    control={form.control}
+                    name="note"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>
+                          Note<span className="text-red-500">*</span>
+                        </FormLabel>
+                        <FormControl>
+                          <Textarea
+                            placeholder="Enter note"
+                            className="resize-none bg-white"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+
                 {/* File Upload (full width) */}
                 <div className="md:col-span-2">
                   <FormField

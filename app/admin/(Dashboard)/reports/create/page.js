@@ -239,7 +239,7 @@ export default function MyForm() {
 
                   <FormControl>
                     <Input
-                      placeholder={`Enter ${item.name}`}
+                      placeholder={`Enter ${item.label}`}
                       className="bg-white"
                       {...field}
                     />
