@@ -310,6 +310,7 @@ export default function EditReportModal({
                           <Textarea
                             placeholder="Enter note"
                             className="resize-none bg-white"
+                            disabled={!editable}
                             {...field}
                           />
                         </FormControl>
