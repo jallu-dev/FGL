@@ -91,7 +91,7 @@ export default function ReportsPage() {
     }
   };
 
-  const handleEdit = (report) => {
+  const handleView = (report) => {
     fetchReportForEdit(report.report_id);
   };
 
@@ -213,6 +213,12 @@ export default function ReportsPage() {
                     Variety
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-accent uppercase tracking-wider">
+                    T
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-accent uppercase tracking-wider">
+                    Weight
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-accent uppercase tracking-wider">
                     Contact No
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-accent uppercase tracking-wider">
@@ -230,6 +236,8 @@ export default function ReportsPage() {
                     <td className="px-6 py-4">{report.report_id}</td>
                     <td className="px-6 py-4">{report.species}</td>
                     <td className="px-6 py-4">{report.variety}</td>
+                    <td className="px-6 py-4">{report.treatment}</td>
+                    <td className="px-6 py-4">{report.weight}</td>
                     <td className="px-6 py-4">{report.contact_no}</td>
                     <td className="px-6 py-4">
                       {new Date(report.created_at).toLocaleDateString()}
@@ -251,11 +259,11 @@ export default function ReportsPage() {
                           />
                         </button>
                         <button
-                          onClick={() => handleEdit(report)}
+                          onClick={() => handleView(report)}
                           className="p-2 text-green-600 hover:text-green-800"
-                          title="Edit Report"
+                          title="View Report"
                         >
-                          <FaEdit />
+                          <FaEye />
                         </button>
                         <button
                           onClick={() => handleDelete(report)}

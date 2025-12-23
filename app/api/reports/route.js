@@ -49,6 +49,9 @@ export async function POST(req) {
     const text_color = formData.get("text_color");
     const track_no = formData.get("track_no");
     const contact_no = formData.get("contact_no");
+    const trade_name = formData.get("trade_name") || "";
+    const treatment = formData.get("treatment") || "";
+    const note = formData.get("note") || "";
 
     // Extract and validate file
     const imageFile = formData.get("image");
@@ -127,7 +130,7 @@ export async function POST(req) {
       await client.query(
         `INSERT INTO reports (
           report_id, track_no, description, species, variety, weight, measurement, colour,
-          shape, transparency, origin, phenomenon, remarks, comments, image_file_path, text_color, contact_no) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17)`,
+          shape, transparency, origin, phenomenon, remarks, comments, image_file_path, text_color, contact_no, trade_name, treatment, note) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20)`,
         [
           reportId,
           track_no,
@@ -146,6 +149,9 @@ export async function POST(req) {
           key,
           text_color,
           contact_no,
+          trade_name,
+          treatment,
+          note,
         ]
       );
     } finally {
@@ -193,7 +199,7 @@ export async function GET(req) {
 
       const { rows } = await client.query(
         `
-        SELECT id, track_no, report_id, species, variety, contact_no, created_at
+        SELECT id, track_no, report_id, species, variety, contact_no, treatment, weight, created_at
         FROM reports
         ${whereClause}
         ORDER BY created_at DESC

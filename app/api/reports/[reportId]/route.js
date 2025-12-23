@@ -104,6 +104,9 @@ export async function PUT(req, { params }) {
     const text_color = formData.get("text_color");
     const track_no = formData.get("track_no");
     const contact_no = formData.get("contact_no");
+    const trade_name = formData.get("trade_name") || "";
+    const treatment = formData.get("treatment") || "";
+    const note = formData.get("note") || "";
 
     // Validate required fields
     const requiredFields = {
@@ -204,8 +207,8 @@ export async function PUT(req, { params }) {
           track_no = $1, description = $2, species = $3, variety = $4, weight = $5, 
           measurement = $6, colour = $7, shape = $8, transparency = $9, origin = $10, 
           phenomenon = $11, remarks = $12, comments = $13, image_file_path = $14, 
-          text_color = $15, contact_no = $16, updated_at = CURRENT_TIMESTAMP
-         WHERE report_id = $17`,
+          text_color = $15, contact_no = $16, trade_name = $17, treatment = $18, note = $19, updated_at = CURRENT_TIMESTAMP
+         WHERE report_id = $20`,
         [
           track_no,
           description,
@@ -223,6 +226,9 @@ export async function PUT(req, { params }) {
           imagePath,
           text_color,
           contact_no,
+          trade_name,
+          treatment,
+          note,
           reportId,
         ]
       );

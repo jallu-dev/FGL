@@ -76,6 +76,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
     text_color,
     track_no,
     image_file_path,
+    trade_name,
   } = reportData;
 
   useEffect(() => {
@@ -117,6 +118,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
       generateCodes();
     }
   }, [reportId]);
+
   useEffect(() => {
     if (qrCodeUrl && barcodeUrl && onRenderComplete) {
       setTimeout(() => {
@@ -140,7 +142,19 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
         color: colors.gray[800],
       }}
     >
-      <div style={{ border: "4px solid #e3c16f", paddingBottom: 15 }}>
+      <div
+        style={{
+          border: "4px solid #e3c16f",
+          paddingBottom: 15,
+          backgroundImage: "url('/images/bg1.png')",
+          backgroundPosition: "left bottom",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "62%",
+          pointerEvents: "none",
+          zIndex: 0,
+          position: "relative",
+        }}
+      >
         {/* Header */}
         <div className="flex items-center mb-6 ml-6">
           <svg
@@ -193,20 +207,18 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               gap: 20,
             }}
           >
-            {/* 1st block - Dot Leader Style */}
+            {/* 1st block  */}
             <div
               style={{
                 display: "flex",
                 gap: "5px 0",
                 alignSelf: "self-start",
-                marginLeft: 105,
                 fontSize: "14px",
                 flexDirection: "column",
-                width: 350,
               }}
             >
               {/* report id */}
-              <div style={{ display: "flex" }}>
+              <div style={{ display: "flex", marginLeft: 105, width: 350 }}>
                 <div
                   style={{
                     color: colors.gray[900],
@@ -223,7 +235,6 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                     color: colors.gray[800],
                     fontWeight: "500",
                     flexShrink: 0,
-                    backgroundColor: "white",
                   }}
                 >
                   {reportId}
@@ -231,7 +242,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               </div>
 
               {/* date */}
-              <div style={{ display: "flex" }}>
+              <div style={{ display: "flex", marginLeft: 105, width: 350 }}>
                 <div
                   style={{
                     color: colors.gray[900],
@@ -248,7 +259,6 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                     color: colors.gray[800],
                     fontWeight: "400",
                     flexShrink: 0,
-                    backgroundColor: "white",
                   }}
                 >
                   {`${new Date(created_at).getDate()} ${
@@ -256,9 +266,31 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                   } ${new Date(created_at).getFullYear()}`}
                 </div>
               </div>
+            </div>
 
+            {/* 2nd block - Details */}
+            <div
+              style={{
+                display: "flex",
+                gap: "5px 0",
+                alignSelf: "self-start",
+                fontSize: "14px",
+                flexDirection: "column",
+              }}
+            >
+              <div
+                style={{
+                  color: colors.gray[900],
+                  fontWeight: "600",
+                  fontSize: "16px",
+                  textTransform: "capitalize",
+                  marginLeft: 50,
+                }}
+              >
+                Details
+              </div>
               {/* object description */}
-              <div style={{ display: "flex" }}>
+              <div style={{ display: "flex", marginLeft: 105, width: 350 }}>
                 <div
                   style={{
                     color: colors.gray[900],
@@ -275,113 +307,13 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                     color: colors.gray[800],
                     fontWeight: "400",
                     flexShrink: 0,
-                    backgroundColor: "white",
                   }}
                 >
                   {description}
                 </div>
               </div>
 
-              {/* transparency */}
-              <div style={{ display: "flex" }}>
-                <div
-                  style={{
-                    color: colors.gray[900],
-                    fontWeight: "600",
-                    textTransform: "capitalize",
-                    flexShrink: 0,
-                  }}
-                >
-                  transparency
-                </div>
-                <DotLeader />
-                <div
-                  style={{
-                    color: colors.gray[800],
-                    fontWeight: "400",
-                    flexShrink: 0,
-                    backgroundColor: "white",
-                  }}
-                >
-                  {transparency}
-                </div>
-              </div>
-            </div>
-
-            {/* 2nd block - Species & Variety */}
-            <div
-              style={{
-                display: "flex",
-                gap: "5px 0",
-                alignSelf: "self-start",
-                marginLeft: 105,
-                fontSize: "14px",
-                flexDirection: "column",
-                width: 350,
-              }}
-            >
-              <div style={{ display: "flex" }}>
-                <div
-                  style={{
-                    color: colors.gray[900],
-                    fontWeight: "600",
-                    textTransform: "capitalize",
-                    flexShrink: 0,
-                  }}
-                >
-                  species
-                </div>
-                <DotLeader />
-                <div
-                  style={{
-                    color: colors.gray[800],
-                    fontWeight: "500",
-                    flexShrink: 0,
-                    backgroundColor: "white",
-                  }}
-                >
-                  {species}
-                </div>
-              </div>
-
-              <div style={{ display: "flex" }}>
-                <div
-                  style={{
-                    color: colors.gray[900],
-                    fontWeight: "600",
-                    textTransform: "capitalize",
-                    flexShrink: 0,
-                  }}
-                >
-                  variety
-                </div>
-                <DotLeader />
-                <div
-                  style={{
-                    color: colors.gray[800],
-                    fontWeight: "500",
-                    flexShrink: 0,
-                    backgroundColor: "white",
-                  }}
-                >
-                  {variety}
-                </div>
-              </div>
-            </div>
-
-            {/* 3rd block - Weight & Measurement */}
-            <div
-              style={{
-                display: "flex",
-                gap: "5px 0",
-                alignSelf: "self-start",
-                marginLeft: 105,
-                fontSize: "14px",
-                flexDirection: "column",
-                width: 350,
-              }}
-            >
-              <div style={{ display: "flex" }}>
+              <div style={{ display: "flex", marginLeft: 105, width: 350 }}>
                 <div
                   style={{
                     color: colors.gray[900],
@@ -398,14 +330,13 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                     color: colors.gray[800],
                     fontWeight: "400",
                     flexShrink: 0,
-                    backgroundColor: "white",
                   }}
                 >
                   {weight}
                 </div>
               </div>
 
-              <div style={{ display: "flex" }}>
+              <div style={{ display: "flex", marginLeft: 105, width: 350 }}>
                 <div
                   style={{
                     color: colors.gray[900],
@@ -414,7 +345,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                     flexShrink: 0,
                   }}
                 >
-                  measurement
+                  measurements
                 </div>
                 <DotLeader />
                 <div
@@ -422,51 +353,13 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                     color: colors.gray[800],
                     fontWeight: "400",
                     flexShrink: 0,
-                    backgroundColor: "white",
                   }}
                 >
                   {measurement}
                 </div>
               </div>
-            </div>
 
-            {/* 4th block - Color, Shape & Phenomenon */}
-            <div
-              style={{
-                display: "flex",
-                gap: "5px 0",
-                alignSelf: "self-start",
-                marginLeft: 105,
-                fontSize: "14px",
-                flexDirection: "column",
-                width: 350,
-              }}
-            >
-              <div style={{ display: "flex" }}>
-                <div
-                  style={{
-                    color: colors.gray[900],
-                    fontWeight: "600",
-                    textTransform: "capitalize",
-                    flexShrink: 0,
-                  }}
-                >
-                  color
-                </div>
-                <DotLeader />
-                <div
-                  style={{
-                    color: colors.gray[800],
-                    fontWeight: "400",
-                    flexShrink: 0,
-                    backgroundColor: "white",
-                  }}
-                >
-                  {colour}
-                </div>
-              </div>
-
-              <div style={{ display: "flex" }}>
+              <div style={{ display: "flex", marginLeft: 105, width: 350 }}>
                 <div
                   style={{
                     color: colors.gray[900],
@@ -483,15 +376,77 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                     color: colors.gray[800],
                     fontWeight: "400",
                     flexShrink: 0,
-                    backgroundColor: "white",
                   }}
                 >
                   {shape}
                 </div>
               </div>
 
+              {colour?.split("/n").map((item, i) => (
+                <div
+                  key={i}
+                  style={{ display: "flex", marginLeft: 105, width: 350 }}
+                >
+                  <div
+                    style={{
+                      color: colors.gray[900],
+                      fontWeight: "600",
+                      textTransform: "capitalize",
+                      flexShrink: 0,
+                      visibility: i === 0 ? "visible" : "hidden",
+                    }}
+                  >
+                    colour
+                  </div>
+                  {i === 0 ? (
+                    <DotLeader />
+                  ) : (
+                    <div
+                      style={{
+                        flexGrow: 1,
+                        flexShrink: 1,
+                        minWidth: "1px",
+                        height: 20,
+                      }}
+                    />
+                  )}
+                  <div
+                    style={{
+                      color: colors.gray[800],
+                      fontWeight: "500",
+                      flexShrink: 0,
+                    }}
+                  >
+                    • {item || "\u200b"}
+                  </div>
+                </div>
+              ))}
+
+              {/* transparency */}
+              <div style={{ display: "flex", marginLeft: 105, width: 350 }}>
+                <div
+                  style={{
+                    color: colors.gray[900],
+                    fontWeight: "600",
+                    textTransform: "capitalize",
+                    flexShrink: 0,
+                  }}
+                >
+                  transparency
+                </div>
+                <DotLeader />
+                <div
+                  style={{
+                    color: colors.gray[800],
+                    fontWeight: "400",
+                    flexShrink: 0,
+                  }}
+                >
+                  {transparency}
+                </div>
+              </div>
               {phenomenon && (
-                <div style={{ display: "flex" }}>
+                <div style={{ display: "flex", marginLeft: 105, width: 350 }}>
                   <div
                     style={{
                       color: colors.gray[900],
@@ -508,7 +463,6 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                       color: colors.gray[800],
                       fontWeight: "400",
                       flexShrink: 0,
-                      backgroundColor: "white",
                     }}
                   >
                     {phenomenon}
@@ -517,20 +471,79 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               )}
             </div>
 
-            {/* 5th block - Comments */}
+            {/* 3rd block - Weight & Measurement */}
             <div
               style={{
                 display: "flex",
                 gap: "5px 0",
                 alignSelf: "self-start",
-                marginLeft: 105,
                 fontSize: "14px",
                 flexDirection: "column",
-                width: 350,
               }}
             >
-              {comments?.split("*").map((item, i) => (
-                <div key={i} style={{ display: "flex" }}>
+              <div
+                style={{
+                  color: colors.gray[900],
+                  fontWeight: "600",
+                  fontSize: "16px",
+                  textTransform: "capitalize",
+                  marginLeft: 50,
+                }}
+              >
+                Results
+              </div>
+              {/* species */}
+              <div style={{ display: "flex", marginLeft: 105, width: 350 }}>
+                <div
+                  style={{
+                    color: colors.gray[900],
+                    fontWeight: "600",
+                    textTransform: "capitalize",
+                    flexShrink: 0,
+                  }}
+                >
+                  species
+                </div>
+                <DotLeader />
+                <div
+                  style={{
+                    color: colors.gray[800],
+                    fontWeight: "500",
+                    flexShrink: 0,
+                  }}
+                >
+                  {species}
+                </div>
+              </div>
+
+              {/* variety */}
+              <div style={{ display: "flex", marginLeft: 105, width: 350 }}>
+                <div
+                  style={{
+                    color: colors.gray[900],
+                    fontWeight: "600",
+                    textTransform: "capitalize",
+                    flexShrink: 0,
+                  }}
+                >
+                  variety
+                </div>
+                <DotLeader />
+                <div
+                  style={{
+                    color: colors.gray[800],
+                    fontWeight: "500",
+                    flexShrink: 0,
+                  }}
+                >
+                  {variety}
+                </div>
+              </div>
+              {comments?.split("/n").map((item, i) => (
+                <div
+                  key={i}
+                  style={{ display: "flex", marginLeft: 105, width: 350 }}
+                >
                   <div
                     style={{
                       color: colors.gray[900],
@@ -559,49 +572,76 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                       color: colors.gray[800],
                       fontWeight: "500",
                       flexShrink: 0,
-                      backgroundColor: "white",
                     }}
                   >
                     • {item || "\u200b"}
                   </div>
                 </div>
               ))}
+              {trade_name && (
+                <div
+                  style={{
+                    display: "flex",
+                    alignSelf: "self-start",
+                    fontSize: "14px",
+                    marginLeft: 105,
+                    width: 350,
+                  }}
+                >
+                  <div
+                    style={{
+                      color: colors.gray[900],
+                      fontWeight: "600",
+                      flexShrink: 0,
+                    }}
+                  >
+                    *Trade Name
+                  </div>
+                  <DotLeader />
+                  <div
+                    style={{
+                      color: colors.gray[800],
+                      fontWeight: "500",
+                      flexShrink: 0,
+                    }}
+                  >
+                    {trade_name}
+                  </div>
+                </div>
+              )}
+              {remarks && (
+                <div
+                  style={{
+                    display: "flex",
+                    alignSelf: "self-start",
+                    fontSize: "14px",
+                    marginLeft: 105,
+                    width: 350,
+                  }}
+                >
+                  <div
+                    style={{
+                      color: colors.gray[900],
+                      fontWeight: "600",
+                      textTransform: "capitalize",
+                      flexShrink: 0,
+                    }}
+                  >
+                    remarks
+                  </div>
+                  <DotLeader />
+                  <div
+                    style={{
+                      color: colors.gray[800],
+                      fontWeight: "400",
+                      flexShrink: 0,
+                    }}
+                  >
+                    {remarks}
+                  </div>
+                </div>
+              )}
             </div>
-
-            {/* 6th block - Remarks */}
-            {remarks && (
-              <div
-                style={{
-                  display: "flex",
-                  alignSelf: "self-start",
-                  marginLeft: 105,
-                  fontSize: "14px",
-                  width: 350,
-                }}
-              >
-                <div
-                  style={{
-                    color: colors.gray[900],
-                    fontWeight: "600",
-                    textTransform: "capitalize",
-                    flexShrink: 0,
-                  }}
-                >
-                  remarks
-                </div>
-                <DotLeader />
-                <div
-                  style={{
-                    color: colors.gray[800],
-                    fontWeight: "400",
-                    flexShrink: 0,
-                    backgroundColor: "white",
-                  }}
-                >
-                  {remarks}
-                </div>
-              </div>
-            )}
 
             {/* Origin Section */}
             {origin && (
@@ -637,7 +677,6 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                     fontWeight: "600",
                     fontSize: "16px",
                     alignSelf: "center",
-                    fontFamily: "serif",
                   }}
                 >
                   {origin}
@@ -667,7 +706,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 alignItems: "center",
                 justifyContent: "center",
                 marginBottom: "5px",
-                border: `2px solid ${colors.gray[200]}`,
+                border: `1px solid ${colors.black}`,
                 alignSelf: "center",
               }}
             >
@@ -701,7 +740,6 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 lineHeight: "1.3",
                 margin: 0,
               }}
-              className="font-serif"
             >
               This image is only for representation purposes.
               <br />
@@ -722,6 +760,8 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                   fontSize: "18px",
                   letterSpacing: "0.1em",
                   margin: 0,
+                  fontFamily:
+                    '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
                 }}
               >
                 {species}
@@ -742,6 +782,8 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                   fontSize: "18px",
                   letterSpacing: "0.1em",
                   margin: 0,
+                  fontFamily:
+                    '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
                 }}
               >
                 {variety}
@@ -756,7 +798,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 alignItems: "end",
                 marginBottom: "50px",
                 marginTop: "40px",
-                padding: "0 30px",
+                padding: "0 10px",
               }}
             >
               {/*GEMA Logo */}
@@ -764,19 +806,19 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 <Image
                   src="/images/GemACropped.svg"
                   alt="logo"
-                  height={100}
-                  width={100}
+                  height={120}
+                  width={120}
                 />
               </div>
               {/* Gemologist Info */}
               <div style={{ textAlign: "center" }}>
                 <div
                   style={{
-                    width: "128px",
-                    borderTop: `1px solid ${colors.gray[400]}`,
-                    marginBottom: "8px",
+                    marginBottom: "4px",
                   }}
-                ></div>
+                >
+                  ................................................
+                </div>
                 <div style={{ fontSize: "14px" }}>
                   <div style={{ fontWeight: "400", color: colors.gray[800] }}>
                     Gemologist
@@ -797,14 +839,14 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                   alignItems: "center",
                 }}
               >
-                <div className="flex gap-10 items-end">
+                <div>
                   {qrCodeUrl && (
                     <div>
                       <Image
                         src={qrCodeUrl}
                         alt="Verification QR Code"
-                        width="60"
-                        height="60"
+                        width="80"
+                        height="80"
                       />
                     </div>
                   )}
@@ -813,8 +855,8 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                     <div
                       style={{
                         position: "absolute",
-                        right: "30px",
-                        top: "30px",
+                        right: "20px",
+                        top: "20px",
                       }}
                     >
                       <Image
@@ -827,7 +869,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                   )}
                 </div>
 
-                <div style={{ textAlign: "center" }} className="font-serif">
+                <div style={{ textAlign: "center" }}>
                   <div
                     style={{
                       fontSize: "12px",
@@ -855,9 +897,9 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
             <div
               style={{
                 textAlign: "center",
-                fontSize: "12px",
+                fontSize: "10px",
                 color: colors.gray[600],
-                marginTop: "35px",
+                marginTop: "15px",
               }}
             >
               <div
@@ -871,18 +913,18 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                   <Image
                     src="/images/fgl-color.svg"
                     alt="logo"
-                    width={1563} // double your display size
+                    width={1563}
                     height={400}
-                    className="h-[60px] w-auto" // scale down with CSS
-                    priority // optional: loads immediately
+                    className="h-15 w-auto"
+                    priority
                   />
                 </div>
               </div>
-              <div className="font-serif" style={{ color: colors.gray[600] }}>
+              <div style={{ color: colors.gray[600] }}>
                 94/3, Sally Hajiar Mawatha, Chinafort, Beruwala, 12070, Sri
                 Lanka
               </div>
-              <div className="font-serif" style={{ color: colors.gray[600] }}>
+              <div style={{ color: colors.gray[600] }}>
                 +94 76 354 9226 &nbsp;&nbsp; {email}
               </div>
               <div></div>
@@ -902,7 +944,6 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               color: colors.gray[500],
               margin: 0,
             }}
-            className="font-serif"
           >
             The conclusion of this report represents our findings through
             gemological testing at the time of examination. Terms & conditions
@@ -910,41 +951,6 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
           </p>
         </div>
       </div>
-
-      {/* custom borders */}
-      {/* <div
-        className="h-1 absolute top-2.5 left-2.5"
-        style={{
-          backgroundImage: "linear-gradient(to right, #9b111e, #e3c16f, #fff)",
-          width: "297mm",
-          backgroundRepeat: "no-repeat",
-        }}
-      ></div>
-      <div
-        className="w-1 absolute top-2.5 left-2.5"
-        style={{
-          backgroundImage: "linear-gradient(to bottom, #9b111e, #e3c16f, #fff)",
-          height: "210mm",
-          backgroundRepeat: "no-repeat",
-        }}
-      ></div>
-
-      <div
-        className="h-1 absolute bottom-7 right-6"
-        style={{
-          backgroundImage: "linear-gradient(to left, #9b111e, #e3c16f, #fff)",
-          width: "297mm",
-          backgroundRepeat: "no-repeat",
-        }}
-      ></div>
-      <div
-        className="w-1 absolute bottom-7 right-6"
-        style={{
-          backgroundImage: "linear-gradient(to top, #9b111e, #e3c16f, #fff)",
-          height: "210mm",
-          backgroundRepeat: "no-repeat",
-        }}
-      ></div> */}
     </div>
   );
 };

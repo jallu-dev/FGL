@@ -48,6 +48,9 @@ const formSchema = z.object({
   text_color: z.string().min(1),
   track_no: z.string().min(1),
   contact_no: z.string().min(1).max(10),
+  trade_name: z.string(),
+  treatment: z.string(),
+  note: z.string(),
 });
 
 export default function MyForm() {
@@ -79,6 +82,9 @@ export default function MyForm() {
       comments: "",
       text_color: "#000000",
       contact_no: "",
+      trade_name: "",
+      treatment: "",
+      note: "",
     },
   });
 
@@ -206,13 +212,15 @@ export default function MyForm() {
             { name: "species", label: "Species", required: false },
             { name: "variety", label: "Variety", required: false },
             { name: "weight", label: "Weight", required: true },
-            { name: "measurement", label: "Measurement", required: true },
+            { name: "measurement", label: "Measurements", required: true },
             { name: "colour", label: "Colour", required: true },
             { name: "shape", label: "Shape & Cut", required: true },
             { name: "transparency", label: "Transparency", required: true },
             { name: "origin", label: "Origin", required: false },
             { name: "phenomenon", label: "Phenomenon", required: false },
             { name: "remarks", label: "Remarks", required: false },
+            { name: "trade_name", label: "Trade Name", required: false },
+            { name: "treatment", label: "Treatment", required: false },
           ].map((item) => (
             <FormField
               key={item.name}
@@ -255,6 +263,28 @@ export default function MyForm() {
                   <FormControl>
                     <Textarea
                       placeholder="Enter comments"
+                      className="resize-none bg-white"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+
+          <div className="md:col-span-2">
+            <FormField
+              control={form.control}
+              name="note"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>
+                    Note<span className="text-red-500">*</span>
+                  </FormLabel>
+                  <FormControl>
+                    <Textarea
+                      placeholder="Enter note"
                       className="resize-none bg-white"
                       {...field}
                     />

@@ -44,6 +44,9 @@ const formSchema = z.object({
   text_color: z.string().min(1),
   track_no: z.string().min(1),
   contact_no: z.string().min(1).max(10),
+  trade_name: z.string(),
+  treatment: z.string(),
+  note: z.string(),
 });
 
 export default function EditReportModal({
@@ -54,6 +57,7 @@ export default function EditReportModal({
 }) {
   const [file, setFile] = useState([]);
   const [updating, setUpdating] = useState(false);
+  const [editable, setEditable] = useState(false);
 
   const dropZoneConfig = {
     maxFiles: 1,
@@ -79,6 +83,9 @@ export default function EditReportModal({
       comments: "",
       text_color: "#000000",
       contact_no: "",
+      trade_name: "",
+      treatment: "",
+      note: "",
     },
   });
 
@@ -126,6 +133,9 @@ export default function EditReportModal({
         comments: report.comments || "",
         text_color: report.text_color || "#000000",
         contact_no: report.contact_no || "",
+        trade_name: report.trade_name || "",
+        treatment: report.treatment || "",
+        note: report.note || "",
       });
     }
   }, [report, form]);
@@ -188,6 +198,17 @@ export default function EditReportModal({
           <h2 className="text-2xl font-bold">
             Edit Report - {report.report_id}
           </h2>
+          <Button
+            disabled={editable}
+            onClick={() => setEditable(true)}
+            className={`${
+              editable
+                ? "cursor-not-allowed bg-primary/50"
+                : "cursor-pointer bg-primary"
+            }`}
+          >
+            Edit
+          </Button>
           <button
             onClick={onClose}
             className="p-2 hover:bg-gray-100 rounded-full"
@@ -206,7 +227,11 @@ export default function EditReportModal({
                   { name: "species", label: "Species", required: true },
                   { name: "variety", label: "Variety", required: true },
                   { name: "weight", label: "Weight", required: true },
-                  { name: "measurement", label: "Measurement", required: true },
+                  {
+                    name: "measurement",
+                    label: "Measurements",
+                    required: true,
+                  },
                   { name: "colour", label: "Colour", required: true },
                   { name: "shape", label: "Shape & Cut", required: true },
                   {
@@ -217,6 +242,8 @@ export default function EditReportModal({
                   { name: "origin", label: "Origin", required: false },
                   { name: "phenomenon", label: "Phenomenon", required: false },
                   { name: "remarks", label: "Remarks", required: false },
+                  { name: "trade_name", label: "Trade Name", required: false },
+                  { name: "treatment", label: "Treatment", required: false },
                 ].map((item) => (
                   <FormField
                     key={item.name}
@@ -236,6 +263,7 @@ export default function EditReportModal({
                           <Input
                             placeholder={`Enter ${item.name}`}
                             className="bg-white"
+                            disabled={!editable}
                             {...field}
                           />
                         </FormControl>
@@ -259,6 +287,7 @@ export default function EditReportModal({
                           <Textarea
                             placeholder="Enter comments"
                             className="resize-none bg-white"
+                            disabled={!editable}
                             {...field}
                           />
                         </FormControl>
@@ -289,6 +318,7 @@ export default function EditReportModal({
                             {file?.length === 0 && (
                               <FileInput
                                 id="fileInput"
+                                disabled={!editable}
                                 className="outline-dashed outline-1 outline-slate-500"
                               >
                                 <div className="flex items-center justify-center flex-col p-8 w-full">
@@ -357,6 +387,7 @@ export default function EditReportModal({
                         <Input
                           placeholder={`Pick color`}
                           className="bg-white"
+                          disabled={!editable}
                           type="color"
                           {...field}
                         />
@@ -382,6 +413,7 @@ export default function EditReportModal({
                           placeholder={`Enter track no`}
                           className="bg-white"
                           type="number"
+                          disabled={!editable}
                           {...field}
                         />
                       </FormControl>
@@ -403,6 +435,7 @@ export default function EditReportModal({
                         <Input
                           placeholder={`Enter contact no`}
                           className="bg-white"
+                          disabled={!editable}
                           {...field}
                         />
                       </FormControl>
@@ -412,7 +445,9 @@ export default function EditReportModal({
                 />
               </div>
 
-              <div className="flex justify-end space-x-4 pt-6 border-t">
+              <div
+                className={`justify-end space-x-4 pt-6 border-t ${editable ? "flex" : "hidden"}`}
+              >
                 <Button
                   type="button"
                   variant="outline"

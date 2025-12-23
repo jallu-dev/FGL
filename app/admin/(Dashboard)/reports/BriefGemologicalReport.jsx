@@ -110,7 +110,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
             alt="logo"
             width={1563} // double your display size
             height={400}
-            className="h-[41px] w-auto" // scale down with CSS
+            className="h-10.25 w-auto" // scale down with CSS
             priority // optional: loads immediately
           />
         </div>
@@ -270,7 +270,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 width: "65px",
               }}
             >
-              Measurement
+              Measurements
             </div>
             <div style={{ color: colors.gray[800], fontWeight: "400" }}>
               {measurement}
@@ -330,7 +330,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 wordBreak: "break-word",
               }}
             >
-              {comments?.split("*").map((item, i) => (
+              {comments?.split("/n").map((item, i) => (
                 <li key={i}>{item || "\u200b"}</li>
               ))}
             </ul>
@@ -394,8 +394,8 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 <Image
                   src={qrCodeUrl}
                   alt="QR Code"
-                  width={42}
-                  height={42}
+                  width={46}
+                  height={46}
                   style={{ display: "block" }}
                 />
               </div>
@@ -404,8 +404,8 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               <Image
                 src="/images/GemACropped.svg"
                 alt="logo"
-                height={42}
-                width={42}
+                height={46}
+                width={46}
               />
             </div>
           </div>
