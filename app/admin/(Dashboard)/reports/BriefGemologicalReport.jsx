@@ -365,8 +365,8 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               <Image
                 src={image_file_path}
                 alt="Gem"
-                width={66} // 16mm in pixels approximately
-                height={66}
+                width={200} // 16mm in pixels approximately
+                height={200}
                 style={{
                   width: "100%",
                   height: "100%",
