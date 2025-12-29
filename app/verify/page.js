@@ -585,7 +585,11 @@ export default function VerifyPage() {
                             {fieldLabels[language].colour}
                           </p>
                           <p className="text-lg font-medium text-accent">
-                            {getDisplayData("colour")}
+                            {getDisplayData("colour")
+                              ?.split("/n")
+                              .map((item, i) => (
+                                <li key={i}>{item}</li>
+                              ))}
                           </p>
                         </div>
                       )}
@@ -658,7 +662,7 @@ export default function VerifyPage() {
                           </p>
                           <ul className="text-lg font-medium text-accent">
                             {getDisplayData("comments")
-                              ?.split("*")
+                              ?.split("/n")
                               .map((item, i) => (
                                 <li key={i}>{item}</li>
                               ))}
