@@ -29,7 +29,9 @@ export async function POST(req) {
           origin,
           phenomenon,
           remarks,
-          comments,image_file_path
+          comments,
+          image_file_path,
+          trade_name
          FROM reports 
          WHERE report_id = $1`,
         [reportId]
@@ -69,6 +71,7 @@ export async function POST(req) {
         phenomenon: report.phenomenon,
         remarks: report.remarks,
         comments: report.comments,
+        trade_name: report.trade_name,
         image_file_path: url,
       };
 

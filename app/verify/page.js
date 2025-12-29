@@ -38,6 +38,7 @@ const fieldLabels = {
     origin: "Origin",
     phenomenon: "Phenomenon",
     remarks: "Remarks",
+    trade_name: "Trade Name",
     comments: "Comments",
   },
   zh: {
@@ -54,6 +55,7 @@ const fieldLabels = {
     origin: "产地",
     phenomenon: "现象",
     remarks: "备注",
+    trade_name: "商品名稱",
     comments: "评论",
   },
 };
@@ -200,6 +202,10 @@ export default function VerifyPage() {
       if (report.remarks) {
         fieldsToTranslate.push(report.remarks);
         fieldKeys.push("remarks");
+      }
+      if (report.trade_name) {
+        fieldsToTranslate.push(report.trade_name);
+        fieldKeys.push("trade_name");
       }
       if (report.comments) {
         fieldsToTranslate.push(report.comments);
@@ -628,6 +634,18 @@ export default function VerifyPage() {
                           </p>
                           <p className="text-lg font-medium text-accent">
                             {getDisplayData("remarks")}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* trade_name */}
+                      {verificationResult.report.trade_name && (
+                        <div className="mb-2">
+                          <p className="text-sm text-accent/60">
+                            {fieldLabels[language].trade_name}
+                          </p>
+                          <p className="text-lg font-medium text-accent">
+                            {getDisplayData("trade_name")}
                           </p>
                         </div>
                       )}
