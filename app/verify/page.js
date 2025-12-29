@@ -38,7 +38,7 @@ const fieldLabels = {
     origin: "Origin",
     phenomenon: "Phenomenon",
     remarks: "Remarks",
-    trade_name: "Trade Name",
+    trade_name: "*Trade Name",
     comments: "Comments",
   },
   zh: {
@@ -55,7 +55,7 @@ const fieldLabels = {
     origin: "产地",
     phenomenon: "现象",
     remarks: "备注",
-    trade_name: "商品名稱",
+    trade_name: "*商品名稱",
     comments: "评论",
   },
 };
