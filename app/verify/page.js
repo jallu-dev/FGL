@@ -584,13 +584,13 @@ export default function VerifyPage() {
                           <p className="text-sm text-accent/60">
                             {fieldLabels[language].colour}
                           </p>
-                          <p className="text-lg font-medium text-accent">
+                          <ul className="text-lg font-medium text-accent">
                             {getDisplayData("colour")
                               ?.split("/n")
                               .map((item, i) => (
                                 <li key={i}>{item}</li>
                               ))}
-                          </p>
+                          </ul>
                         </div>
                       )}
 
