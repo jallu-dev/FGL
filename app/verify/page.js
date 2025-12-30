@@ -382,7 +382,7 @@ export default function VerifyPage() {
                       <div className="flex items-center">
                         <FaCheckCircle className="text-green-500 text-2xl mr-3" />
                         <h3 className="text-2xl font-heading font-bold text-green-600">
-                          Valid Certificate
+                          Valid Report
                         </h3>
                       </div>
 
