@@ -171,10 +171,10 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 x2="0%"
                 y2="100%"
               >
-                <stop offset="0%" stopColor="var(--primary-color, #9b111e)" />
+                <stop offset="0%" stopColor="var(--primary-color, #e3c16f)" />
                 <stop
                   offset="50%"
-                  stopColor="var(--secondary-color, #d97706)"
+                  stopColor="var(--secondary-color, #e3c16f)"
                 />
                 <stop offset="100%" stopColor="var(--accent-color, #e3c16f)" />
               </linearGradient>
