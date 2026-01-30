@@ -177,27 +177,39 @@ export async function POST(req) {
   }
 }
 
-export async function GET(req) {
+export async function GET(req: Request) {
+  // optional: tag logs per request
+  const reqId = Math.random().toString(36).slice(2, 8);
+
+  // measure total handler time
+  const tTotal0 = Date.now();
+
+  let client: any;
   try {
-    const client = await pool.connect();
+    // measure connect time
+    const tConnect0 = Date.now();
+    client = await pool.connect();
+    const connectMs = Date.now() - tConnect0;
+    console.log(`[reports][${reqId}] connect ms: ${connectMs}`);
 
     try {
       const { searchParams } = new URL(req.url);
-      const page = parseInt(searchParams.get("page") || "1");
-      const limit = parseInt(searchParams.get("limit") || "10");
+      const page = parseInt(searchParams.get("page") || "1", 10);
+      const limit = parseInt(searchParams.get("limit") || "10", 10);
       const search = searchParams.get("search")?.trim() || "";
       const offset = (page - 1) * limit;
 
       // --- Main Query ---
       let whereClause = "";
-      let values = [limit, offset];
+      let values: any[] = [limit, offset];
 
       if (search) {
         whereClause = `WHERE report_id ILIKE $3 OR CAST(track_no AS TEXT) ILIKE $3 OR contact_no ILIKE $3`;
         values = [limit, offset, `%${search}%`];
       }
 
-      const { rows } = await client.query(
+      const tMain0 = Date.now();
+      const mainResult = await client.query(
         `
         SELECT id, track_no, report_id, species, variety, contact_no, treatment, weight, created_at
         FROM reports
@@ -207,11 +219,15 @@ export async function GET(req) {
         `,
         values
       );
+      const mainMs = Date.now() - tMain0;
+      console.log(`[reports][${reqId}] main query ms: ${mainMs} (rows: ${mainResult.rowCount})`);
 
       // --- Count Query ---
-      let countQuery;
+      const tCount0 = Date.now();
+      let countResult;
+
       if (search) {
-        countQuery = await client.query(
+        countResult = await client.query(
           `
           SELECT COUNT(*) AS total
           FROM reports
@@ -220,7 +236,7 @@ export async function GET(req) {
           [`%${search}%`]
         );
       } else {
-        countQuery = await client.query(
+        countResult = await client.query(
           `
           SELECT COUNT(*) AS total
           FROM reports
@@ -228,29 +244,42 @@ export async function GET(req) {
         );
       }
 
+      const countMs = Date.now() - tCount0;
+      const totalMs = Date.now() - tTotal0;
+      console.log(`[reports][${reqId}] count query ms: ${countMs}`);
+      console.log(`[reports][${reqId}] total handler ms: ${totalMs}`);
+
+      // include timings in response headers (easy to inspect in browser/devtools)
+      const headers = new Headers();
+      headers.set("X-DB-Connect-MS", String(connectMs));
+      headers.set("X-DB-MainQuery-MS", String(mainMs));
+      headers.set("X-DB-CountQuery-MS", String(countMs));
+      headers.set("X-API-Total-MS", String(totalMs));
+
       return Response.json(
         {
           success: true,
-          rows,
-          total: parseInt(countQuery.rows[0].total),
+          rows: mainResult.rows,
+          total: parseInt(countResult.rows[0].total, 10),
           page,
           limit,
         },
-        { status: 200 }
+        { status: 200, headers }
       );
     } catch (error) {
-      console.error("Fetch error:", error);
+      console.error(`[reports][${reqId}] Fetch error:`, error);
 
       return Response.json(
         { error: "Error while retrieving reports data." },
         { status: 500 }
       );
     } finally {
-      client.release();
+      client?.release?.();
     }
   } catch (error) {
-    console.error("Connection error:", error);
+    console.error(`[reports][${reqId}] Connection error:`, error);
 
     return Response.json({ error: "Error while connection." }, { status: 500 });
   }
 }
+
