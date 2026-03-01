@@ -55,7 +55,7 @@ const generateReportPDF = async (reportData, reportId, setGenerating) => {
             clearTimeout(timeout);
             setTimeout(resolve, 1000); // Give extra time for rendering
           }}
-        />
+        />,
       );
     });
 
@@ -65,7 +65,7 @@ const generateReportPDF = async (reportData, reportId, setGenerating) => {
 
     // Generate canvas from the rendered component
     const canvas = await html2canvas(container, {
-      scale: 10,
+      scale: 5,
       useCORS: true,
       logging: false,
       allowTaint: false,
@@ -145,11 +145,11 @@ const generateReportPDF = async (reportData, reportId, setGenerating) => {
     // Provide more specific error information
     if (error.message.includes("Render timeout")) {
       console.error(
-        "Report rendering timed out. Check if onRenderComplete is being called."
+        "Report rendering timed out. Check if onRenderComplete is being called.",
       );
     } else if (error.message.includes("Canvas")) {
       console.error(
-        "Canvas generation failed. This might be due to CORS issues or unsupported CSS."
+        "Canvas generation failed. This might be due to CORS issues or unsupported CSS.",
       );
     }
 
