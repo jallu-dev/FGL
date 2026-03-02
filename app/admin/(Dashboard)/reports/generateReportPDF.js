@@ -65,7 +65,7 @@ const generateReportPDF = async (reportData, reportId, setGenerating) => {
 
     // Generate canvas from the rendered component
     const canvas = await html2canvas(container, {
-      scale: 2,
+      scale: 5,
       useCORS: true,
       logging: false,
       allowTaint: false,
