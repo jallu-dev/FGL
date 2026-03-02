@@ -52,7 +52,8 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
         overflow: "hidden",
         height: 20,
         lineHeight: "1.2em",
-        margin: "0 2px -25px",
+        margin: "0 2px",
+        marginTop: "10px",
         verticalAlign: "bottom",
         backgroundColor: "red",
       }}
