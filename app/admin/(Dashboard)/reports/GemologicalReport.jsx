@@ -419,7 +419,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                       flexShrink: 0,
                     }}
                   >
-                    • {item || "\u200b"}
+                    {item || "\u200b"}
                   </div>
                 </div>
               ))}
@@ -576,7 +576,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                       flexShrink: 0,
                     }}
                   >
-                    • {item || "\u200b"}
+                    {item || "\u200b"}
                   </div>
                 </div>
               ))}
