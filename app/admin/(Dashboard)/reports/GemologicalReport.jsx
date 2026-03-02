@@ -53,7 +53,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
         height: 20,
         lineHeight: "1.2em",
         margin: "0 2px",
-        marginTop: "5px",
+        marginTop: "4px",
         verticalAlign: "bottom",
       }}
     >
