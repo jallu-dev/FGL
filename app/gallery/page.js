@@ -1,11 +1,36 @@
 import Image from "next/image";
 
+export const metadata = {
+  title: "Gem Gallery — Certified Rubies, Sapphires, Emeralds & More",
+  description:
+    "Browse FGL's gallery of premium gemstones — rubies, sapphires, emeralds, spinels — examined and certified by expert gemologists at Finest Gem Lab, Sri Lanka.",
+  alternates: { canonical: "https://fgl.lk/gallery" },
+  openGraph: {
+    title: "Gem Gallery | Finest Gem Lab (FGL)",
+    description:
+      "A showcase of premium certified gemstones including rubies, sapphires, emeralds, and spinels, examined by FGL's expert gemologists.",
+    url: "https://fgl.lk/gallery",
+  },
+};
+
 export default function GalleryPage() {
   const images = [
-    "/gallery/ruby.jpg",
-    "/gallery/sapphire.jpg",
-    "/gallery/emerald.jpg",
-    "/gallery/spinel.jpg",
+    {
+      src: "/gallery/ruby.jpg",
+      alt: "Natural ruby gemstone certified by Finest Gem Lab",
+    },
+    {
+      src: "/gallery/sapphire.jpg",
+      alt: "Natural sapphire gemstone certified by Finest Gem Lab",
+    },
+    {
+      src: "/gallery/emerald.jpg",
+      alt: "Natural emerald gemstone certified by Finest Gem Lab",
+    },
+    {
+      src: "/gallery/spinel.jpg",
+      alt: "Natural spinel gemstone certified by Finest Gem Lab",
+    },
   ];
 
   return (
@@ -21,8 +46,8 @@ export default function GalleryPage() {
         {images.map((img, i) => (
           <div key={i} className="overflow-hidden rounded-lg shadow-lg">
             <Image
-              src={img}
-              alt={`Gem ${i}`}
+              src={img.src}
+              alt={img.alt}
               width={400}
               height={300}
               className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"

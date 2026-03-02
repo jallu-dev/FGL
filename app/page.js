@@ -2,9 +2,73 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaGem, FaCertificate, FaMicroscope, FaSearch } from "react-icons/fa";
 
+export const metadata = {
+  title: "Expert Gem Certification & Analysis in Sri Lanka",
+  description:
+    "Finest Gem Lab (FGL) offers scientifically precise gem identification, certification, origin determination, and treatment detection for jewelers, collectors, and investors worldwide.",
+  alternates: { canonical: "https://fgl.lk" },
+  openGraph: {
+    title: "Finest Gem Lab (FGL) | Expert Gem Certification in Sri Lanka",
+    description:
+      "Scientific precision in gemstone analysis. FGL provides trusted gem identification, certification, origin determination, and treatment detection backed by advanced technology.",
+    url: "https://fgl.lk",
+    images: [
+      {
+        url: "/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Finest Gem Lab — Gemological Laboratory",
+      },
+    ],
+  },
+};
+
+const homeFaqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What is Finest Gem Lab (FGL)?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Finest Gem Lab (FGL) is a leading gemological laboratory in Sri Lanka providing expert gem identification, certification, treatment detection, and geographical origin determination using advanced scientific methods.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How do I verify my FGL gemstone certificate?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "You can instantly verify any FGL gemstone certificate online at fgl.lk/verify by entering your report ID. The system will display full details of the certified gemstone.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What types of gemstones does FGL certify?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "FGL certifies a wide range of gemstones including rubies, sapphires, emeralds, spinels, alexandrites, and many other precious and semi-precious gemstones.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Does FGL determine the geographical origin of gemstones?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. FGL provides geographical origin determination for gemstones such as rubies (Burma, Mozambique, Sri Lanka), sapphires, and emeralds using advanced spectroscopy and trace element analysis.",
+      },
+    },
+  ],
+};
+
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeFaqJsonLd) }}
+      />
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center pt-20 bg-[url('/images/hero-background-3.jpg')] bg-cover bg-center bg-fixe pb-2">
         <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/60 to-transparent z-0" />
