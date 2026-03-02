@@ -54,6 +54,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
         lineHeight: "1.2em",
         margin: "0 2px",
         verticalAlign: "bottom",
+        backgroundColor: "red",
       }}
     >
       {".".repeat(200)}
