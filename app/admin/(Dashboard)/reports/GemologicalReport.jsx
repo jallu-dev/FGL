@@ -161,11 +161,12 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
         <div className="flex items-center mb-6 ml-6">
           <h1
             style={{
-              fontSize: "45",
+              fontSize: "45px",
               fontFamily: "Old English Text MT",
               letterSpacing: "0.1em",
               fontWeight: "400",
               color: "#e3c16f",
+              paddingLeft: "150px",
             }}
           >
             Gemstone Report
