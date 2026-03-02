@@ -166,7 +166,9 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               letterSpacing: "0.1em",
               fontWeight: "400",
               color: "#e3c16f",
-              paddingLeft: "150px",
+              paddingLeft: "50px",
+              marginTop: "-20px",
+              marginBottom: "20px",
             }}
           >
             Gemstone Report
