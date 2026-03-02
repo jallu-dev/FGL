@@ -219,7 +219,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               }}
             >
               {/* report id */}
-              <div style={{ display: "flex", marginLeft: 105, width: 350 }}>
+              <div style={{ display: "flex", marginLeft: 50, width: 450 }}>
                 <div
                   style={{
                     color: colors.gray[900],
@@ -243,7 +243,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               </div>
 
               {/* date */}
-              <div style={{ display: "flex", marginLeft: 105, width: 350 }}>
+              <div style={{ display: "flex", marginLeft: 50, width: 450 }}>
                 <div
                   style={{
                     color: colors.gray[900],
@@ -291,7 +291,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 Details
               </div>
               {/* object description */}
-              <div style={{ display: "flex", marginLeft: 105, width: 350 }}>
+              <div style={{ display: "flex", marginLeft: 50, width: 450 }}>
                 <div
                   style={{
                     color: colors.gray[900],
@@ -314,7 +314,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 </div>
               </div>
 
-              <div style={{ display: "flex", marginLeft: 105, width: 350 }}>
+              <div style={{ display: "flex", marginLeft: 50, width: 450 }}>
                 <div
                   style={{
                     color: colors.gray[900],
@@ -337,7 +337,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 </div>
               </div>
 
-              <div style={{ display: "flex", marginLeft: 105, width: 350 }}>
+              <div style={{ display: "flex", marginLeft: 50, width: 450 }}>
                 <div
                   style={{
                     color: colors.gray[900],
@@ -360,7 +360,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 </div>
               </div>
 
-              <div style={{ display: "flex", marginLeft: 105, width: 350 }}>
+              <div style={{ display: "flex", marginLeft: 50, width: 450 }}>
                 <div
                   style={{
                     color: colors.gray[900],
@@ -386,7 +386,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               {colour?.split("/n").map((item, i) => (
                 <div
                   key={i}
-                  style={{ display: "flex", marginLeft: 105, width: 350 }}
+                  style={{ display: "flex", marginLeft: 50, width: 450 }}
                 >
                   <div
                     style={{
@@ -424,7 +424,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               ))}
 
               {/* transparency */}
-              <div style={{ display: "flex", marginLeft: 105, width: 350 }}>
+              <div style={{ display: "flex", marginLeft: 50, width: 450 }}>
                 <div
                   style={{
                     color: colors.gray[900],
@@ -447,7 +447,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 </div>
               </div>
               {phenomenon && (
-                <div style={{ display: "flex", marginLeft: 105, width: 350 }}>
+                <div style={{ display: "flex", marginLeft: 50, width: 450 }}>
                   <div
                     style={{
                       color: colors.gray[900],
@@ -494,7 +494,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 Results
               </div>
               {/* species */}
-              <div style={{ display: "flex", marginLeft: 105, width: 350 }}>
+              <div style={{ display: "flex", marginLeft: 50, width: 450 }}>
                 <div
                   style={{
                     color: colors.gray[900],
@@ -518,7 +518,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               </div>
 
               {/* variety */}
-              <div style={{ display: "flex", marginLeft: 105, width: 350 }}>
+              <div style={{ display: "flex", marginLeft: 50, width: 450 }}>
                 <div
                   style={{
                     color: colors.gray[900],
@@ -543,7 +543,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               {comments?.split("/n").map((item, i) => (
                 <div
                   key={i}
-                  style={{ display: "flex", marginLeft: 105, width: 350 }}
+                  style={{ display: "flex", marginLeft: 50, width: 450 }}
                 >
                   <div
                     style={{
@@ -585,8 +585,8 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                     display: "flex",
                     alignSelf: "self-start",
                     fontSize: "14px",
-                    marginLeft: 105,
-                    width: 350,
+                    marginLeft: 50,
+                    width: 450,
                   }}
                 >
                   <div
@@ -616,8 +616,8 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                     display: "flex",
                     alignSelf: "self-start",
                     fontSize: "14px",
-                    marginLeft: 105,
-                    width: 350,
+                    marginLeft: 50,
+                    width: 450,
                   }}
                 >
                   <div
