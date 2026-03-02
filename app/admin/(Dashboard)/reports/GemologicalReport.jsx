@@ -159,7 +159,18 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
       >
         {/* Header */}
         <div className="flex items-center mb-6 ml-6">
-          <svg
+          <h1
+            style={{
+              fontSize: "45",
+              fontFamily: "Old English Text MT",
+              letterSpacing: "0.1em",
+              fontWeight: "400",
+              color: "#e3c16f",
+            }}
+          >
+            Gemstone Report
+          </h1>
+          {/* <svg
             width="850"
             height="80"
             viewBox="0 0 650 80"
@@ -194,7 +205,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
             >
               Gemstone Report
             </text>
-          </svg>
+          </svg> */}
         </div>
         {/* Main Content */}
         <div style={{ display: "flex", gap: "32px" }}>
