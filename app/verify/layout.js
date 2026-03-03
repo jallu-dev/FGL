@@ -1,7 +1,7 @@
 export const metadata = {
   title: "Verify Gem Certificate — Check FGL Report Authenticity",
   description:
-    "Verify FGL gemstone certificates online. Enter your report ID to instantly confirm gem identity, origin & certification details."
+    "Verify FGL gemstone certificates online. Enter your report ID to instantly confirm gem identity, origin & certification details.",
   alternates: { canonical: "https://fgl.lk/verify" },
   openGraph: {
     title: "Verify Your FGL Gemstone Certificate | Finest Gem Lab",
