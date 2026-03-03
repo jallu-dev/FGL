@@ -3,12 +3,12 @@ import Image from "next/image";
 export const metadata = {
   title: "Gem Gallery — Certified Rubies, Sapphires, Emeralds & More",
   description:
-    "Browse FGL's gallery of premium gemstones — rubies, sapphires, emeralds, spinels — examined and certified by expert gemologists at Finest Gem Lab, Sri Lanka.",
+    "Premium gemstone gallery featuring certified rubies, sapphires, emeralds & spinels examined by FGL's expert gemologists in Sri Lanka.",
   alternates: { canonical: "https://fgl.lk/gallery" },
   openGraph: {
     title: "Gem Gallery | Finest Gem Lab (FGL)",
     description:
-      "A showcase of premium certified gemstones including rubies, sapphires, emeralds, and spinels, examined by FGL's expert gemologists.",
+      "Premium certified gemstones including rubies, sapphires, emeralds & spinels examined by FGL's expert gemologists.",
     url: "https://fgl.lk/gallery",
   },
 };

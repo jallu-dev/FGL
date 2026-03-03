@@ -22,7 +22,7 @@ export const metadata = {
     template: "%s | Finest Gem Lab (FGL)",
   },
   description:
-    "Finest Gem Lab (FGL) is Sri Lanka's trusted gemological laboratory offering expert gem identification, certification, treatment detection, and origin determination using advanced scientific methods.",
+    "Sri Lanka's trusted gemological laboratory. Expert gem certification, identification, treatment detection & origin determination.",
   keywords: [
     "gem certification Sri Lanka",
     "gemological laboratory",
@@ -63,7 +63,7 @@ export const metadata = {
     siteName: "Finest Gem Lab (FGL)",
     title: "Finest Gem Lab (FGL) | Expert Gem Certification in Sri Lanka",
     description:
-      "Sri Lanka's trusted gemological laboratory — expert gem identification, certification, treatment detection, and origin determination backed by advanced scientific analysis.",
+      "Sri Lanka's trusted gemological laboratory. Expert gem certification, identification, treatment detection & origin determination.",
     images: [
       {
         url: `${SITE_URL}/images/og-image.jpg`,
@@ -77,7 +77,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Finest Gem Lab (FGL) | Expert Gem Certification in Sri Lanka",
     description:
-      "Sri Lanka's trusted gemological laboratory — expert gem identification, certification, treatment detection, and origin determination.",
+      "Expert gem certification, identification, treatment detection & origin determination. Trusted worldwide.",
     images: [`${SITE_URL}/images/og-image.jpg`],
   },
 };

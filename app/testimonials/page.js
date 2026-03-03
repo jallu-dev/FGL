@@ -1,12 +1,12 @@
 export const metadata = {
   title: "Client Testimonials — Trusted Gem Certification",
   description:
-    "Read what jewelers, collectors, and gemstone dealers worldwide say about FGL's gem certification and analysis services. Trusted globally for scientific accuracy and professionalism.",
+    "Client testimonials from jewelers, collectors & dealers worldwide. Trusted for accurate, professional gem certification & analysis services.",
   alternates: { canonical: "https://fgl.lk/testimonials" },
   openGraph: {
     title: "Testimonials | Finest Gem Lab (FGL)",
     description:
-      "Hear from FGL's clients — jewelers, collectors, and dealers who trust Finest Gem Lab for accurate, professional gem certification and origin reports.",
+      "Hear from FGL's clients — jewelers, collectors & dealers who trust us for accurate, professional gem certification.",
     url: "https://fgl.lk/testimonials",
   },
 };

@@ -5,12 +5,12 @@ import { FaGem, FaCertificate, FaMicroscope, FaSearch } from "react-icons/fa";
 export const metadata = {
   title: "Expert Gem Certification & Analysis in Sri Lanka",
   description:
-    "Finest Gem Lab (FGL) offers scientifically precise gem identification, certification, origin determination, and treatment detection for jewelers, collectors, and investors worldwide.",
+    "Expert gem certification in Sri Lanka. Scientific gem identification, origin determination & treatment detection for jewelers & collectors.",
   alternates: { canonical: "https://fgl.lk" },
   openGraph: {
     title: "Finest Gem Lab (FGL) | Expert Gem Certification in Sri Lanka",
     description:
-      "Scientific precision in gemstone analysis. FGL provides trusted gem identification, certification, origin determination, and treatment detection backed by advanced technology.",
+      "Scientific precision in gemstone analysis. Expert gem identification, certification & origin determination.",
     url: "https://fgl.lk",
     images: [
       {

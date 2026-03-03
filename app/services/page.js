@@ -1,12 +1,12 @@
 export const metadata = {
   title: "Gemological Services — Gem Identification, Certification & More",
   description:
-    "FGL offers expert gemological services including gem identification, treatment detection, geographical origin determination, and customized gem certification backed by cutting-edge scientific technology.",
+    "Expert gemological services: gem identification, treatment detection, origin determination & custom certification backed by advanced technology.",
   alternates: { canonical: "https://fgl.lk/services" },
   openGraph: {
     title: "Gemological Services | Finest Gem Lab (FGL)",
     description:
-      "Explore FGL's full range of gemological services: gem identification, treatment detection, origin determination, and customized certification for jewelers, collectors, and investors.",
+      "Full range of gemological services: identification, treatment detection, origin determination & custom certification.",
     url: "https://fgl.lk/services",
   },
 };

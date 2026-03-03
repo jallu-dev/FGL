@@ -1,12 +1,12 @@
 export const metadata = {
   title: "About Us — Finest Gem Lab",
   description:
-    "Learn about Finest Gem Lab (FGL), Sri Lanka's trusted gemological laboratory. Our team of certified gemologists uses state-of-the-art equipment to deliver accurate, unbiased gem reports.",
+    "Sri Lanka's premier gemological laboratory with certified gemologists and state-of-the-art equipment. Trusted worldwide for accurate gem reports.",
   alternates: { canonical: "https://fgl.lk/about" },
   openGraph: {
     title: "About Finest Gem Lab (FGL) | Sri Lanka's Trusted Gem Lab",
     description:
-      "Discover who we are. FGL's certified gemologists deliver accurate, internationally trusted gem identification and certification using advanced scientific methods.",
+      "Certified gemologists deliver accurate, internationally trusted gem identification & certification using advanced methods.",
     url: "https://fgl.lk/about",
   },
 };
