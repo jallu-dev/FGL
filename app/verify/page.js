@@ -265,7 +265,7 @@ export default function VerifyPage() {
       setValue("id", paramId);
       onSubmit({ id: paramId });
     }
-  }, [paramId, setValue]);
+  }, [paramId, setValue, onSubmit]);
 
   return (
     <div>

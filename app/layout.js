@@ -18,7 +18,8 @@ const SITE_URL = "https://fgl.lk";
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "FGL - Finest Gem Lab | Gem Certification Sri Lanka | Gem Lab Sri Lanka",
+    default:
+      "FGL - Finest Gem Lab | Gem Certification Sri Lanka | Gem Lab Sri Lanka",
     template: "%s | FGL - Finest Gem Lab",
   },
   description:

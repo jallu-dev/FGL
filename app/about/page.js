@@ -59,9 +59,14 @@ export default function AboutPage() {
       <div>
         <Breadcrumbs items={breadcrumbItems} />
         <section className="bg-primary py-20 pt-24 text-white text-center">
-          <h1 className="text-4xl font-heading font-bold mb-4">About FGL - Gem Lab Sri Lanka</h1>
+          <h1 className="text-4xl font-heading font-bold mb-4">
+            About FGL - Gem Lab Sri Lanka
+          </h1>
           <p className="max-w-2xl mx-auto text-white/90">
-            FGL (Finest Gem Lab) is Sri Lanka's premier gem laboratory, dedicated to excellence in gem testing and certification. As the leading gem lab in Sri Lanka, we offer scientifically accurate reports trusted by clients worldwide.
+            FGL (Finest Gem Lab) is Sri Lanka's premier gem laboratory,
+            dedicated to excellence in gem testing and certification. As the
+            leading gem lab in Sri Lanka, we offer scientifically accurate
+            reports trusted by clients worldwide.
           </p>
         </section>
 
@@ -72,7 +77,10 @@ export default function AboutPage() {
                 FGL's Mission in Sri Lanka
               </h2>
               <p className="text-accent">
-                As Sri Lanka's leading gem laboratory, FGL aims to provide accurate, unbiased, and professional gemological reports using advanced testing methods, establishing the highest standards for gem certification in Sri Lanka.
+                As Sri Lanka's leading gem laboratory, FGL aims to provide
+                accurate, unbiased, and professional gemological reports using
+                advanced testing methods, establishing the highest standards for
+                gem certification in Sri Lanka.
               </p>
             </div>
             <div>

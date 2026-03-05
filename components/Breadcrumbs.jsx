@@ -22,9 +22,7 @@ export default function Breadcrumbs({ items }) {
         <ol className="flex items-center space-x-2 text-sm">
           {items.map((item, index) => (
             <li key={index} className="flex items-center">
-              {index > 0 && (
-                <span className="mx-2 text-gray-400">/</span>
-              )}
+              {index > 0 && <span className="mx-2 text-gray-400">/</span>}
               {item.href ? (
                 <Link
                   href={item.href}

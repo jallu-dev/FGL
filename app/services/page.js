@@ -17,7 +17,8 @@ const servicesJsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
   name: "FGL Gemological Services - Gem Lab Sri Lanka",
-  description: "Expert gemological services offered by FGL (Finest Gem Lab) - Sri Lanka's premier gem laboratory",
+  description:
+    "Expert gemological services offered by FGL (Finest Gem Lab) - Sri Lanka's premier gem laboratory",
   itemListElement: [
     {
       "@type": "ListItem",
@@ -27,7 +28,11 @@ const servicesJsonLd = {
         name: "Gem Identification",
         description:
           "Scientific analysis to accurately identify gemstone species and varieties using advanced spectroscopy and microscopy.",
-        provider: { "@type": "Organization", name: "Finest Gem Lab", alternateName: "FGL" },
+        provider: {
+          "@type": "Organization",
+          name: "Finest Gem Lab",
+          alternateName: "FGL",
+        },
       },
     },
     {
@@ -143,9 +148,13 @@ export default function ServicesPage() {
       <div>
         <Breadcrumbs items={breadcrumbItems} />
         <section className="bg-primary py-20 pt-24 text-white text-center">
-          <h1 className="text-4xl font-heading font-bold mb-4">FGL Gemological Services</h1>
+          <h1 className="text-4xl font-heading font-bold mb-4">
+            FGL Gemological Services
+          </h1>
           <p className="max-w-2xl mx-auto text-white/90">
-            Comprehensive gemological services from Sri Lanka's premier gem laboratory, backed by cutting-edge technology and international standards.
+            Comprehensive gemological services from Sri Lanka&apos;s premier gem
+            laboratory, backed by cutting-edge technology and international
+            standards.
           </p>
         </section>
 
