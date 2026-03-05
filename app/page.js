@@ -10,7 +10,7 @@ export const metadata = {
   openGraph: {
     title: "FGL - Finest Gem Lab | Premier Gem Lab in Sri Lanka",
     description:
-      "FGL is Sri Lanka's premier gem laboratory. Scientific gemstone certification, testing & identification. Leading gem lab Sri Lanka trusted worldwide.",
+      "FGL is Sri Lanka&#39;s premier gem laboratory. Scientific gemstone certification, testing & identification. Leading gem lab Sri Lanka trusted worldwide.",
     url: "https://fgl.lk",
     images: [
       {
@@ -32,7 +32,7 @@ const homeFaqJsonLd = {
       name: "What is FGL (Finest Gem Lab) Sri Lanka?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "FGL (Finest Gem Lab) is the premier gemological laboratory in Sri Lanka, providing expert gem identification, certification, treatment detection, and geographical origin determination. As Sri Lanka's leading gem lab, FGL uses advanced scientific methods for accurate gemstone testing and certification.",
+        text: "FGL (Finest Gem Lab) is the premier gemological laboratory in Sri Lanka, providing expert gem identification, certification, treatment detection, and geographical origin determination. As Sri Lanka&#39;s leading gem lab, FGL uses advanced scientific methods for accurate gemstone testing and certification.",
       },
     },
     {
@@ -84,8 +84,8 @@ export default function Home() {
         <div className="container mx-auto px-6 z-10 relative">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-6">
-              <span className="text-primary">FGL</span> - Sri Lanka&apos;s
-              Premier
+              <span className="text-primary">FGL</span> - Sri Lanka&#39;s
+              Premier{" "}
               <span className="text-primary">Gem Laboratory</span>
             </h1>
             <p className="text-lg md:text-xl text-white/90 mb-8">
@@ -113,7 +113,7 @@ export default function Home() {
               FGL Gem Lab Services in Sri Lanka
             </h2>
             <p className="text-lg text-accent/80 max-w-2xl mx-auto">
-              As Sri Lanka&apos;s premier gem laboratory, FGL offers
+              As Sri Lanka&#39;s premier gem laboratory, FGL offers
               comprehensive gemological services to jewelers, collectors, and
               investors worldwide.
             </p>
@@ -171,7 +171,7 @@ export default function Home() {
                 Origin Determination
               </h3>
               <p className="text-accent/80">
-                Scientific assessment of a gemstone&apos;s geographical origin
+                Scientific assessment of a gemstone&#39;s geographical origin
                 based on inclusions and properties.
               </p>
             </div>
@@ -191,7 +191,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-6">
-                About FGL - Sri Lanka&apos;s Leading Gem Lab
+                About FGL - Sri Lanka&#39;s Leading Gem Lab
               </h2>
               <p className="text-lg text-accent/80 mb-6">
                 FGL (Finest Gem Lab) has established itself as the premier gem
@@ -279,7 +279,7 @@ export default function Home() {
                 &quot;
               </div>
               <p className="text-accent/80 mb-6 pt-4">
-                FGL&apos;s certification has significantly increased the value
+                FGL&#39;s certification has significantly increased the value
                 and credibility of my gemstone inventory. Their attention to
                 detail is unmatched.
               </p>

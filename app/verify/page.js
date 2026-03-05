@@ -1,7 +1,7 @@
 // app/verify/page.js
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { FaCheckCircle, FaTimesCircle, FaSearch } from "react-icons/fa";
@@ -97,7 +97,7 @@ export default function VerifyPage() {
     setValue,
   } = useForm();
 
-  const onSubmit = async (data) => {
+  const onSubmit = useCallback(async (data) => {
     setIsLoading(true);
     // Reset translation when verifying new report
     setLanguage("en");
@@ -139,7 +139,7 @@ export default function VerifyPage() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [paramId]);
 
   const translateToкитайский = async () => {
     if (!verificationResult?.report) return;

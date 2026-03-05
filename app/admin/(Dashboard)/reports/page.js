@@ -42,7 +42,7 @@ export default function ReportsPage() {
 
   useEffect(() => {
     dataRefetch();
-  }, [page, search]);
+  }, [page, search, dataRefetch]);
 
   useEffect(() => {
     if (data && data.success) {
@@ -50,7 +50,7 @@ export default function ReportsPage() {
       setTotal(data.total);
     }
     dataRefetch();
-  }, [data]);
+  }, [data, dataRefetch]);
 
   // Delete mutation
   const deleteMutation = useMutation({
