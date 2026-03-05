@@ -3,7 +3,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 export const metadata = {
   title: "About FGL | Leading Gem Lab in Sri Lanka",
   description:
-    "FGL (Finest Gem Lab) - Sri Lanka's premier gem laboratory. Certified gemologists, state-of-the-art equipment, and internationally trusted gem certification. Leading gem lab Sri Lanka.",
+    "FGL (Finest Gem Lab) - Sri Lankas premier gem laboratory. Certified gemologists, state-of-the-art equipment, and internationally trusted gem certification. Leading gem lab Sri Lanka.",
   alternates: { canonical: "https://fgl.lk/about" },
   openGraph: {
     title: "About FGL - Finest Gem Lab | Sri Lanka's Premier Gem Laboratory",
@@ -63,7 +63,7 @@ export default function AboutPage() {
             About FGL - Gem Lab Sri Lanka
           </h1>
           <p className="max-w-2xl mx-auto text-white/90">
-            FGL (Finest Gem Lab) is Sri Lanka's premier gem laboratory,
+            FGL (Finest Gem Lab) is Sri Lanka&apos;s premier gem laboratory,
             dedicated to excellence in gem testing and certification. As the
             leading gem lab in Sri Lanka, we offer scientifically accurate
             reports trusted by clients worldwide.
@@ -74,10 +74,10 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
               <h2 className="text-2xl font-heading text-primary font-bold mb-4">
-                FGL's Mission in Sri Lanka
+                FGL&apos;s Mission in Sri Lanka
               </h2>
               <p className="text-accent">
-                As Sri Lanka's leading gem laboratory, FGL aims to provide
+                As Sri Lanka&apos;s leading gem laboratory, FGL aims to provide
                 accurate, unbiased, and professional gemological reports using
                 advanced testing methods, establishing the highest standards for
                 gem certification in Sri Lanka.
@@ -88,7 +88,7 @@ export default function AboutPage() {
                 Why Choose FGL Gem Lab
               </h2>
               <ul className="list-disc ml-5 text-accent space-y-2">
-                <li>Sri Lanka's most advanced gem testing laboratory</li>
+                <li>Sri Lanka&apos;s most advanced gem testing laboratory</li>
                 <li>Internationally certified gemologists</li>
                 <li>Trusted worldwide by gem traders and collectors</li>
                 <li>Fast, reliable, and secure service</li>
