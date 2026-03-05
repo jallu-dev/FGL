@@ -3,21 +3,21 @@ import Link from "next/link";
 import { FaGem, FaCertificate, FaMicroscope, FaSearch } from "react-icons/fa";
 
 export const metadata = {
-  title: "Expert Gem Certification & Analysis in Sri Lanka",
+  title: "FGL - Gem Lab Sri Lanka | Expert Gem Certification & Testing",
   description:
-    "Expert gem certification in Sri Lanka. Scientific gem identification, origin determination & treatment detection for jewelers & collectors.",
+    "FGL (Finest Gem Lab) - Leading gem lab in Sri Lanka. Expert gem certification, gemstone testing & identification. Trusted gem laboratory Sri Lanka for scientific gemstone analysis.",
   alternates: { canonical: "https://fgl.lk" },
   openGraph: {
-    title: "Finest Gem Lab (FGL) | Expert Gem Certification in Sri Lanka",
+    title: "FGL - Finest Gem Lab | Premier Gem Lab in Sri Lanka",
     description:
-      "Scientific precision in gemstone analysis. Expert gem identification, certification & origin determination.",
+      "FGL is Sri Lanka's premier gem laboratory. Scientific gemstone certification, testing & identification. Leading gem lab Sri Lanka trusted worldwide.",
     url: "https://fgl.lk",
     images: [
       {
         url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Finest Gem Lab — Gemological Laboratory",
+        alt: "FGL - Finest Gem Lab | Leading Gem Laboratory in Sri Lanka",
       },
     ],
   },
@@ -29,10 +29,18 @@ const homeFaqJsonLd = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "What is Finest Gem Lab (FGL)?",
+      name: "What is FGL (Finest Gem Lab) Sri Lanka?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Finest Gem Lab (FGL) is a leading gemological laboratory in Sri Lanka providing expert gem identification, certification, treatment detection, and geographical origin determination using advanced scientific methods.",
+        text: "FGL (Finest Gem Lab) is the premier gemological laboratory in Sri Lanka, providing expert gem identification, certification, treatment detection, and geographical origin determination. As Sri Lanka's leading gem lab, FGL uses advanced scientific methods for accurate gemstone testing and certification.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Where is the best gem lab in Sri Lanka?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "FGL (Finest Gem Lab) is recognized as the leading gem laboratory in Sri Lanka, offering world-class gemstone certification and testing services with state-of-the-art equipment and certified gemologists.",
       },
     },
     {
@@ -76,12 +84,11 @@ export default function Home() {
         <div className="container mx-auto px-6 z-10 relative">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-6">
-              Scientific Precision in{" "}
-              <span className="text-primary">Gemstone Analysis</span>
+              <span className="text-primary">FGL</span> - Sri Lanka's Premier{" "}
+              <span className="text-primary">Gem Laboratory</span>
             </h1>
             <p className="text-lg md:text-xl text-white/90 mb-8">
-              Finest Gem Lab provides expert gem certification and analysis with
-              the highest standards of scientific precision and integrity.
+              FGL (Finest Gem Lab) is the leading gem lab in Sri Lanka, providing expert gemstone certification, testing, and identification with the highest standards of scientific precision.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/verify" className="btn-secondary">
@@ -100,11 +107,10 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">
-              Our Expertise
+              FGL Gem Lab Services in Sri Lanka
             </h2>
             <p className="text-lg text-accent/80 max-w-2xl mx-auto">
-              We offer comprehensive gemological services to jewelers,
-              collectors, and investors worldwide.
+              As Sri Lanka's premier gem laboratory, FGL offers comprehensive gemological services to jewelers, collectors, and investors worldwide.
             </p>
           </div>
 
@@ -180,17 +186,13 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-6">
-                The Finest Gem Lab
+                About FGL - Sri Lanka's Leading Gem Lab
               </h2>
               <p className="text-lg text-accent/80 mb-6">
-                With over two decades of experience in the industry, FGL has
-                established itself as a trusted authority in gemological
-                analysis and certification.
+                FGL (Finest Gem Lab) has established itself as the premier gem laboratory in Sri Lanka, trusted by jewelers, collectors, and gem traders worldwide for accurate gemstone testing and certification.
               </p>
               <p className="text-lg text-accent/80 mb-8">
-                Our laboratory is equipped with the most advanced technology and
-                staffed by highly qualified gemologists with international
-                credentials.
+                Our gem lab in Sri Lanka is equipped with state-of-the-art technology and staffed by internationally certified gemologists, making FGL the top choice for gem certification in Sri Lanka.
               </p>
               <Link href="/about" className="btn-secondary">
                 Learn More About Us
@@ -212,11 +214,10 @@ export default function Home() {
       <section className="py-20 bg-primary">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-6">
-            Verify Your Gemstone Report
+            Verify Your FGL Gemstone Certificate
           </h2>
           <p className="text-lg text-white/90 max-w-2xl mx-auto mb-8">
-            Ensure the authenticity of your FGL certification with our secure
-            online verification system.
+            Instantly verify the authenticity of your FGL gem lab certification with our secure online verification system. All FGL reports issued in Sri Lanka can be verified online.
           </p>
           <Link
             href="/verify"
