@@ -97,49 +97,52 @@ export default function VerifyPage() {
     setValue,
   } = useForm();
 
-  const onSubmit = useCallback(async (data) => {
-    setIsLoading(true);
-    // Reset translation when verifying new report
-    setLanguage("en");
-    setTranslatedData(null);
+  const onSubmit = useCallback(
+    async (data) => {
+      setIsLoading(true);
+      // Reset translation when verifying new report
+      setLanguage("en");
+      setTranslatedData(null);
 
-    try {
-      const reportId = data?.id || paramId;
+      try {
+        const reportId = data?.id || paramId;
 
-      const response = await fetch("/api/verify", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ reportId }),
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
-        setVerificationResult({
-          status: "valid",
-          report: result.report,
+        const response = await fetch("/api/verify", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ reportId }),
         });
-      } else {
+
+        const result = await response.json();
+
+        if (result.success) {
+          setVerificationResult({
+            status: "valid",
+            report: result.report,
+          });
+        } else {
+          setVerificationResult({
+            status: "invalid",
+            message:
+              result.message ||
+              "No report found with this report id. Please check and try again.",
+          });
+        }
+      } catch (error) {
+        console.error("Verification error:", error);
         setVerificationResult({
           status: "invalid",
           message:
-            result.message ||
-            "No report found with this report id. Please check and try again.",
+            "An error occurred while verifying the report. Please try again.",
         });
+      } finally {
+        setIsLoading(false);
       }
-    } catch (error) {
-      console.error("Verification error:", error);
-      setVerificationResult({
-        status: "invalid",
-        message:
-          "An error occurred while verifying the report. Please try again.",
-      });
-    } finally {
-      setIsLoading(false);
-    }
-  }, [paramId]);
+    },
+    [paramId],
+  );
 
   const translateToкитайский = async () => {
     if (!verificationResult?.report) return;
@@ -492,15 +495,15 @@ export default function VerifyPage() {
                           </p>
                           <p className="text-lg font-medium text-accent">
                             {`${new Date(
-                              verificationResult.report.created_at
+                              verificationResult.report.created_at,
                             ).getDate()} ${
                               months[
                                 new Date(
-                                  verificationResult.report.created_at
+                                  verificationResult.report.created_at,
                                 ).getMonth()
                               ]
                             } ${new Date(
-                              verificationResult.report.created_at
+                              verificationResult.report.created_at,
                             ).getFullYear()}`}
                           </p>
                         </div>

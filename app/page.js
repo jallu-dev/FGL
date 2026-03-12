@@ -85,8 +85,7 @@ export default function Home() {
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-6">
               <span className="text-primary">FGL</span> - Sri Lanka&#39;s
-              Premier{" "}
-              <span className="text-primary">Gem Laboratory</span>
+              Premier <span className="text-primary">Gem Laboratory</span>
             </h1>
             <p className="text-lg md:text-xl text-white/90 mb-8">
               FGL (Finest Gem Lab) is the leading gem lab in Sri Lanka,
