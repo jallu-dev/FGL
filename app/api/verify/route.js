@@ -40,7 +40,7 @@ export async function POST(req) {
       if (rows.length === 0) {
         return Response.json({
           success: false,
-          status: "invalid",
+          status: "not_found",
           message:
             "No report found with this report id. Please check and try again.",
         });
@@ -48,12 +48,15 @@ export async function POST(req) {
 
       const report = rows[0];
 
-      const command = new GetObjectCommand({
-        Bucket: process.env.AWS_BUCKET_NAME,
-        Key: report.image_file_path,
-      });
+      let url = null;
+      if (report.image_file_path) {
+        const command = new GetObjectCommand({
+          Bucket: process.env.AWS_BUCKET_NAME,
+          Key: report.image_file_path,
+        });
 
-      const url = await getSignedUrl(s3, command, { expiresIn: 3600 }); // 1h
+        url = await getSignedUrl(s3, command, { expiresIn: 3600 }); // 1h
+      }
 
       // Return the report data with proper field names
       const formattedReport = {
@@ -88,6 +91,9 @@ export async function POST(req) {
     return Response.json(
       {
         error: "Failed to verify report",
+        status: "server_error",
+        message:
+          "Verification service is temporarily unavailable. Please try again.",
         success: false,
       },
       { status: 500 }

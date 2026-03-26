@@ -63,6 +63,7 @@ const fieldLabels = {
 export default function VerifyPage() {
   const [verificationResult, setVerificationResult] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isRetrying, setIsRetrying] = useState(false);
   const [language, setLanguage] = useState("en"); // 'en' or 'zh'
   const [translatedData, setTranslatedData] = useState(null);
   const [isTranslating, setIsTranslating] = useState(false);
@@ -97,9 +98,25 @@ export default function VerifyPage() {
     setValue,
   } = useForm();
 
+  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+  const verifyReportRequest = async (reportId) => {
+    const response = await fetch("/api/verify", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ reportId }),
+    });
+
+    const result = await response.json();
+    return { response, result };
+  };
+
   const onSubmit = useCallback(
     async (data) => {
       setIsLoading(true);
+      setIsRetrying(false);
       // Reset translation when verifying new report
       setLanguage("en");
       setTranslatedData(null);
@@ -107,37 +124,53 @@ export default function VerifyPage() {
       try {
         const reportId = data?.id || paramId;
 
-        const response = await fetch("/api/verify", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ reportId }),
-        });
+        let verifyResponse = await verifyReportRequest(reportId);
 
-        const result = await response.json();
+        if (
+          !verifyResponse.response.ok &&
+          verifyResponse.response.status >= 500
+        ) {
+          setIsRetrying(true);
+          await sleep(1200);
+          verifyResponse = await verifyReportRequest(reportId);
+          setIsRetrying(false);
+        }
 
-        if (result.success) {
+        const { response, result } = verifyResponse;
+
+        if (response.ok && result.success) {
           setVerificationResult({
             status: "valid",
             report: result.report,
           });
-        } else {
+          return;
+        }
+
+        if (result?.status === "not_found") {
           setVerificationResult({
             status: "invalid",
             message:
               result.message ||
               "No report found with this report id. Please check and try again.",
           });
+          return;
         }
+
+        setVerificationResult({
+          status: "error",
+          message:
+            result?.message ||
+            "Verification is temporarily unavailable. Please try again in a few seconds.",
+        });
       } catch (error) {
         console.error("Verification error:", error);
         setVerificationResult({
-          status: "invalid",
+          status: "error",
           message:
-            "An error occurred while verifying the report. Please try again.",
+            "Verification is temporarily unavailable. Please try again in a few seconds.",
         });
       } finally {
+        setIsRetrying(false);
         setIsLoading(false);
       }
     },
@@ -365,6 +398,33 @@ export default function VerifyPage() {
                   "Verify Report"
                 )}
               </button>
+
+              {isRetrying && (
+                <div className="mt-3 flex items-center justify-center gap-2 text-sm text-amber-700">
+                  <svg
+                    className="h-4 w-4 animate-spin"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                    ></path>
+                  </svg>
+                  <span>Auto retrying verification...</span>
+                </div>
+              )}
             </form>
 
             {/* Verification Result */}
@@ -674,7 +734,7 @@ export default function VerifyPage() {
                       )}
                     </div>
                   </>
-                ) : (
+                ) : verificationResult.status === "invalid" ? (
                   <>
                     <div className="flex items-center mb-4">
                       <FaTimesCircle className="text-red-500 text-2xl mr-3" />
@@ -683,6 +743,16 @@ export default function VerifyPage() {
                       </h3>
                     </div>
                     <p className="text-red-700">{verificationResult.message}</p>
+                  </>
+                ) : (
+                  <>
+                    <div className="flex items-center mb-4">
+                      <FaTimesCircle className="text-amber-500 text-2xl mr-3" />
+                      <h3 className="text-2xl font-heading font-bold text-amber-600">
+                        Verification Delayed
+                      </h3>
+                    </div>
+                    <p className="text-amber-700">{verificationResult.message}</p>
                   </>
                 )}
               </motion.div>
