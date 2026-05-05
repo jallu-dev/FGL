@@ -158,57 +158,28 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
         }}
       >
         {/* Header */}
-        <div className="flex items-center mb-6 ml-6">
+        <div className="flex items-center mt-4 ml-34">
+          <Image
+            src="/images/fgl-color-modern.png"
+            alt="logo"
+            width={3375} // double your display size
+            height={864}
+            className="h-16 w-auto" // scale down with CSS
+            priority // optional: loads immediately
+          />
+        </div>
+        <div className="flex items-center mb-3 ml-34.75">
           <h1
             style={{
-              fontSize: "45px",
-              fontFamily: "Old English Text MT",
-              letterSpacing: "0.1em",
-              fontWeight: "400",
-              color: "#e3c16f",
-              paddingLeft: "68px",
-              marginTop: "-15px",
-              marginBottom: "25px",
+              fontSize: "22px",
+              letterSpacing: "0.05em",
+              fontWeight: "800",
+              color: "#000",
+              textTransform: "uppercase",
             }}
           >
             Gemstone Report
           </h1>
-          {/* <svg
-            width="850"
-            height="80"
-            viewBox="0 0 650 80"
-            className="max-w-full"
-          >
-            <defs>
-              <linearGradient
-                id="accentToSecondary"
-                x1="0%"
-                y1="0%"
-                x2="0%"
-                y2="100%"
-              >
-                <stop offset="0%" stopColor="var(--primary-color, #e3c16f)" />
-                <stop
-                  offset="50%"
-                  stopColor="var(--secondary-color, #e3c16f)"
-                />
-                <stop offset="100%" stopColor="var(--accent-color, #e3c16f)" />
-              </linearGradient>
-            </defs>
-            <text
-              x="160"
-              y="45"
-              textAnchor="middle"
-              dominantBaseline="middle"
-              fill="url(#accentToSecondary)"
-              fontSize="45"
-              fontFamily="Old English Text MT"
-              letterSpacing="0.1em"
-              fontWeight="400"
-            >
-              Gemstone Report
-            </text>
-          </svg> */}
         </div>
         {/* Main Content */}
         <div style={{ display: "flex", gap: "32px" }}>
@@ -299,7 +270,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                   color: colors.gray[900],
                   fontWeight: "600",
                   fontSize: "16px",
-                  textTransform: "capitalize",
+                  textTransform: "uppercase",
                   marginLeft: 50,
                 }}
               >
@@ -398,7 +369,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 </div>
               </div>
 
-              {colour?.split("/n").map((item, i) => (
+              {colour?.split("\n").map((item, i) => (
                 <div
                   key={i}
                   style={{ display: "flex", marginLeft: 50, width: 450 }}
@@ -502,7 +473,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                   color: colors.gray[900],
                   fontWeight: "600",
                   fontSize: "16px",
-                  textTransform: "capitalize",
+                  textTransform: "uppercase",
                   marginLeft: 50,
                 }}
               >
@@ -555,7 +526,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                   {variety}
                 </div>
               </div>
-              {comments?.split("/n").map((item, i) => (
+              {comments?.split("\n").map((item, i) => (
                 <div
                   key={i}
                   style={{ display: "flex", marginLeft: 50, width: 450 }}
@@ -722,7 +693,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 alignItems: "center",
                 justifyContent: "center",
                 marginBottom: "5px",
-                border: `1px solid ${colors.black}`,
+                border: `1px solid ${colors.gray[600]}`,
                 alignSelf: "center",
               }}
             >
@@ -915,7 +886,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 textAlign: "center",
                 fontSize: "10px",
                 color: colors.gray[600],
-                marginTop: "15px",
+                marginTop: "8px",
               }}
             >
               <div
@@ -927,18 +898,17 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               >
                 <div className="flex justify-center items-center">
                   <Image
-                    src="/images/fgl-color.svg"
+                    src="/images/fgl-color-modern.png"
                     alt="logo"
-                    width={1563}
-                    height={400}
-                    className="h-15 w-auto"
-                    priority
+                    width={3375} // double your display size
+                    height={864}
+                    className="h-12 w-auto" // scale down with CSS
+                    priority // optional: loads immediately
                   />
                 </div>
               </div>
               <div style={{ color: colors.gray[600] }}>
-                94/3, Sally Hajiar Mawatha, Chinafort, Beruwala, 12070, Sri
-                Lanka
+                64D/2F, China Fort Rd, Beruwala, 12070, Sri Lanka
               </div>
               <div style={{ color: colors.gray[600] }}>
                 +94 76 354 9226 &nbsp;&nbsp; {email}

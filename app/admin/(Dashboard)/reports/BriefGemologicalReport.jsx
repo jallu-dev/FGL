@@ -102,52 +102,29 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
         color: colors.gray[800],
       }}
     >
-      <div className="flex justify-around items-center mb-0.5">
+      <div className="flex justify-around items-center mb-0.5 gap-x-2">
         {/* Header with FGL Logo */}
-        <div className="relative shrink-0">
+        <div className="relative shrink-0 flex-1 ">
           <Image
-            src="/images/fgl-color.svg"
+            src="/images/fgl-color-modern.png"
             alt="logo"
-            width={1563} // double your display size
-            height={400}
-            className="h-10.25 w-auto" // scale down with CSS
+            width={3375} // double your display size
+            height={864}
+            className="h-8 w-auto ml-1.5" // scale down with CSS
             priority // optional: loads immediately
           />
         </div>
-        <div className="flex items-center justify-center">
-          <svg
-            width="850"
-            height="20"
-            viewBox="0 0 650 20"
-            className="max-w-full"
+        <div className="flex items-center justify-end flex-1">
+          <h1
+            style={{
+              fontSize: "10px",
+              fontFamily: "serif",
+              fontWeight: "800",
+              textTransform: "uppercase",
+            }}
           >
-            <defs>
-              <linearGradient
-                id="accentToSecondary"
-                x1="0%"
-                y1="0%"
-                x2="0%"
-                y2="100%"
-              >
-                <stop offset="0%" stopColor="var(--primary-color, #000)" />
-                <stop offset="100%" stopColor="var(--accent-color, #000)" />
-              </linearGradient>
-            </defs>
-            <text
-              x="325"
-              y="10"
-              textAnchor="middle"
-              dominantBaseline="middle"
-              fill="url(#accentToSecondary)"
-              fontSize="45"
-              fontWeight="600"
-              style={{ textTransform: "uppercase" }}
-              letterSpacing="1px"
-              fontFamily="serif"
-            >
-              Brief Gemstone Report
-            </text>
-          </svg>
+            Brief Gemstone Report
+          </h1>
         </div>
       </div>
       {/* Main Content */}
@@ -272,9 +249,18 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
             >
               Measurements
             </div>
-            <div style={{ color: colors.gray[800], fontWeight: "400" }}>
-              {measurement}
-            </div>
+            <ul
+              style={{
+                color: colors.gray[800],
+                fontWeight: "400",
+                margin: "0",
+                padding: "0",
+              }}
+            >
+              {measurement?.split("\n").map((item, i) => (
+                <li key={i}>{item || "\u200b"}</li>
+              ))}
+            </ul>
           </div>
 
           {/* Color */}
@@ -289,9 +275,18 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
             >
               Colour
             </div>
-            <div style={{ color: colors.gray[800], fontWeight: "400" }}>
-              {colour}
-            </div>
+            <ul
+              style={{
+                color: colors.gray[800],
+                fontWeight: "400",
+                margin: "0",
+                padding: "0",
+              }}
+            >
+              {colour?.split("\n").map((item, i) => (
+                <li key={i}>{item || "\u200b"}</li>
+              ))}
+            </ul>
           </div>
 
           {/* Shape & Cut */}
@@ -330,7 +325,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 wordBreak: "break-word",
               }}
             >
-              {comments?.split("/n").map((item, i) => (
+              {comments?.split("\n").map((item, i) => (
                 <li key={i}>{item || "\u200b"}</li>
               ))}
             </ul>
@@ -348,43 +343,55 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
           }}
         >
           {/* Gem Image */}
-          <div
-            style={{
-              backgroundColor: colors.gray[100],
-              width: "20mm",
-              height: "20mm",
-              borderRadius: "2mm",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              overflow: "hidden",
-              border: "1px solid #000",
-            }}
-          >
-            {image_file_path ? (
-              <Image
-                src={image_file_path}
-                alt="Gem"
-                width={200} // 16mm in pixels approximately
-                height={200}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  borderRadius: "2mm",
-                  overflow: "hidden",
-                }}
-              />
-            ) : (
-              <div
-                style={{
-                  width: "18mm",
-                  height: "18mm",
-                  backgroundColor: colors.primary,
-                  borderRadius: "50%",
-                }}
-              ></div>
-            )}
+          <div>
+            <div
+              style={{
+                backgroundColor: colors.gray[100],
+                width: "20mm",
+                height: "20mm",
+                borderRadius: "2mm",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                overflow: "hidden",
+                border: "1px solid #000",
+              }}
+            >
+              {image_file_path ? (
+                <Image
+                  src={image_file_path}
+                  alt="Gem"
+                  width={200} // 16mm in pixels approximately
+                  height={200}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    borderRadius: "2mm",
+                    overflow: "hidden",
+                  }}
+                />
+              ) : (
+                <div
+                  style={{
+                    width: "18mm",
+                    height: "18mm",
+                    backgroundColor: colors.primary,
+                    borderRadius: "50%",
+                  }}
+                ></div>
+              )}
+            </div>
+            <div
+              style={{
+                textAlign: "center",
+                fontSize: "4px",
+                color: colors.gray[600],
+                marginTop: "-3px",
+              }}
+            >
+              <em>Image is approximate</em>
+            </div>
           </div>
 
           <div className="flex gap-x-0.5 items-end mt-3">
