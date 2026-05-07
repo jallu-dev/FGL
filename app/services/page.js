@@ -146,7 +146,6 @@ export default function ServicesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <div>
-        <Breadcrumbs items={breadcrumbItems} />
         <section className="bg-primary py-20 pt-24 text-white text-center">
           <h1 className="text-4xl font-heading font-bold mb-4">
             FGL Gemological Services
@@ -157,6 +156,7 @@ export default function ServicesPage() {
             standards.
           </p>
         </section>
+        <Breadcrumbs items={breadcrumbItems} />
 
         <section className="py-16 container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           {services.map((service, index) => (

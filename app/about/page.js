@@ -57,7 +57,6 @@ export default function AboutPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <div>
-        <Breadcrumbs items={breadcrumbItems} />
         <section className="bg-primary py-20 pt-24 text-white text-center">
           <h1 className="text-4xl font-heading font-bold mb-4">
             About FGL - Gem Lab Sri Lanka
@@ -69,6 +68,7 @@ export default function AboutPage() {
             reports trusted by clients worldwide.
           </p>
         </section>
+        <Breadcrumbs items={breadcrumbItems} />
 
         <section className="py-16 container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">

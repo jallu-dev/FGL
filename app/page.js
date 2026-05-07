@@ -335,7 +335,7 @@ export default function Home() {
         </div>
         <div className="flex justify-center mt-10 ">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1982.1774362698338!2d79.98937668636934!3d6.476657345913174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae231f320cbd301%3A0x5331b386260a3a1e!2sFINEST%20GEM%20LAB!5e0!3m2!1sen!2slk!4v1764760126185!5m2!1sen!2slk"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.350756834872!2d79.9874871!3d6.477181300000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae22e1f963e0f17%3A0x1f4ff62b8ddb0fff!2sHidayathulla%20Gem%20Tower!5e0!3m2!1sen!2slk!4v1778177558850!5m2!1sen!2slk"
             width="60%"
             height="250"
             style={{ border: 0, borderRadius: 20 }}
