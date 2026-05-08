@@ -732,7 +732,6 @@ export default function VerifyPage() {
                         </div>
                       )}
                     </div>
-                    </div>
                   </>
                 ) : verificationResult.status === "invalid" ? (
                   <>
