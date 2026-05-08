@@ -1,5 +1,3 @@
-import Breadcrumbs from "@/components/Breadcrumbs";
-
 export const metadata = {
   title: "FGL Services | Gem Certification & Testing Sri Lanka",
   description:
@@ -156,7 +154,6 @@ export default function ServicesPage() {
             standards.
           </p>
         </section>
-        <Breadcrumbs items={breadcrumbItems} />
 
         <section className="py-16 container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           {services.map((service, index) => (

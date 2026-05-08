@@ -1,5 +1,3 @@
-import Breadcrumbs from "@/components/Breadcrumbs";
-
 export const metadata = {
   title: "About FGL | Leading Gem Lab in Sri Lanka",
   description:
@@ -68,7 +66,6 @@ export default function AboutPage() {
             reports trusted by clients worldwide.
           </p>
         </section>
-        <Breadcrumbs items={breadcrumbItems} />
 
         <section className="py-16 container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
