@@ -15,30 +15,20 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { format } from "date-fns";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { Calendar } from "@/components/ui/calendar";
-import { Calendar as CalendarIcon } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
-import { CloudUpload, Paperclip } from "lucide-react";
+import { CloudUpload } from "lucide-react";
 import {
   FileInput,
   FileUploader,
-  FileUploaderContent,
-  FileUploaderItem,
 } from "@/components/extension/file-upload";
-import { useMutation, useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
-  description: z.string().min(1),
-  title: z.string().min(1),
+  title: z.string().min(1, "Title is required"),
+  description: z.string().min(1, "Description is required"),
+  category: z.string().min(1, "Category is required"),
 });
 
 export default function MyForm() {
@@ -55,8 +45,9 @@ export default function MyForm() {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      description: "",
       title: "",
+      description: "",
+      category: "Mixed",
     },
   });
 
@@ -64,8 +55,7 @@ export default function MyForm() {
     setGenerating(true);
     try {
       await handleGeneratePost(form.getValues());
-
-      toast.success("Image Post Created Succefully");
+      toast.success("Image Post Created Successfully");
       router.replace("/admin/images");
     } catch (error) {
       console.error("Form submission error", error);
@@ -77,7 +67,6 @@ export default function MyForm() {
 
   const handleGeneratePost = async (data) => {
     try {
-      // Validate file size on frontend first
       if (file.length > 0 && file[0].size > 10 * 1024 * 1024) {
         toast.error(
           `File too large: ${(file[0].size / 1024 / 1024).toFixed(
@@ -90,9 +79,10 @@ export default function MyForm() {
       const formData = new FormData();
 
       // Append all form fields
-      for (const [key, value] of Object.entries(data)) {
-        formData.append(key, value?.toString() || "");
-      }
+      formData.append("title", data.title);
+      formData.append("description", data.description);
+      formData.append("category", data.category);
+      formData.append("status", "published"); // Set to published by default
 
       // Append file if present
       if (file.length > 0) {
@@ -102,7 +92,6 @@ export default function MyForm() {
         return;
       }
 
-      // Make request with timeout
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 60000); // 60 second timeout
 
@@ -113,35 +102,21 @@ export default function MyForm() {
       });
 
       clearTimeout(timeoutId);
-
       const result = await res.json();
 
-      if (res.ok) {
-        toast.success("Post Created Successfully!");
-
-        // Reset form after successful submission
-        // form.reset();
-        setFile([]);
-      } else {
-        // Handle specific error cases
+      if (!res.ok) {
         if (res.status === 413) {
           toast.error("File too large. Please use a file smaller than 10MB.");
         } else {
-          toast.error(
-            result.error || "Failed to submit report. Please try again."
-          );
+          toast.error(result.error || "Failed to submit post. Please try again.");
         }
         throw new Error(result.error || "Something went wrong");
       }
     } catch (error) {
       console.error("Failed to generate post:", error);
-
       if (error.name === "AbortError") {
         toast.error("Upload timeout. Please try with a smaller file.");
-      } else if (!error.message.includes("File too large")) {
-        toast.error("Failed to submit report. Please try again.");
       }
-
       throw error;
     }
   };
@@ -150,7 +125,6 @@ export default function MyForm() {
     if (file.length) {
       const selectedFile = file[0];
 
-      // Check file size
       if (selectedFile.size > 10 * 1024 * 1024) {
         toast.error(
           `File too large: ${(selectedFile.size / 1024 / 1024).toFixed(
@@ -161,7 +135,6 @@ export default function MyForm() {
         return;
       }
 
-      // Check file type
       const validTypes = ["image/jpeg", "image/jpg", "image/png"];
       if (!validTypes.includes(selectedFile.type)) {
         toast.error("Invalid file type. Please select a JPG or PNG image.");
@@ -180,30 +153,64 @@ export default function MyForm() {
         className="max-w-4xl mx-auto py-10 space-y-8"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Remaining fields */}
-          {[
-            { name: "title", label: "Title", required: true },
-            { name: "description", label: "Description", required: true },
-          ].map((item) => (
+          {/* Title field */}
+          <FormField
+            control={form.control}
+            name="title"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>
+                  Title <span className="text-red-500">*</span>
+                </FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter title" className="bg-white" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Category Select Box */}
+          <FormField
+            control={form.control}
+            name="category"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>
+                  Category <span className="text-red-500">*</span>
+                </FormLabel>
+                <FormControl>
+                  <select
+                    className="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    {...field}
+                  >
+                    <option value="Ruby">Ruby</option>
+                    <option value="Sapphire">Sapphire</option>
+                    <option value="Emerald">Emerald</option>
+                    <option value="Diamond">Diamond</option>
+                    <option value="Mixed">Mixed</option>
+                    <option value="Equipment">Equipment</option>
+                  </select>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Description field (full width) */}
+          <div className="md:col-span-2">
             <FormField
-              key={item.name}
               control={form.control}
-              name={item.name}
+              name="description"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>
-                    {item.label}
-                    {item.required ? (
-                      <span className="text-red-500">*</span>
-                    ) : (
-                      ""
-                    )}
+                    Description <span className="text-red-500">*</span>
                   </FormLabel>
-
                   <FormControl>
-                    <Input
-                      placeholder={`Enter ${item.name}`}
-                      className="bg-white"
+                    <Textarea
+                      placeholder="Enter description of the image"
+                      className="bg-white min-h-[100px]"
                       {...field}
                     />
                   </FormControl>
@@ -211,17 +218,17 @@ export default function MyForm() {
                 </FormItem>
               )}
             />
-          ))}
+          </div>
 
           {/* File Upload (full width) */}
           <div className="md:col-span-2">
             <FormField
               control={form.control}
               name="file"
-              render={({ field }) => (
+              render={() => (
                 <FormItem>
                   <FormLabel>
-                    Select File<span className="text-red-500">*</span>
+                    Select File <span className="text-red-500">*</span>
                   </FormLabel>
                   <FormControl>
                     <FileUploader
@@ -233,10 +240,10 @@ export default function MyForm() {
                       {file?.length === 0 && (
                         <FileInput
                           id="fileInput"
-                          className="outline-dashed outline-1 outline-slate-500"
+                          className="outline-dashed outline-1 outline-slate-500 cursor-pointer"
                         >
                           <div className="flex items-center justify-center flex-col p-8 w-full">
-                            <CloudUpload className="text-gray-500 w-10 h-10" />
+                            <CloudUpload className="text-gray-500 w-10 h-10 mb-2" />
                             <p className="mb-1 text-sm text-gray-500 dark:text-gray-400">
                               <span className="font-semibold">
                                 Click to upload
@@ -256,13 +263,13 @@ export default function MyForm() {
                             src={URL.createObjectURL(file[0])}
                             alt="Uploaded"
                             className="rounded shadow"
-                            width="200"
-                            height="200"
+                            width={200}
+                            height={200}
                             style={{
                               objectFit: "cover",
                             }}
                           />
-                          <p className="text-sm text-gray-700">
+                          <p className="text-sm text-gray-700 font-medium">
                             {file[0].name}
                           </p>
                           <button
@@ -288,15 +295,14 @@ export default function MyForm() {
 
         <div className="pt-6">
           <Button
-            className={`bg-blue ${
-              generating
-                ? "cursor-not-allowed bg-primary/50"
-                : "cursor-pointer bg-primary"
-            }`}
-            disabled={generating ? true : false}
+            className={cn(
+              "px-6 py-2 rounded text-white bg-primary hover:bg-primary-dark transition-colors",
+              generating ? "cursor-not-allowed opacity-50" : "cursor-pointer"
+            )}
+            disabled={generating}
             type="submit"
           >
-            Submit
+            {generating ? "Submitting..." : "Submit"}
           </Button>
         </div>
       </form>

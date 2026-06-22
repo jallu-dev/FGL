@@ -1,5 +1,5 @@
 import { pool } from "@/lib/db";
-import { s3 } from "@/lib/s3";
+import { s3 } from "@/lib/r2";
 import {
   PutObjectCommand,
   DeleteObjectCommand,
@@ -36,7 +36,7 @@ export async function GET(req, context) {
       const report = rows[0];
 
       const command = new GetObjectCommand({
-        Bucket: process.env.AWS_BUCKET_NAME,
+        Bucket: process.env.R2_BUCKET_NAME,
         Key: report.image_file_path,
       });
 
@@ -175,11 +175,10 @@ export async function PUT(req, { params }) {
         // Upload new image to S3
         await s3.send(
           new PutObjectCommand({
-            Bucket: process.env.AWS_BUCKET_NAME,
+            Bucket: process.env.R2_BUCKET_NAME,
             Key: newKey,
             Body: buffer,
             ContentType: imageFile.type || "image/jpeg",
-            ACL: "private",
           })
         );
 
@@ -188,7 +187,7 @@ export async function PUT(req, { params }) {
           try {
             await s3.send(
               new DeleteObjectCommand({
-                Bucket: process.env.AWS_BUCKET_NAME,
+                Bucket: process.env.R2_BUCKET_NAME,
                 Key: currentReport[0].image_file_path,
               })
             );
@@ -281,7 +280,7 @@ export async function DELETE(req, { params }) {
         try {
           await s3.send(
             new DeleteObjectCommand({
-              Bucket: process.env.AWS_BUCKET_NAME,
+              Bucket: process.env.R2_BUCKET_NAME,
               Key: currentReport[0].image_file_path,
             })
           );

@@ -1,5 +1,5 @@
 import { pool } from "@/lib/db";
-import { s3 } from "@/lib/s3";
+import { s3 } from "@/lib/r2";
 import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { randomUUID } from "crypto";
 
@@ -113,11 +113,10 @@ export async function POST(req) {
     // Upload to S3
     await s3.send(
       new PutObjectCommand({
-        Bucket: process.env.AWS_BUCKET_NAME,
+        Bucket: process.env.R2_BUCKET_NAME,
         Key: key,
         Body: buffer,
         ContentType: imageFile.type || "image/jpeg",
-        ACL: "private",
       })
     );
 

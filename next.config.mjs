@@ -9,7 +9,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "finest-gem-lab.s3.ap-south-1.amazonaws.com",
+        hostname: "*.r2.cloudflarestorage.com",
         pathname: "/**",
       },
     ],
