@@ -19,10 +19,8 @@ import DownloadModal from "./DownloadModal";
 import generateBriefReportPDF from "./generateBriefReportPDF";
 
 export default function ReportsPage() {
-  const [reports, setReports] = useState([]);
   const [page, setPage] = useState(1);
   const [limit] = useState(10);
-  const [total, setTotal] = useState(0);
   const [search, setSearch] = useState("");
   const [selectedReport, setSelectedReport] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
@@ -35,22 +33,13 @@ export default function ReportsPage() {
 
   const queryClient = useQueryClient();
 
-  const { data, refetch: dataRefetch } = useQuery({
+  const { data } = useQuery({
     queryFn: () => getAllReports({ page, limit, search }),
-    queryKey: ["reports"],
+    queryKey: ["reports", { page, limit, search }],
   });
 
-  useEffect(() => {
-    dataRefetch();
-  }, [page, search, dataRefetch]);
-
-  useEffect(() => {
-    if (data && data.success) {
-      setReports(data.rows);
-      setTotal(data.total);
-    }
-    dataRefetch();
-  }, [data, dataRefetch]);
+  const reports = data?.success ? data.rows : [];
+  const total = data?.success ? data.total : 0;
 
   // Delete mutation
   const deleteMutation = useMutation({
@@ -66,7 +55,7 @@ export default function ReportsPage() {
     },
     onSuccess: () => {
       toast.success("Report deleted successfully!");
-      queryClient.invalidateQueries(["reports"]);
+      queryClient.invalidateQueries({ queryKey: ["reports"] });
       setShowDeleteModal(false);
       setSelectedReport(null);
     },
@@ -319,7 +308,7 @@ export default function ReportsPage() {
             setSelectedReport(null);
           }}
           onSuccess={() => {
-            queryClient.invalidateQueries(["reports"]);
+            queryClient.invalidateQueries({ queryKey: ["reports"] });
             setShowEditModal(false);
             setSelectedReport(null);
           }}
