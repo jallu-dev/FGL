@@ -801,8 +801,8 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 <Image
                   src="/images/GemAVerticalCropped.svg"
                   alt="logo"
-                  height={150}
-                  width={82}
+                  height={145}
+                  width={80}
                 />
               </div>
               {/* Gemologist Info */}
