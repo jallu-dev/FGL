@@ -790,10 +790,18 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
             >
               {/*GEMA Logo */}
               <div>
-                <Image
+                {/*Circle Logo */}
+                {/* <Image
                   src="/images/GemACropped.svg"
                   alt="logo"
                   height={120}
+                  width={120}
+                /> */}
+                {/*Vertical Logo */}
+                <Image
+                  src="/images/GemAVerticalCropped.svg"
+                  alt="logo"
+                  height={218}
                   width={120}
                 />
               </div>
