@@ -1,7 +1,7 @@
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import { createRoot } from "react-dom/client";
-import GemologicalReport from "./GemologicalReport"; // Adjust path as needed
+import GemologicalReport from "./GemologicalReport";
 
 const generateReportPDF = async (reportData, reportId, setGenerating) => {
   if (typeof document === "undefined") {
