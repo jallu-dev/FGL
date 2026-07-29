@@ -791,19 +791,19 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
               {/*GEMA Logo */}
               <div>
                 {/*Circle Logo */}
-                {/* <Image
+                <Image
                   src="/images/GemACropped.svg"
                   alt="logo"
                   height={120}
                   width={120}
-                /> */}
+                />
                 {/*Vertical Logo */}
-                <Image
+                {/* <Image
                   src="/images/GemAVerticalCropped.svg"
                   alt="logo"
                   height={140}
                   width={77}
-                />
+                /> */}
               </div>
               {/* Gemologist Info */}
               <div style={{ textAlign: "center" }}>
