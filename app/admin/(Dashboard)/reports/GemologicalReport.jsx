@@ -822,7 +822,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                     M. Shahmi Rinsan
                   </div>
                   <div style={{ fontSize: "12px", color: colors.gray[600] }}>
-                    FGA (GEM-A), Dip.PGSL
+                    FGA (UK), Dip.PGSL
                   </div>
                 </div>
               </div>
