@@ -354,7 +354,7 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 alignItems: "center",
                 justifyContent: "center",
                 overflow: "hidden",
-                border: "1px solid #000",
+                // border: "1px solid #000",
               }}
             >
               {image_file_path ? (
