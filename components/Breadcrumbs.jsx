@@ -8,7 +8,11 @@ export default function Breadcrumbs({ items }) {
       "@type": "ListItem",
       position: index + 1,
       name: item.label,
-      item: item.href ? `https://fgl.lk${item.href}` : undefined,
+      item: item.href
+        ? item.href.startsWith("http")
+          ? item.href
+          : `https://fgl.lk${item.href}`
+        : undefined,
     })),
   };
 

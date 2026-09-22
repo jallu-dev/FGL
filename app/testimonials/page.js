@@ -1,3 +1,4 @@
+import Breadcrumbs from "@/components/Breadcrumbs";
 import Link from "next/link";
 import {
   FaStar,
@@ -9,15 +10,30 @@ import {
 } from "react-icons/fa";
 
 export const metadata = {
-  title: "Client Testimonials & Reviews — Trusted Gem Lab Sri Lanka | FGL",
+  title: "Client Testimonials & Reviews | Trusted Gem Lab Sri Lanka | FGL Beruwala",
   description:
-    "Read genuine reviews and testimonials from international gem dealers, collectors, jewelers, and gem merchants who trust FGL (Finest Gem Lab) for gemstone certification.",
+    "Read verified reviews and testimonials from international gem dealers, collectors, and jewelers who trust Finest Gem Lab (FGL) in Beruwala, Sri Lanka for certified testing.",
   alternates: { canonical: "https://fgl.lk/testimonials" },
   openGraph: {
-    title: "Client Testimonials | Finest Gem Lab (FGL)",
+    title: "Client Testimonials | Finest Gem Lab (FGL) Sri Lanka",
     description:
-      "Discover why jewelers, gemstone merchants, and collectors worldwide choose FGL for precise gemstone testing and certified origin reports.",
+      "Discover why jewelers, gemstone merchants, and collectors worldwide choose Finest Gem Lab in Beruwala, Sri Lanka for precise gemstone testing and certified origin reports.",
     url: "https://fgl.lk/testimonials",
+    images: [
+      {
+        url: "/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Finest Gem Lab Client Reviews Beruwala Sri Lanka",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Client Testimonials | Finest Gem Lab Beruwala",
+    description:
+      "Trusted gem testing reviews for Finest Gem Lab in Beruwala, Sri Lanka.",
+    images: ["/images/og-image.jpg"],
   },
 };
 
@@ -205,6 +221,13 @@ export default function TestimonialsPage() {
             </div>
           </div>
         </section>
+
+        <Breadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Testimonials", href: null },
+          ]}
+        />
 
         {/* Testimonials Grid */}
         <section className="py-16 container mx-auto px-6">

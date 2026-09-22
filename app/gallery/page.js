@@ -1,3 +1,4 @@
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { pool } from "@/lib/db";
 import { s3 } from "@/lib/r2";
 import { GetObjectCommand } from "@aws-sdk/client-s3";
@@ -14,15 +15,30 @@ import {
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Certified Gem Gallery — Sri Lanka Sapphires, Rubies, Emeralds | FGL",
+  title: "Certified Gem Gallery | Ceylon Sapphires & Gemstones | FGL Beruwala",
   description:
-    "Explore FGL's gemstone showcase featuring certified Ceylon blue sapphires, padparadscha, rubies, emeralds, spinels, and alexandrites tested in Sri Lanka.",
+    "Explore Finest Gem Lab's showcase featuring certified Ceylon blue sapphires, padparadscha, rubies, spinels, and emeralds tested in China Fort, Beruwala, Sri Lanka.",
   alternates: { canonical: "https://fgl.lk/gallery" },
   openGraph: {
-    title: "Gem Gallery | Finest Gem Lab (FGL)",
+    title: "Certified Gem Gallery | Finest Gem Lab (FGL) Sri Lanka",
     description:
-      "Premium certified natural gemstones examined by FGL's certified gemologists using advanced spectroscopy and origin determination.",
+      "Premium certified natural gemstones examined by FGL's certified gemologists in China Fort, Beruwala using advanced spectroscopy and origin determination.",
     url: "https://fgl.lk/gallery",
+    images: [
+      {
+        url: "/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Finest Gem Lab Certified Gemstone Gallery Beruwala Sri Lanka",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Certified Gem Gallery | Finest Gem Lab Beruwala",
+    description:
+      "Showcase of certified Ceylon sapphires and gemstones tested by Finest Gem Lab in Beruwala, Sri Lanka.",
+    images: ["/images/og-image.jpg"],
   },
 };
 
@@ -227,6 +243,13 @@ export default async function GalleryPage() {
             </p>
           </div>
         </section>
+
+        <Breadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Gem Gallery", href: null },
+          ]}
+        />
 
         {loadError && dbImages.length === 0 && (
           <div className="bg-amber-50 text-amber-800 text-center py-3 px-6 text-sm border-b border-amber-200">

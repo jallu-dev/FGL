@@ -19,12 +19,13 @@ export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default:
-      "FGL - Finest Gem Lab | Gem Certification Sri Lanka | Gem Lab Sri Lanka",
-    template: "%s | FGL - Finest Gem Lab",
+      "Finest Gem Lab (FGL) | Gem Lab Sri Lanka | Gem Certification & Testing Beruwala",
+    template: "%s | Finest Gem Lab (FGL)",
   },
   description:
-    "FGL (Finest Gem Lab) - Sri Lanka's leading gem lab. Expert gemstone certification, identification & testing. Trusted gem laboratory in Sri Lanka for ruby, sapphire, emerald certification.",
+    "Finest Gem Lab (FGL) is Sri Lanka's premier gemological laboratory located in China Fort, Beruwala. Expert gemstone certification, identification & testing for Ceylon sapphire, ruby, emerald. Trusted gem testing lab in Sri Lanka & near you.",
   keywords: [
+    // Original Keywords
     "FGL",
     "FGL gem lab",
     "Finest Gem Lab",
@@ -46,6 +47,43 @@ export const metadata = {
     "treatment detection",
     "sri lankan gem lab",
     "colombo gem lab",
+
+    // Brand-Focused New Keywords
+    "Finest Gem Lab Sri Lanka",
+    "FGL Gem Lab Sri Lanka",
+    "FGL Finest Gem Lab",
+    "Finest Gem Lab Beruwala",
+
+    // Location-Focused New Keywords
+    "Finest Gem Lab China Fort Beruwala",
+    "FGL Beruwala",
+    "Gem Lab Beruwala",
+    "Gem Testing Lab Beruwala",
+    "Gem Laboratory China Fort Beruwala",
+
+    // Service-Focused New Keywords
+    "Gemstone certification Beruwala",
+    "Gemstone testing Beruwala",
+    "Sapphire testing Beruwala",
+    "Ceylon sapphire certification Beruwala",
+    "Gem identification Beruwala",
+    "Gem treatment detection Beruwala",
+    "Gem origin determination Sri Lanka",
+
+    // Sri Lankan Gem Labs Focused New Keywords
+    "Finest Gemological Laboratory",
+    "Finest Gemological Laboratory Sri Lanka",
+    "Finest Gemological Laboratory Beruwala",
+    "Gemological laboratory Beruwala",
+    "Gemological laboratory",
+    "Gem testing lab",
+    "Gem testing lab Beruwala",
+    "Gem testing lab Sri lanka",
+
+    // Nearest Gem Lab Focused ("Near Me") New Keywords
+    "Gem testing lab near me",
+    "Gem lab near me",
+    "Gem laboratory near me",
   ],
   authors: [{ name: "Finest Gem Lab", url: SITE_URL }],
   creator: "Finest Gem Lab (FGL)",
@@ -68,24 +106,24 @@ export const metadata = {
     type: "website",
     locale: "en_US",
     url: SITE_URL,
-    siteName: "FGL - Finest Gem Lab Sri Lanka",
-    title: "FGL - Finest Gem Lab | Leading Gem Lab in Sri Lanka",
+    siteName: "Finest Gem Lab (FGL) Sri Lanka",
+    title: "Finest Gem Lab (FGL) | Leading Gem Lab in Sri Lanka & Beruwala",
     description:
-      "FGL is Sri Lanka's premier gem laboratory. Expert gemstone certification, identification & testing. Leading gem lab in Sri Lanka trusted worldwide.",
+      "Finest Gem Lab (FGL) in China Fort, Beruwala, Sri Lanka: Premier gemstone testing, Ceylon sapphire certification, treatment detection & origin determination.",
     images: [
       {
         url: `${SITE_URL}/images/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: "FGL - Finest Gem Lab | Leading Gemological Laboratory in Sri Lanka",
+        alt: "Finest Gem Lab (FGL) | Leading Gemological Laboratory in Sri Lanka",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "FGL - Finest Gem Lab | Leading Gem Lab in Sri Lanka",
+    title: "Finest Gem Lab (FGL) | Leading Gem Lab in Sri Lanka & Beruwala",
     description:
-      "FGL gem lab Sri Lanka: Expert gemstone certification, identification & testing. Sri Lanka's trusted gem laboratory.",
+      "Finest Gem Lab (FGL) in China Fort, Beruwala: Premier gemstone testing and Ceylon sapphire certification in Sri Lanka.",
     images: [`${SITE_URL}/images/og-image.jpg`],
   },
 };
@@ -94,28 +132,57 @@ const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
   name: "Finest Gem Lab",
-  alternateName: ["FGL", "FGL Gem Lab", "FGL Sri Lanka"],
+  alternateName: [
+    "FGL",
+    "Finest Gemological Laboratory",
+    "Finest Gemological Laboratory Sri Lanka",
+    "Finest Gemological Laboratory Beruwala",
+    "FGL Gem Lab Sri Lanka",
+    "FGL Finest Gem Lab",
+    "Finest Gem Lab Sri Lanka",
+    "Finest Gem Lab Beruwala",
+    "Finest Gem Lab China Fort Beruwala",
+    "FGL Beruwala",
+    "Gem Lab Beruwala",
+  ],
   legalName: "Finest Gem Lab (Pvt) Ltd",
   url: SITE_URL,
   logo: `${SITE_URL}/images/fgl-logo.png`,
   image: `${SITE_URL}/images/og-image.jpg`,
   description:
-    "FGL (Finest Gem Lab) is the leading gemological laboratory in Sri Lanka, providing expert gem identification, certification, treatment detection, and geographical origin determination. Premier gem lab in Sri Lanka trusted worldwide.",
-  slogan: "Sri Lanka's Premier Gem Laboratory",
+    "Finest Gem Lab (FGL) is the leading gemological laboratory in Sri Lanka, based in China Fort, Beruwala. Providing expert Ceylon sapphire certification, gemstone testing, treatment detection, and geographical origin determination.",
+  slogan: "Sri Lanka's Premier Gemological Laboratory",
   foundingDate: "2020",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Colombo",
+    streetAddress: "64D/2F, China Fort Rd",
+    addressLocality: "Beruwala",
     addressRegion: "Western Province",
+    postalCode: "12070",
     addressCountry: "LK",
-    streetAddress: "Sri Lanka",
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: "6.9271",
-    longitude: "79.8612",
+    latitude: "6.4771813",
+    longitude: "79.9874871",
   },
   areaServed: [
+    {
+      "@type": "AdministrativeArea",
+      name: "China Fort, Beruwala",
+    },
+    {
+      "@type": "City",
+      name: "Beruwala",
+    },
+    {
+      "@type": "City",
+      name: "Colombo",
+    },
+    {
+      "@type": "City",
+      name: "Ratnapura",
+    },
     {
       "@type": "Country",
       name: "Sri Lanka",
@@ -125,12 +192,14 @@ const organizationJsonLd = {
       name: "Worldwide",
     },
   ],
+  telephone: "+94763549226",
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer service",
+    telephone: "+94763549226",
     email: "info@fgl.lk",
     url: `${SITE_URL}/contact`,
-    availableLanguage: ["English", "Sinhala"],
+    availableLanguage: ["English", "Sinhala", "Tamil"],
   },
   priceRange: "$$",
   currenciesAccepted: "LKR, USD",
@@ -138,9 +207,16 @@ const organizationJsonLd = {
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ],
       opens: "09:00",
-      closes: "17:00",
+      closes: "18:00",
     },
   ],
   hasOfferCatalog: {
@@ -151,29 +227,55 @@ const organizationJsonLd = {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Gem Certification Sri Lanka",
-          description: "Professional gem certification services in Sri Lanka",
+          name: "Ceylon Sapphire Certification Beruwala",
+          description:
+            "Expert Ceylon blue sapphire, padparadscha, and yellow sapphire certification and testing in Beruwala, Sri Lanka.",
         },
       },
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Gemstone Testing & Identification",
-          description: "Advanced gemstone testing and identification services",
+          name: "Gemstone Testing & Certification Sri Lanka",
+          description:
+            "Accredited gemstone testing, identification, and certification services by certified gemologists.",
         },
       },
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Origin Determination",
-          description: "Geographical origin determination for gemstones",
+          name: "Gem Treatment Detection Beruwala",
+          description:
+            "Advanced scientific detection of thermal enhancement (heat treatment), beryllium diffusion, glass filling, and irradiation.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Gem Origin Determination Sri Lanka",
+          description:
+            "Spectroscopic and inclusion analysis for geographical origin determination (Ceylon, Burma, Mozambique, Madagascar).",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Gem Identification Beruwala",
+          description:
+            "Scientific mineral species and variety identification using advanced spectroscopy and refractometry.",
         },
       },
     ],
   },
-  sameAs: [],
+  sameAs: [
+    "https://www.facebook.com/profile.php?id=61572485684286",
+    "https://www.instagram.com/finest_gem_lab",
+    "https://www.linkedin.com/in/shahmi-rinsan-fga-b607a4249",
+    "https://wa.me/message/PDH7DQJLSC7XD1",
+  ],
 };
 
 const websiteJsonLd = {
