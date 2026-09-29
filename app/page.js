@@ -126,14 +126,13 @@ export default function Home() {
         <div className="container mx-auto px-6 z-10 relative">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-6">
-              <span className="text-primary">Finest Gem Lab</span> — Sri Lanka&#39;s
-              Premier <span className="text-primary">Gemological Laboratory</span>
+              <span className="text-primary">FGL</span> - Sri Lanka&#39;s
+              Premier <span className="text-primary">Gem Laboratory</span>
             </h1>
             <p className="text-lg md:text-xl text-white/90 mb-8">
-              Finest Gem Lab (FGL) is the leading gem testing lab in Sri Lanka,
-              based in China Fort, Beruwala. Providing expert Ceylon sapphire
-              certification, gemstone testing, treatment detection, and origin
-              determination with certified scientific precision.
+              FGL (Finest Gem Lab) is the leading gem lab in Sri Lanka,
+              providing expert gemstone certification, testing, and
+              identification with the highest standards of scientific precision.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/verify" className="btn-secondary">
@@ -152,12 +151,12 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">
-              Gem Testing & Certification Services in Beruwala & Sri Lanka
+              FGL Gem Lab Services in Sri Lanka
             </h2>
             <p className="text-lg text-accent/80 max-w-2xl mx-auto">
-              As Sri Lanka&#39;s premier gemological laboratory, Finest Gem Lab
-              offers accredited gemstone testing, sapphire certification, and
-              treatment detection to gem traders, jewelers, and collectors.
+              As Sri Lanka&#39;s premier gem laboratory, FGL offers
+              comprehensive gemological services to jewelers, collectors, and
+              investors worldwide.
             </p>
           </div>
 
@@ -168,11 +167,11 @@ export default function Home() {
                 <FaGem className="text-primary text-2xl" />
               </div>
               <h3 className="text-xl font-heading font-bold text-primary mb-3">
-                Gem Identification Beruwala
+                Gem Identification
               </h3>
               <p className="text-accent/80">
-                Accurate identification of precious mineral species and varieties
-                using optical refractometry and spectroscopy.
+                Scientific identification of gemstones using advanced
+                spectroscopy and microscopy.
               </p>
             </div>
 
@@ -182,11 +181,11 @@ export default function Home() {
                 <FaCertificate className="text-primary text-2xl" />
               </div>
               <h3 className="text-xl font-heading font-bold text-primary mb-3">
-                Ceylon Sapphire Certification
+                Certification
               </h3>
               <p className="text-accent/80">
-                Recognized certification for Ceylon blue sapphires, padparadscha,
-                and rubies with definitive grading.
+                Comprehensive reports detailing the properties and quality of
+                your gemstones.
               </p>
             </div>
 
@@ -196,11 +195,11 @@ export default function Home() {
                 <FaMicroscope className="text-primary text-2xl" />
               </div>
               <h3 className="text-xl font-heading font-bold text-primary mb-3">
-                Gem Treatment Detection
+                Advanced Analysis
               </h3>
               <p className="text-accent/80">
-                Detailed thermal enhancement (heat treatment), beryllium diffusion,
-                and fracture filling detection.
+                Detailed microscopic examination and spectroscopic analysis for
+                research purposes.
               </p>
             </div>
 
@@ -210,67 +209,19 @@ export default function Home() {
                 <FaSearch className="text-primary text-2xl" />
               </div>
               <h3 className="text-xl font-heading font-bold text-primary mb-3">
-                Origin Determination Sri Lanka
+                Origin Determination
               </h3>
               <p className="text-accent/80">
-                Scientific geographical origin determination based on microscopic
-                inclusions and trace elements.
+                Scientific assessment of a gemstone&#39;s geographical origin
+                based on inclusions and properties.
               </p>
             </div>
           </div>
 
           <div className="text-center mt-12">
             <Link href="/services" className="btn-primary">
-              View All Services & Testing Details
+              View All Services
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Local Authority / China Fort Beruwala Section */}
-      <section className="py-16 bg-slate-50 border-y border-gray-100">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">
-              Premier Gem Testing Lab in China Fort, Beruwala
-            </h2>
-            <p className="text-lg text-accent/80">
-              China Fort, Beruwala is the heart of Sri Lanka&#39;s vibrant gemstone
-              trading heritage. Finest Gem Lab (FGL) is strategically situated
-              right within China Fort, providing international-standard gemological
-              testing directly at the trade source.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="premium-card p-6 bg-white">
-              <h3 className="text-lg font-heading font-bold text-primary mb-2">
-                📍 Looking for a Gem Lab Near Me?
-              </h3>
-              <p className="text-accent/80 text-sm">
-                Conveniently located on China Fort Road, Beruwala. Serving dealers,
-                jewelers, and buyers from Beruwala, Colombo, Galle, and Ratnapura
-                with walk-in testing.
-              </p>
-            </div>
-            <div className="premium-card p-6 bg-white">
-              <h3 className="text-lg font-heading font-bold text-primary mb-2">
-                🔬 Advanced Gemological Equipment
-              </h3>
-              <p className="text-accent/80 text-sm">
-                Equipped with UV-Vis-NIR spectroscopy, FTIR analysis, and
-                high-resolution immersion microscopy for foolproof detection of
-                treatments and synthetics.
-              </p>
-            </div>
-            <div className="premium-card p-6 bg-white">
-              <h3 className="text-lg font-heading font-bold text-primary mb-2">
-                ⚡ Rapid & Reliable Turnaround
-              </h3>
-              <p className="text-accent/80 text-sm">
-                Fast-track certification options for gem merchants engaged in
-                active trading, accompanied by tamper-proof QR code verification.
-              </p>
-            </div>
           </div>
         </div>
       </section>
@@ -281,27 +232,27 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-6">
-                About Finest Gemological Laboratory (FGL)
+                About FGL - Sri Lanka&#39;s Leading Gem Lab
               </h2>
               <p className="text-lg text-accent/80 mb-6">
-                Finest Gem Lab (FGL) has established itself as Sri Lanka&#39;s
-                leading gemological laboratory, trusted by international gem
-                dealers, jewelry houses, and collectors worldwide for accurate
-                gemstone testing and Ceylon sapphire certification.
+                FGL (Finest Gem Lab) has established itself as the premier gem
+                laboratory in Sri Lanka, trusted by jewelers, collectors, and
+                gem traders worldwide for accurate gemstone testing and
+                certification.
               </p>
               <p className="text-lg text-accent/80 mb-8">
-                Operating from China Fort, Beruwala, our gem laboratory combines
-                internationally certified gemologists with cutting-edge analytical
-                technology, making FGL the definitive gem testing lab in Sri Lanka.
+                Our gem lab in Sri Lanka is equipped with state-of-the-art
+                technology and staffed by internationally certified gemologists,
+                making FGL the top choice for gem certification in Sri Lanka.
               </p>
               <Link href="/about" className="btn-secondary">
-                Learn More About Our Laboratory
+                Learn More About Us
               </Link>
             </div>
             <div className="relative h-96 rounded-lg overflow-hidden shadow-gold">
               <Image
                 src="/images/tools.png"
-                alt="Finest Gem Lab testing equipment and gemological instruments in Beruwala, Sri Lanka"
+                alt="Finest Gem Lab Laboratory Equipment in Sri Lanka"
                 fill
                 style={{ objectFit: "contain" }}
               />

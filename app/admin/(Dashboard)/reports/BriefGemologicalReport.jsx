@@ -257,9 +257,10 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 padding: "0",
               }}
             >
-              {measurement?.split("\n").map((item, i) => (
-                <li key={i}>{item || "\u200b"}</li>
-              ))}
+              {measurement?.split("\n").map((item, i) => {
+                console.log("measurement item:", item, "index:", i); // Debugging line
+                return <li key={i}>{item || "\u200b"}</li>;
+              })}
             </ul>
           </div>
 

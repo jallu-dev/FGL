@@ -75,12 +75,11 @@ export default function ContactPage() {
       <section className="bg-primary py-20 pt-24 text-white text-center">
         <div className="container mx-auto px-6">
           <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4">
-            Contact Finest Gem Lab — China Fort, Beruwala
+            Contact Us
           </h1>
           <p className="max-w-2xl mx-auto text-white/90 text-lg">
-            Have questions regarding gemstone certification, Ceylon sapphire testing,
-            or laboratory intake? Visit our facility in Beruwala or reach out
-            below.
+            Got questions or inquiries? Drop us a message below and we&apos;ll get
+            back to you as soon as possible.
           </p>
         </div>
       </section>
@@ -91,17 +90,12 @@ export default function ContactPage() {
       {/* Contact Section: Info + Form */}
       <section className="py-12 container mx-auto px-6 max-w-6xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          {/* Contact Information & Visiting Details */}
+          {/* Contact Information */}
           <div className="lg:col-span-5 space-y-6">
             <div className="premium-card p-8">
               <h2 className="text-2xl font-heading font-bold text-primary mb-6">
-                Laboratory Location & Details
+                Contact Information
               </h2>
-              <p className="text-accent/80 text-sm mb-6 leading-relaxed">
-                Finest Gem Lab is centrally located on China Fort Road, Beruwala.
-                We welcome gem dealers, jewelers, and visitors for on-site gemstone
-                testing and certification.
-              </p>
 
               <div className="space-y-4 text-sm text-accent">
                 <div className="flex items-start">
@@ -135,7 +129,7 @@ export default function ContactPage() {
                       rel="noopener noreferrer"
                       className="text-green-600 font-semibold hover:underline"
                     >
-                      Chat with Gemologist
+                      Chat with Us
                     </a>
                   </div>
                 </div>
@@ -162,16 +156,6 @@ export default function ContactPage() {
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Quick Intake Guidelines */}
-            <div className="bg-primary/5 border border-primary/10 rounded-xl p-6 text-xs text-accent/80 space-y-2">
-              <h3 className="font-bold text-primary text-sm mb-2">
-                Gemstone Submission Guidelines
-              </h3>
-              <p>• Loose or jewelry-mounted gemstones accepted.</p>
-              <p>• Express same-day testing available for trade merchants.</p>
-              <p>• Secure courier intake available from Colombo & Ratnapura.</p>
             </div>
           </div>
 
@@ -263,7 +247,7 @@ export default function ContactPage() {
               {/* Message Field */}
               <div className="mb-6">
                 <label className="block mb-2 font-medium text-accent text-sm">
-                  Inquiry / Message <span className="text-red-500">*</span>
+                  Message <span className="text-red-500">*</span>
                 </label>
                 <textarea
                   {...register("message", {
@@ -280,7 +264,7 @@ export default function ContactPage() {
                   className={`w-full p-3 border rounded-md h-32 resize-none focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all text-sm ${
                     errors.message ? "border-red-500" : "border-gray-300"
                   }`}
-                  placeholder="Tell us about the gemstones you wish to certify or your inquiry..."
+                  placeholder="Tell us how we can help you..."
                   disabled={isSubmitting}
                 />
                 {errors.message && (
@@ -305,10 +289,10 @@ export default function ContactPage() {
         {/* Map Section */}
         <div className="mt-16">
           <h3 className="text-xl font-heading font-bold text-primary mb-4 text-center">
-            Find Finest Gem Lab on the Map
+            Our Location
           </h3>
           <p className="text-center text-accent/70 text-sm mb-6">
-            Located near Hidayathulla Gem Tower, China Fort Road, Beruwala.
+            China Fort Road, Beruwala, Sri Lanka
           </p>
           <div className="flex justify-center">
             <iframe

@@ -276,6 +276,27 @@ const organizationJsonLd = {
     "https://www.linkedin.com/in/shahmi-rinsan-fga-b607a4249",
     "https://wa.me/message/PDH7DQJLSC7XD1",
   ],
+  founder: {
+    "@type": "Person",
+    name: "Shahmi Rinsan",
+    jobTitle: "Head Gemologist & Director",
+    hasCredential: [
+      {
+        "@type": "EducationalOccupationalCredential",
+        name: "Fellow of the Gemmological Association (FGA)",
+        credentialCategory: "Professional Gemologist",
+      },
+    ],
+    knowsAbout: [
+      "Gemology",
+      "Ceylon Sapphire Certification",
+      "Gemstone Identification",
+      "Heat Treatment Detection",
+      "Corundum Spectroscopy",
+      "Geographical Origin Determination",
+    ],
+    sameAs: "https://www.linkedin.com/in/shahmi-rinsan-fga-b607a4249",
+  },
 };
 
 const websiteJsonLd = {
