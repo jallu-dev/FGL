@@ -634,9 +634,13 @@ export default function VerifyPage() {
                           <p className="text-sm text-accent/60">
                             {fieldLabels[language].measurement}
                           </p>
-                          <p className="text-lg font-medium text-accent">
-                            {getDisplayData("measurement")}
-                          </p>
+                          <ul className="text-lg font-medium text-accent">
+                            {getDisplayData("measurement")
+                              ?.split(/\r?\n|\\n/)
+                              .map((item, i) => (
+                                <li key={i}>{item.trim() || "\u200b"}</li>
+                              ))}
+                          </ul>
                         </div>
                       )}
 
@@ -648,9 +652,9 @@ export default function VerifyPage() {
                           </p>
                           <ul className="text-lg font-medium text-accent">
                             {getDisplayData("colour")
-                              ?.split("/n")
+                              ?.split(/\r?\n|\\n/)
                               .map((item, i) => (
-                                <li key={i}>{item}</li>
+                                <li key={i}>{item.trim() || "\u200b"}</li>
                               ))}
                           </ul>
                         </div>
@@ -724,9 +728,9 @@ export default function VerifyPage() {
                           </p>
                           <ul className="text-lg font-medium text-accent">
                             {getDisplayData("comments")
-                              ?.split("/n")
+                              ?.split(/\r?\n|\\n/)
                               .map((item, i) => (
-                                <li key={i}>{item}</li>
+                                <li key={i}>{item.trim() || "\u200b"}</li>
                               ))}
                           </ul>
                         </div>
