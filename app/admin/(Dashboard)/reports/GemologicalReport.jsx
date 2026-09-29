@@ -323,28 +323,45 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 </div>
               </div>
 
-              <div style={{ display: "flex", marginLeft: 50, width: 450 }}>
+              {measurement?.split(/\r?\n|\\n/).map((item, i) => (
                 <div
-                  style={{
-                    color: colors.gray[900],
-                    fontWeight: "600",
-                    textTransform: "capitalize",
-                    flexShrink: 0,
-                  }}
+                  key={i}
+                  style={{ display: "flex", marginLeft: 50, width: 450 }}
                 >
-                  measurements
+                  <div
+                    style={{
+                      color: colors.gray[900],
+                      fontWeight: "600",
+                      textTransform: "capitalize",
+                      flexShrink: 0,
+                      visibility: i === 0 ? "visible" : "hidden",
+                    }}
+                  >
+                    measurements
+                  </div>
+                  {i === 0 ? (
+                    <DotLeader />
+                  ) : (
+                    <div
+                      style={{
+                        flexGrow: 1,
+                        flexShrink: 1,
+                        minWidth: "1px",
+                        height: 20,
+                      }}
+                    />
+                  )}
+                  <div
+                    style={{
+                      color: colors.gray[800],
+                      fontWeight: "400",
+                      flexShrink: 0,
+                    }}
+                  >
+                    {item.trim() || "\u200b"}
+                  </div>
                 </div>
-                <DotLeader />
-                <div
-                  style={{
-                    color: colors.gray[800],
-                    fontWeight: "400",
-                    flexShrink: 0,
-                  }}
-                >
-                  {measurement}
-                </div>
-              </div>
+              ))}
 
               <div style={{ display: "flex", marginLeft: 50, width: 450 }}>
                 <div
@@ -369,7 +386,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 </div>
               </div>
 
-              {colour?.split("\n").map((item, i) => (
+              {colour?.split(/\r?\n|\\n/).map((item, i) => (
                 <div
                   key={i}
                   style={{ display: "flex", marginLeft: 50, width: 450 }}
@@ -404,7 +421,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                       flexShrink: 0,
                     }}
                   >
-                    {item || "\u200b"}
+                    {item.trim() || "\u200b"}
                   </div>
                 </div>
               ))}
@@ -526,7 +543,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                   {variety}
                 </div>
               </div>
-              {comments?.split("\n").map((item, i) => (
+              {comments?.split(/\r?\n|\\n/).map((item, i) => (
                 <div
                   key={i}
                   style={{ display: "flex", marginLeft: 50, width: 450 }}
@@ -561,7 +578,7 @@ const GemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                       flexShrink: 0,
                     }}
                   >
-                    {item || "\u200b"}
+                    {item.trim() || "\u200b"}
                   </div>
                 </div>
               ))}

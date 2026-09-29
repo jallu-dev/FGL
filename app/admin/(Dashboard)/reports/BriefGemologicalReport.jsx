@@ -257,10 +257,9 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 padding: "0",
               }}
             >
-              {measurement?.split("\n").map((item, i) => {
-                console.log("measurement item:", item, "index:", i); // Debugging line
-                return <li key={i}>{item || "\u200b"}</li>;
-              })}
+              {measurement?.split(/\r?\n|\\n/).map((item, i) => (
+                <li key={i}>{item.trim() || "\u200b"}</li>
+              ))}
             </ul>
           </div>
 
@@ -284,8 +283,8 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 padding: "0",
               }}
             >
-              {colour?.split("\n").map((item, i) => (
-                <li key={i}>{item || "\u200b"}</li>
+              {colour?.split(/\r?\n|\\n/).map((item, i) => (
+                <li key={i}>{item.trim() || "\u200b"}</li>
               ))}
             </ul>
           </div>
@@ -326,8 +325,8 @@ const BriefGemologicalReport = ({ reportData, onRenderComplete, reportId }) => {
                 wordBreak: "break-word",
               }}
             >
-              {comments?.split("\n").map((item, i) => (
-                <li key={i}>{item || "\u200b"}</li>
+              {comments?.split(/\r?\n|\\n/).map((item, i) => (
+                <li key={i}>{item.trim() || "\u200b"}</li>
               ))}
             </ul>
           </div>
